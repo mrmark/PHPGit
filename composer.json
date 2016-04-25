@@ -16,7 +16,8 @@
     "require-dev": {
         "phpunit/phpunit": "^4.7",
         "fabpot/php-cs-fixer": "^1.10",
-        "symfony/filesystem": "^2.8"
+        "symfony/filesystem": "^2.8",
+        "satooshi/php-coveralls": "^1.0"
     },
     "autoload": {
         "psr-4": {
