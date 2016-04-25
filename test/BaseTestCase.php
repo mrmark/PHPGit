@@ -18,7 +18,7 @@ abstract class BaseTestCase extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->directory = __DIR__.'/../../build/' . strtolower(get_class($this));
+        $this->directory = __DIR__.'/../build/' . strtolower(get_class($this));
     }
 
     /**

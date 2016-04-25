@@ -19,8 +19,8 @@
         "symfony/filesystem": "^2.8"
     },
     "autoload": {
-        "psr-0": {
-            "": "src"
+        "psr-4": {
+            "PHPGit\\": "src/"
         }
     }
 }
