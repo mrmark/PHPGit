@@ -3,7 +3,7 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Show the most recent tag that is reachable from a commit - `git describe`
@@ -77,7 +77,7 @@ class DescribeCommand extends Command
      * - **tags**   (_boolean_) Enables matching a lightweight (non-annotated) tag
      * - **always** (_boolean_) Show uniquely abbreviated commit object as fallback
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'all'    => false,
