@@ -12,7 +12,6 @@ use PHPGit\Exception\GitException;
  */
 class CatCommand extends Command
 {
-
     /**
      * Returns the contents of blob object
      *
@@ -87,5 +86,4 @@ class CatCommand extends Command
 
         return trim($this->git->run($process));
     }
-
-} 
+}

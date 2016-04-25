@@ -11,7 +11,6 @@ use PHPGit\Command;
  */
 class TreeCommand extends Command
 {
-
     /**
      * Returns the contents of a tree object
      *
@@ -39,32 +38,31 @@ class TreeCommand extends Command
      */
     public function __invoke($branch = 'master', $path = '')
     {
-        $objects = array();
+        $objects = [];
         $builder = $this->git->getProcessBuilder();
-        $process = $builder->add('ls-tree')->add($branch . ':' . $path)->getProcess();
+        $process = $builder->add('ls-tree')->add($branch.':'.$path)->getProcess();
         $output  = $this->git->run($process);
         $lines   = $this->split($output);
 
-        $types = array(
+        $types = [
             'submodule' => 0,
             'tree'      => 1,
-            'blob'      => 2
-        );
+            'blob'      => 2,
+        ];
 
         foreach ($lines as $line) {
-            list($meta, $file) = explode("\t", $line);
-            list($mode, $type, $hash) = explode(" ", $meta);
+            list($meta, $file)        = explode("\t", $line);
+            list($mode, $type, $hash) = explode(' ', $meta);
 
-            $objects[] = array(
+            $objects[] = [
                 'sort' => sprintf('%d:%s', $types[$type], $file),
                 'mode' => $mode,
                 'type' => $type,
                 'hash' => $hash,
-                'file' => $file
-            );
+                'file' => $file,
+            ];
         }
 
         return $objects;
     }
-
-} 
+}

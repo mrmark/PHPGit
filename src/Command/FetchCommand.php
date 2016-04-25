@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class FetchCommand extends Command
 {
-
     /**
      * Fetches named heads or tags from one or more other repositories, along with the objects necessary to complete them
      *
@@ -32,13 +31,13 @@ class FetchCommand extends Command
      *
      * @param string $repository The "remote" repository that is the source of a fetch or pull operation
      * @param string $refspec    The format of a <refspec> parameter is an optional plus +, followed by the source ref <src>,
-     *                            followed by a colon :, followed by the destination ref <dst>
+     *                           followed by a colon :, followed by the destination ref <dst>
      * @param array  $options    [optional] An array of options {@see FetchCommand::setDefaultOptions}
      *
      * @throws GitException
      * @return bool
      */
-    public function __invoke($repository, $refspec = null, array $options = array())
+    public function __invoke($repository, $refspec = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -78,7 +77,7 @@ class FetchCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function all(array $options = array())
+    public function all(array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -101,12 +100,11 @@ class FetchCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'append' => false,
             //'force'  => false,
-            'keep'   => false,
-            'prune'  => false,
-        ));
+            'keep'  => false,
+            'prune' => false,
+        ]);
     }
-
 }

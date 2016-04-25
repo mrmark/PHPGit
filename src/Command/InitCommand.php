@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class InitCommand extends Command
 {
-
     /**
      * Create an empty git repository or reinitialize an existing one
      *
@@ -34,13 +33,13 @@ class InitCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function __invoke($path, array $options = array())
+    public function __invoke($path, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('init');
 
-        $this->addFlags($builder, $options, array('shared', 'bare'));
+        $this->addFlags($builder, $options, ['shared', 'bare']);
 
         $process = $builder->add($path)->getProcess();
         $this->git->run($process);
@@ -56,10 +55,9 @@ class InitCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'shared' => false,
-            'bare'   => false
-        ));
+            'bare'   => false,
+        ]);
     }
-
-} 
+}

@@ -12,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class RmCommand extends Command
 {
-
     /**
      * Remove files from the working tree and from the index
      *
@@ -33,20 +32,20 @@ class RmCommand extends Command
      *
      * @return bool
      */
-    public function __invoke($file, array $options = array())
+    public function __invoke($file, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('rm');
 
-        $this->addFlags($builder, $options, array('force', 'cached'));
+        $this->addFlags($builder, $options, ['force', 'cached']);
 
         if ($options['recursive']) {
             $builder->add('-r');
         }
 
         if (!is_array($file) && !($file instanceof \Traversable)) {
-            $file = array($file);
+            $file = [$file];
         }
 
         foreach ($file as $value) {
@@ -71,7 +70,7 @@ class RmCommand extends Command
      *
      * @return bool
      */
-    public function cached($file, array $options = array())
+    public function cached($file, array $options = [])
     {
         $options['cached'] = true;
 
@@ -87,11 +86,10 @@ class RmCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'force'     => false,
             'cached'    => false,
-            'recursive' => false
-        ));
+            'recursive' => false,
+        ]);
     }
-
 }

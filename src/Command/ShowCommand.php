@@ -12,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class ShowCommand extends Command
 {
-
     /**
      * Shows one or more objects (blobs, trees, tags and commits)
      *
@@ -32,16 +31,16 @@ class ShowCommand extends Command
      *
      * @return string
      */
-    public function __invoke($object, array $options = array())
+    public function __invoke($object, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('show');
 
-        $this->addFlags($builder, $options, array('abbrev-commit'));
+        $this->addFlags($builder, $options, ['abbrev-commit']);
 
         if ($options['format']) {
-            $builder->add('--format=' . $options['format']);
+            $builder->add('--format='.$options['format']);
         }
 
         $builder->add($object);
@@ -57,14 +56,13 @@ class ShowCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'format'        => null,
-            'abbrev-commit' => false
-        ));
+            'abbrev-commit' => false,
+        ]);
 
-        $resolver->setAllowedTypes(array(
-            'format' => array('null', 'string'),
-        ));
+        $resolver->setAllowedTypes([
+            'format' => ['null', 'string'],
+        ]);
     }
-
 }

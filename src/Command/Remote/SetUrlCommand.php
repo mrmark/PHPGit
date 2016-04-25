@@ -12,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class SetUrlCommand extends Command
 {
-
     /**
      * Alias of set()
      *
@@ -34,7 +33,7 @@ class SetUrlCommand extends Command
      *
      * @return bool
      */
-    public function __invoke($name, $newUrl, $oldUrl = null, array $options = array())
+    public function __invoke($name, $newUrl, $oldUrl = null, array $options = [])
     {
         return $this->set($name, $newUrl, $oldUrl, $options);
     }
@@ -60,7 +59,7 @@ class SetUrlCommand extends Command
      *
      * @return bool
      */
-    public function set($name, $newUrl, $oldUrl = null, array $options = array())
+    public function set($name, $newUrl, $oldUrl = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -102,7 +101,7 @@ class SetUrlCommand extends Command
      *
      * @return bool
      */
-    public function add($name, $newUrl, array $options = array())
+    public function add($name, $newUrl, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -141,7 +140,7 @@ class SetUrlCommand extends Command
      *
      * @return bool
      */
-    public function delete($name, $url, array $options = array())
+    public function delete($name, $url, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -159,7 +158,7 @@ class SetUrlCommand extends Command
 
         return true;
     }
-    
+
     /**
      * {@inheritdoc}
      *
@@ -167,9 +166,8 @@ class SetUrlCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'push' => false
-        ));
+        $resolver->setDefaults([
+            'push' => false,
+        ]);
     }
-
 }

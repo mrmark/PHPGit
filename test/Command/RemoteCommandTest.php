@@ -2,11 +2,10 @@
 
 use PHPGit\Git;
 
-require_once __DIR__ . '/../BaseTestCase.php';
+require_once __DIR__.'/../BaseTestCase.php';
 
 class RemoteCommandTest extends BaseTestCase
 {
-
     public function testRemote()
     {
         $git = new Git();
@@ -15,12 +14,12 @@ class RemoteCommandTest extends BaseTestCase
 
         $remotes = $git->remote();
 
-        $this->assertEquals(array(
-            'origin' => array(
+        $this->assertEquals([
+            'origin' => [
                 'fetch' => 'https://github.com/kzykhys/Text.git',
-                'push'  => 'https://github.com/kzykhys/Text.git'
-            )
-        ), $remotes);
+                'push'  => 'https://github.com/kzykhys/Text.git',
+            ],
+        ], $remotes);
     }
 
     public function testRemoteAdd()
@@ -32,12 +31,12 @@ class RemoteCommandTest extends BaseTestCase
 
         $remotes = $git->remote();
 
-        $this->assertEquals(array(
-            'origin' => array(
+        $this->assertEquals([
+            'origin' => [
                 'fetch' => 'https://github.com/kzykhys/Text.git',
-                'push'  => 'https://github.com/kzykhys/Text.git'
-            )
-        ), $remotes);
+                'push'  => 'https://github.com/kzykhys/Text.git',
+            ],
+        ], $remotes);
     }
 
     public function testRemoteRename()
@@ -49,12 +48,12 @@ class RemoteCommandTest extends BaseTestCase
         $git->remote->rename('origin', 'upstream');
 
         $remotes = $git->remote();
-        $this->assertEquals(array(
-            'upstream' => array(
+        $this->assertEquals([
+            'upstream' => [
                 'fetch' => 'https://github.com/kzykhys/Text.git',
-                'push'  => 'https://github.com/kzykhys/Text.git'
-            )
-        ), $remotes);
+                'push'  => 'https://github.com/kzykhys/Text.git',
+            ],
+        ], $remotes);
     }
 
     public function testRemoteRm()
@@ -66,7 +65,7 @@ class RemoteCommandTest extends BaseTestCase
         $git->remote->rm('origin');
 
         $remotes = $git->remote();
-        $this->assertEquals(array(), $remotes);
+        $this->assertEquals([], $remotes);
     }
 
     public function testRemoteShow()
@@ -96,5 +95,4 @@ class RemoteCommandTest extends BaseTestCase
         $git = new Git();
         $git->remote->foo();
     }
-
-} 
+}

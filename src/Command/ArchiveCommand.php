@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class ArchiveCommand extends Command
 {
-
     /**
      * Create an archive of files from a named tree
      *
@@ -36,18 +35,18 @@ class ArchiveCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function __invoke($file, $tree = null, $path = null, array $options = array())
+    public function __invoke($file, $tree = null, $path = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('archive');
 
         if ($options['format']) {
-            $builder->add('--format=' . $options['format']);
+            $builder->add('--format='.$options['format']);
         }
 
         if ($options['prefix']) {
-            $builder->add('--prefix=' . $options['prefix']);
+            $builder->add('--prefix='.$options['prefix']);
         }
 
         $builder->add('-o')->add($file);
@@ -57,7 +56,7 @@ class ArchiveCommand extends Command
         }
 
         if (!is_array($path) && !($path instanceof \Traversable)) {
-            $path = array($path);
+            $path = [$path];
         }
 
         foreach ($path as $value) {
@@ -77,20 +76,18 @@ class ArchiveCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'format' => null,
-            'prefix' => null
-        ));
+            'prefix' => null,
+        ]);
 
-        $resolver->setAllowedTypes(array(
-            'format' => array('null', 'string'),
-            'prefix' => array('null', 'string')
-        ));
+        $resolver->setAllowedTypes([
+            'format' => ['null', 'string'],
+            'prefix' => ['null', 'string'],
+        ]);
 
-        $resolver->setAllowedValues(array(
-            'format' => array('tar', 'zip')
-        ));
+        $resolver->setAllowedValues([
+            'format' => ['tar', 'zip'],
+        ]);
     }
-
-
-} 
+}

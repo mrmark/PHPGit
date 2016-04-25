@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class MergeCommand extends Command
 {
-
     /**
      * Incorporates changes from the named commits into the current branch
      *
@@ -39,16 +38,16 @@ class MergeCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function __invoke($commit, $message = null, array $options = array())
+    public function __invoke($commit, $message = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('merge');
 
-        $this->addFlags($builder, $options, array('no-ff', 'rerere-autoupdate', 'squash'));
+        $this->addFlags($builder, $options, ['no-ff', 'rerere-autoupdate', 'squash']);
 
         if (!is_array($commit) && !($commit instanceof \Traversable)) {
-            $commit = array($commit);
+            $commit = [$commit];
         }
         foreach ($commit as $value) {
             $builder->add($value);
@@ -97,14 +96,13 @@ class MergeCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'no-ff'             => false,
             'rerere-autoupdate' => false,
             'squash'            => false,
 
-            'strategy'          => null,
-            'strategy-option'   => null
-        ));
+            'strategy'        => null,
+            'strategy-option' => null,
+        ]);
     }
-
-} 
+}

@@ -44,7 +44,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class StatusCommand extends Command
 {
-
     const UNMODIFIED           = ' ';
     const MODIFIED             = 'M';
     const ADDED                = 'A';
@@ -97,7 +96,7 @@ class StatusCommand extends Command
      *
      * @return mixed
      */
-    public function __invoke(array $options = array())
+    public function __invoke(array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -107,11 +106,11 @@ class StatusCommand extends Command
         $this->addFlags($builder, $options);
 
         $process = $builder->getProcess();
-        $result  = array('branch' => null, 'changes' => array());
+        $result  = ['branch' => null, 'changes' => []];
         $output  = $this->git->run($process);
 
         list($branch, $changes) = preg_split('/(\0|\n)/', $output, 2);
-        $lines = $this->split($changes, true);
+        $lines                  = $this->split($changes, true);
 
         if (substr($branch, -11) == '(no branch)') {
             $result['branch'] = null;
@@ -122,11 +121,11 @@ class StatusCommand extends Command
         }
 
         foreach ($lines as $line) {
-            $result['changes'][] = array(
+            $result['changes'][] = [
                 'file'      => substr($line, 3),
                 'index'     => substr($line, 0, 1),
-                'work_tree' => substr($line, 1, 1)
-            );
+                'work_tree' => substr($line, 1, 1),
+            ];
         }
 
         return $result;
@@ -139,9 +138,8 @@ class StatusCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'ignored' => false
-        ));
+        $resolver->setDefaults([
+            'ignored' => false,
+        ]);
     }
-
 }

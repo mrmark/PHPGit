@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class TagCommand extends Command
 {
-
     /**
      * Returns an array of tags
      *
@@ -65,14 +64,14 @@ class TagCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function create($tag, $commit = null, array $options = array())
+    public function create($tag, $commit = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('tag')
             ->add($tag);
 
-        $this->addFlags($builder, $options, array('annotate', 'sign', 'force'));
+        $this->addFlags($builder, $options, ['annotate', 'sign', 'force']);
 
         if ($commit) {
             $builder->add($commit);
@@ -98,7 +97,7 @@ class TagCommand extends Command
             ->add('-d');
 
         if (!is_array($tag) && !($tag instanceof \Traversable)) {
-            $tag = array($tag);
+            $tag = [$tag];
         }
 
         foreach ($tag as $value) {
@@ -125,7 +124,7 @@ class TagCommand extends Command
             ->add('-v');
 
         if (!is_array($tag) && !($tag instanceof \Traversable)) {
-            $tag = array($tag);
+            $tag = [$tag];
         }
 
         foreach ($tag as $value) {
@@ -146,11 +145,10 @@ class TagCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'annotate' => false,
-            'sign' => false,
-            'force' => false,
-        ));
+            'sign'     => false,
+            'force'    => false,
+        ]);
     }
-
-} 
+}

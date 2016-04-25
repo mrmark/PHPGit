@@ -11,7 +11,6 @@ use PHPGit\Command;
  */
 class StashCommand extends Command
 {
-
     /**
      * Save your local modifications to a new stash, and run git reset --hard to revert them
      *
@@ -47,7 +46,7 @@ class StashCommand extends Command
      *
      * @return bool
      */
-    public function save($message = null, array $options = array())
+    public function save($message = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -83,7 +82,7 @@ class StashCommand extends Command
      *
      * @return array
      */
-    public function lists(array $options = array())
+    public function lists(array $options = [])
     {
         $builder = $this->git->getProcessBuilder()
             ->add('stash')
@@ -91,14 +90,14 @@ class StashCommand extends Command
 
         $output = $this->git->run($builder->getProcess());
         $lines  = $this->split($output);
-        $list   = array();
+        $list   = [];
 
         foreach ($lines as $line) {
             if (preg_match('/stash@{(\d+)}:.* [Oo]n (.*): (.*)/', $line, $matches)) {
-                $list[$matches[1]] = array(
+                $list[$matches[1]] = [
                     'branch'  => $matches[2],
-                    'message' => $matches[3]
-                );
+                    'message' => $matches[3],
+                ];
             }
         }
 
@@ -178,14 +177,14 @@ class StashCommand extends Command
      *
      * @return bool
      */
-    public function pop($stash = null, array $options = array())
+    public function pop($stash = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('stash')
             ->add('pop');
 
-        $this->addFlags($builder, $options, array('index'));
+        $this->addFlags($builder, $options, ['index']);
 
         if ($stash) {
             $builder->add($stash);
@@ -210,14 +209,14 @@ class StashCommand extends Command
      *
      * @return bool
      */
-    public function apply($stash = null, array $options = array())
+    public function apply($stash = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('stash')
             ->add('apply');
 
-        $this->addFlags($builder, $options, array('index'));
+        $this->addFlags($builder, $options, ['index']);
 
         if ($stash) {
             $builder->add($stash);
@@ -305,5 +304,4 @@ class StashCommand extends Command
 
         return $this->git->run($builder->getProcess());
     }
-    
-} 
+}

@@ -5,7 +5,6 @@ use PHPGit\Git;
 
 class GitExceptionTest extends PHPUnit_Framework_TestCase
 {
-
     public function testException()
     {
         $git = new Git();
@@ -15,9 +14,8 @@ class GitExceptionTest extends PHPUnit_Framework_TestCase
             $this->fail('Previous operation should fail');
         } catch (GitException $e) {
             $command = $e->getCommandLine();
-            $command = str_replace(array('"', "'"), '', $command);
+            $command = str_replace(['"', "'"], '', $command);
             $this->assertStringEndsWith('status --porcelain -s -b --null', $command);
         }
     }
-
-} 
+}

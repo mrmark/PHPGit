@@ -11,7 +11,6 @@ use PHPGit\Command;
  */
 class ShortlogCommand extends Command
 {
-
     /**
      * Summarize 'git log' output
      *
@@ -46,7 +45,7 @@ class ShortlogCommand extends Command
             ->add('-e');
 
         if (!is_array($commits) && !($commits instanceof \Traversable)) {
-            $commits = array($commits);
+            $commits = [$commits];
         }
 
         foreach ($commits as $commit) {
@@ -58,24 +57,24 @@ class ShortlogCommand extends Command
 
         $output = $this->git->run($process);
         $lines  = $this->split($output);
-        $result = array();
+        $result = [];
         $author = null;
 
         foreach ($lines as $line) {
             if (substr($line, 0, 1) != ' ') {
                 if (preg_match('/([^<>]*? <[^<>]+>)/', $line, $matches)) {
-                    $author = $matches[1];
-                    $result[$author] = array();
+                    $author          = $matches[1];
+                    $result[$author] = [];
                 }
                 continue;
             }
 
-            list ($commit, $date, $subject) = explode('|', trim($line), 3);
-            $result[$author][] = array(
+            list($commit, $date, $subject) = explode('|', trim($line), 3);
+            $result[$author][]             = [
                 'commit'  => $commit,
                 'date'    => new \DateTime($date),
-                'subject' => $subject
-            );
+                'subject' => $subject,
+            ];
         }
 
         return $result;
@@ -112,7 +111,7 @@ class ShortlogCommand extends Command
             ->add('-e');
 
         if (!is_array($commits) && !($commits instanceof \Traversable)) {
-            $commits = array($commits);
+            $commits = [$commits];
         }
 
         foreach ($commits as $commit) {
@@ -121,14 +120,13 @@ class ShortlogCommand extends Command
 
         $output = $this->git->run($builder->getProcess());
         $lines  = $this->split($output);
-        $result = array();
+        $result = [];
 
         foreach ($lines as $line) {
-            list ($commits, $author) = explode("\t", trim($line), 2);
-            $result[$author] = (int) $commits;
+            list($commits, $author) = explode("\t", trim($line), 2);
+            $result[$author]        = (int) $commits;
         }
 
         return $result;
     }
-
-} 
+}

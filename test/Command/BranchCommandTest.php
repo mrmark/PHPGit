@@ -3,11 +3,10 @@
 use PHPGit\Git;
 use Symfony\Component\Filesystem\Filesystem;
 
-require_once __DIR__ . '/../BaseTestCase.php';
+require_once __DIR__.'/../BaseTestCase.php';
 
 class BranchCommandTest extends BaseTestCase
 {
-
     public function setUp()
     {
         parent::setUp();
@@ -18,7 +17,7 @@ class BranchCommandTest extends BaseTestCase
         $git->init($this->directory);
         $git->setRepository($this->directory);
 
-        $filesystem->dumpFile($this->directory . '/test.txt', '');
+        $filesystem->dumpFile($this->directory.'/test.txt', '');
         $git->add('test.txt');
         $git->commit('Initial commit');
     }
@@ -39,13 +38,13 @@ class BranchCommandTest extends BaseTestCase
     public function testAllBranch()
     {
         $git = new Git();
-        $git->clone('file://' . realpath($this->directory), $this->directory.'2');
+        $git->clone('file://'.realpath($this->directory), $this->directory.'2');
         $git->setRepository($this->directory.'2');
 
-        $branches = $git->branch(array('remotes' => true));
+        $branches = $git->branch(['remotes' => true]);
         $this->assertArrayHasKey('origin/master', $branches);
 
-        $branches = $git->branch(array('all' => true));
+        $branches = $git->branch(['all' => true]);
         $this->assertArrayHasKey('master', $branches);
         $this->assertArrayHasKey('remotes/origin/master', $branches);
 
@@ -62,7 +61,7 @@ class BranchCommandTest extends BaseTestCase
         $branches = $git->branch();
         $this->assertCount(2, $branches);
 
-        $git->branch->create('1.0-fix', '1.0', array('force' => true));
+        $git->branch->create('1.0-fix', '1.0', ['force' => true]);
         $branches = $git->branch();
         $this->assertCount(3, $branches);
         $this->assertArrayHasKey('1.0', $branches);
@@ -79,7 +78,7 @@ class BranchCommandTest extends BaseTestCase
         $this->assertCount(2, $branches);
         $this->assertArrayHasKey('1.0.x', $branches);
 
-        $git->branch->move('1.0.x', '2.x', array('force' => true));
+        $git->branch->move('1.0.x', '2.x', ['force' => true]);
         $branches = $git->branch();
         $this->assertCount(2, $branches);
         $this->assertArrayHasKey('2.x', $branches);
@@ -98,9 +97,8 @@ class BranchCommandTest extends BaseTestCase
         $branches = $git->branch();
         $this->assertCount(2, $branches);
 
-        $git->branch->delete('2.0', array('force' => true));
+        $git->branch->delete('2.0', ['force' => true]);
         $branches = $git->branch();
         $this->assertCount(1, $branches);
     }
-
-} 
+}

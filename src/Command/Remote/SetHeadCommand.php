@@ -11,7 +11,6 @@ use PHPGit\Command;
  */
 class SetHeadCommand extends Command
 {
-
     /**
      * Alias of set()
      *
@@ -116,5 +115,4 @@ class SetHeadCommand extends Command
 
         return true;
     }
-
-} 
+}

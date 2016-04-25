@@ -2,7 +2,6 @@
 
 namespace PHPGit;
 
-use PHPGit\Command;
 use PHPGit\Exception\GitException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
@@ -93,7 +92,6 @@ use Symfony\Component\Process\ProcessBuilder;
  */
 class Git
 {
-
     /** @var Command\AddCommand */
     public $add;
 
@@ -249,7 +247,7 @@ class Git
     /**
      * Sets the Git repository path
      *
-     * @var string $directory
+     * @param string $directory
      *
      * @return Git
      */
@@ -304,5 +302,4 @@ class Git
 
         return $process->getOutput();
     }
-
-} 
+}

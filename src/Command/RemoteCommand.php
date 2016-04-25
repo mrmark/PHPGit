@@ -17,7 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class RemoteCommand extends Command
 {
-
     /** @var Remote\SetHeadCommand */
     public $head;
 
@@ -86,14 +85,14 @@ class RemoteCommand extends Command
             ->add('remote')
             ->add('-v');
 
-        $remotes = array();
+        $remotes = [];
         $output  = $this->git->run($builder->getProcess());
         $lines   = $this->split($output);
 
         foreach ($lines as $line) {
             if (preg_match('/^(.*)\t(.*)\s\((.*)\)$/', $line, $matches)) {
                 if (!isset($remotes[$matches[1]])) {
-                    $remotes[$matches[1]] = array();
+                    $remotes[$matches[1]] = [];
                 }
 
                 $remotes[$matches[1]][$matches[3]] = $matches[2];
@@ -124,14 +123,14 @@ class RemoteCommand extends Command
      *
      * @return bool
      */
-    public function add($name, $url, array $options = array())
+    public function add($name, $url, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('remote')
             ->add('add');
 
-        $this->addFlags($builder, $options, array('tags', 'no-tags'));
+        $this->addFlags($builder, $options, ['tags', 'no-tags']);
 
         $builder->add($name)->add($url);
 
@@ -269,10 +268,9 @@ class RemoteCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'tags'    => false,
-            'no-tags' => false
-        ));
+            'no-tags' => false,
+        ]);
     }
-
 }

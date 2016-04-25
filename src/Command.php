@@ -13,7 +13,6 @@ use Symfony\Component\Process\ProcessBuilder;
  */
 abstract class Command
 {
-
     /**
      * @var Git
      */
@@ -34,7 +33,7 @@ abstract class Command
      *
      * @return array
      */
-    public function resolve(array $options = array())
+    public function resolve(array $options = [])
     {
         $resolver = new OptionsResolver();
         $this->setDefaultOptions($resolver);
@@ -79,18 +78,18 @@ abstract class Command
      * @param array          $options     An array of options
      * @param array          $optionNames The names of options to add
      */
-    protected function addFlags(ProcessBuilder $builder, array $options = array(), array $optionNames = null)
+    protected function addFlags(ProcessBuilder $builder, array $options = [], array $optionNames = null)
     {
         if ($optionNames) {
             foreach ($optionNames as $name) {
                 if (isset($options[$name]) && is_bool($options[$name]) && $options[$name]) {
-                    $builder->add('--' . $name);
+                    $builder->add('--'.$name);
                 }
             }
         } else {
             foreach ($options as $name => $option) {
                 if ($option) {
-                    $builder->add('--' . $name);
+                    $builder->add('--'.$name);
                 }
             }
         }
@@ -103,21 +102,20 @@ abstract class Command
      * @param array          $options     An array of options
      * @param array          $optionNames The names of options to add
      */
-    protected function addValues(ProcessBuilder $builder, array $options = array(), array $optionNames = null)
+    protected function addValues(ProcessBuilder $builder, array $options = [], array $optionNames = null)
     {
         if ($optionNames) {
             foreach ($optionNames as $name) {
                 if (isset($options[$name]) && $options[$name]) {
-                    $builder->add('--' . $name . '=' . $options[$name]);
+                    $builder->add('--'.$name.'='.$options[$name]);
                 }
             }
         } else {
             foreach ($options as $name => $option) {
                 if ($option) {
-                    $builder->add('--' . $name . '=' . $option);
+                    $builder->add('--'.$name.'='.$option);
                 }
             }
         }
     }
-
-} 
+}

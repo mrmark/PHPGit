@@ -11,7 +11,6 @@ use PHPGit\Command;
  */
 class SetBranchesCommand extends Command
 {
-
     /**
      * Alias of set()
      *
@@ -94,5 +93,4 @@ class SetBranchesCommand extends Command
 
         return true;
     }
-
-} 
+}

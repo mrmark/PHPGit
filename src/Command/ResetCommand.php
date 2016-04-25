@@ -12,7 +12,6 @@ use PHPGit\Exception\GitException;
  */
 class ResetCommand extends Command
 {
-
     /**
      * Resets the index entries for all **$paths** to their state at **$commit**
      *
@@ -37,7 +36,7 @@ class ResetCommand extends Command
         }
 
         if (!is_array($paths) && !($paths instanceof \Traversable)) {
-            $paths = array($paths);
+            $paths = [$paths];
         }
 
         foreach ($paths as $path) {
@@ -179,13 +178,13 @@ class ResetCommand extends Command
      */
     public function mode($mode, $commit = null)
     {
-        if (!in_array($mode, array('soft', 'mixed', 'hard', 'merge', 'keep'))) {
+        if (!in_array($mode, ['soft', 'mixed', 'hard', 'merge', 'keep'])) {
             throw new \InvalidArgumentException('$mode must be one of the following: soft, mixed, hard, merge, keep');
         }
 
         $builder = $this->git->getProcessBuilder()
             ->add('reset')
-            ->add('--' . $mode);
+            ->add('--'.$mode);
 
         if ($commit) {
             $builder->add($commit);
@@ -195,5 +194,4 @@ class ResetCommand extends Command
 
         return true;
     }
-
-} 
+}

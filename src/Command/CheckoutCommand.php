@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class CheckoutCommand extends Command
 {
-
     /**
      * Switches branches by updating the index, working tree, and HEAD to reflect the specified branch or commit
      *
@@ -34,13 +33,13 @@ class CheckoutCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function __invoke($branch, array $options = array())
+    public function __invoke($branch, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('checkout');
 
-        $this->addFlags($builder, $options, array('force', 'merge'));
+        $this->addFlags($builder, $options, ['force', 'merge']);
 
         $builder->add($branch);
         $this->git->run($builder->getProcess());
@@ -69,14 +68,14 @@ class CheckoutCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function create($branch, $startPoint = null, array $options = array())
+    public function create($branch, $startPoint = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('checkout')
             ->add('-b');
 
-        $this->addFlags($builder, $options, array('force', 'merge'));
+        $this->addFlags($builder, $options, ['force', 'merge']);
 
         $builder->add($branch);
 
@@ -109,13 +108,13 @@ class CheckoutCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function orphan($branch, $startPoint = null, array $options = array())
+    public function orphan($branch, $startPoint = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('checkout');
 
-        $this->addFlags($builder, $options, array('force', 'merge'));
+        $this->addFlags($builder, $options, ['force', 'merge']);
 
         $builder->add('--orphan')->add($branch);
 
@@ -136,10 +135,9 @@ class CheckoutCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'force' => false,
-            'merge' => false
-        ));
+            'merge' => false,
+        ]);
     }
-
 }

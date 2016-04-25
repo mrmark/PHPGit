@@ -3,14 +3,13 @@
 use PHPGit\Git;
 use Symfony\Component\Filesystem\Filesystem;
 
-require_once __DIR__ . '/../BaseTestCase.php';
+require_once __DIR__.'/../BaseTestCase.php';
 
 /**
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class AddCommandTest extends BaseTestCase
 {
-
     public function testAdd()
     {
         $filesystem = new Filesystem();
@@ -20,11 +19,11 @@ class AddCommandTest extends BaseTestCase
         $git->init($this->directory);
         $git->setRepository($this->directory);
 
-        $filesystem->dumpFile($this->directory . '/test.txt', 'foo');
-        $filesystem->dumpFile($this->directory . '/test.md', '**foo**');
+        $filesystem->dumpFile($this->directory.'/test.txt', 'foo');
+        $filesystem->dumpFile($this->directory.'/test.md', '**foo**');
 
         $this->assertTrue($git->add('test.txt'));
-        $this->assertTrue($git->add(array('test.md'), array('force' => true)));
+        $this->assertTrue($git->add(['test.md'], ['force' => true]));
     }
 
     /**
@@ -38,5 +37,4 @@ class AddCommandTest extends BaseTestCase
         $git->setRepository($this->directory);
         $git->add('foo');
     }
-
 }

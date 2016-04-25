@@ -12,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class MvCommand extends Command
 {
-
     /**
      * Move or rename a file, a directory, or a symlink
      *
@@ -32,16 +31,16 @@ class MvCommand extends Command
      *
      * @return bool
      */
-    public function __invoke($source, $destination, array $options = array())
+    public function __invoke($source, $destination, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('mv');
 
-        $this->addFlags($builder, $options, array('force'));
+        $this->addFlags($builder, $options, ['force']);
 
         if (!is_array($source) && !($source instanceof \Traversable)) {
-            $source = array($source);
+            $source = [$source];
         }
 
         foreach ($source as $value) {
@@ -62,9 +61,8 @@ class MvCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'force' => false
-        ));
+        $resolver->setDefaults([
+            'force' => false,
+        ]);
     }
-
-} 
+}

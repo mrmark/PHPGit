@@ -12,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class PushCommand extends Command
 {
-
     /**
      * Update remote refs along with associated objects
      *
@@ -28,7 +27,7 @@ class PushCommand extends Command
      *
      * @return bool
      */
-    public function __invoke($repository = null, $refspec = null, array $options = array())
+    public function __invoke($repository = null, $refspec = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -54,12 +53,11 @@ class PushCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'all'    => false,
             'mirror' => false,
             'tags'   => false,
-            'force'  => false
-        ));
+            'force'  => false,
+        ]);
     }
-
-} 
+}

@@ -12,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class DescribeCommand extends Command
 {
-
     /**
      * Returns the most recent tag that is reachable from a commit
      *
@@ -41,13 +40,13 @@ class DescribeCommand extends Command
      *
      * @return string
      */
-    public function __invoke($committish = null, array $options = array())
+    public function __invoke($committish = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('describe');
 
-        $this->addFlags($builder, $options, array());
+        $this->addFlags($builder, $options, []);
 
         if ($committish) {
             $builder->add($committish);
@@ -64,7 +63,7 @@ class DescribeCommand extends Command
      *
      * @return string
      */
-    public function tags($committish = null, array $options = array())
+    public function tags($committish = null, array $options = [])
     {
         $options['tags'] = true;
 
@@ -80,11 +79,10 @@ class DescribeCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'all'    => false,
             'tags'   => false,
             'always' => false,
-        ));
+        ]);
     }
-
-} 
+}

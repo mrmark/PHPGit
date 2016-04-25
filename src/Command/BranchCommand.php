@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class BranchCommand extends Command
 {
-
     /**
      * Returns an array of both remote-tracking branches and local branches
      *
@@ -42,10 +41,10 @@ class BranchCommand extends Command
      * @throws GitException
      * @return array
      */
-    public function __invoke(array $options = array())
+    public function __invoke(array $options = [])
     {
         $options  = $this->resolve($options);
-        $branches = array();
+        $branches = [];
         $builder  = $this->getProcessBuilder()
             ->add('-v')->add('--abbrev=7');
 
@@ -63,7 +62,7 @@ class BranchCommand extends Command
         $lines = preg_split('/\r?\n/', rtrim($process->getOutput()), -1, PREG_SPLIT_NO_EMPTY);
 
         foreach ($lines as $line) {
-            $branch = array();
+            $branch = [];
             preg_match('/(?<current>\*| ) (?<name>[^\s]+) +((?:->) (?<alias>[^\s]+)|(?<hash>[0-9a-z]{7}) (?<title>.*))/', $line, $matches);
 
             $branch['current'] = ($matches['current'] == '*');
@@ -99,14 +98,14 @@ class BranchCommand extends Command
      *
      * @param string $branch     The name of the branch to create
      * @param string $startPoint [optional] The new branch head will point to this commit.
-     *                            It may be given as a branch name, a commit-id, or a tag.
-     *                            If this option is omitted, the current HEAD will be used instead.
+     *                           It may be given as a branch name, a commit-id, or a tag.
+     *                           If this option is omitted, the current HEAD will be used instead.
      * @param array  $options    [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
      * @throws GitException
      * @return bool
      */
-    public function create($branch, $startPoint = null, array $options = array())
+    public function create($branch, $startPoint = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->getProcessBuilder();
@@ -146,7 +145,7 @@ class BranchCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function move($branch, $newBranch, array $options = array())
+    public function move($branch, $newBranch, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->getProcessBuilder();
@@ -184,7 +183,7 @@ class BranchCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function delete($branch, array $options = array())
+    public function delete($branch, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->getProcessBuilder();
@@ -210,11 +209,11 @@ class BranchCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'force'   => false,
             'all'     => false,
             'remotes' => false,
-        ));
+        ]);
     }
 
     /**
@@ -225,5 +224,4 @@ class BranchCommand extends Command
         return $this->git->getProcessBuilder()
             ->add('branch');
     }
-
-} 
+}

@@ -2,22 +2,21 @@
 
 use PHPGit\Git;
 
-require_once __DIR__ . '/../../BaseTestCase.php';
+require_once __DIR__.'/../../BaseTestCase.php';
 
 class SetHeadCommandTest extends BaseTestCase
 {
-
     public function testSetHead()
     {
         $git = new Git();
         $git->clone('https://github.com/kzykhys/Text.git', $this->directory);
         $git->setRepository($this->directory);
 
-        $before = $git->branch(array('all' => true));
+        $before = $git->branch(['all' => true]);
 
         $git->remote->head('origin', 'master');
 
-        $after = $git->branch(array('all' => true));
+        $after = $git->branch(['all' => true]);
 
         $this->assertEquals($before, $after);
     }
@@ -28,11 +27,11 @@ class SetHeadCommandTest extends BaseTestCase
         $git->clone('https://github.com/kzykhys/Text.git', $this->directory);
         $git->setRepository($this->directory);
 
-        $before = $git->branch(array('all' => true));
+        $before = $git->branch(['all' => true]);
 
         $git->remote->head->delete('origin');
 
-        $after = $git->branch(array('all' => true));
+        $after = $git->branch(['all' => true]);
 
         $this->assertNotEquals($before, $after);
     }
@@ -43,14 +42,13 @@ class SetHeadCommandTest extends BaseTestCase
         $git->clone('https://github.com/kzykhys/Text.git', $this->directory);
         $git->setRepository($this->directory);
 
-        $before = $git->branch(array('all' => true));
+        $before = $git->branch(['all' => true]);
 
         $git->remote->head->delete('origin');
         $git->remote->head->remote('origin');
 
-        $after = $git->branch(array('all' => true));
+        $after = $git->branch(['all' => true]);
 
         $this->assertEquals($before, $after);
     }
-
-} 
+}

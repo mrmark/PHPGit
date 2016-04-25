@@ -12,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class RebaseCommand extends Command
 {
-
     /**
      * Forward-port local commits to the updated upstream head
      *
@@ -35,7 +34,7 @@ class RebaseCommand extends Command
      *
      * @return bool
      */
-    public function __invoke($upstream = null, $branch = null, array $options = array())
+    public function __invoke($upstream = null, $branch = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -115,15 +114,14 @@ class RebaseCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'onto'         => null,
             'no-verify'    => false,
-            'force-rebase' => false
-        ));
+            'force-rebase' => false,
+        ]);
 
-        $resolver->setAllowedTypes(array(
-            'onto' => array('null', 'string')
-        ));
+        $resolver->setAllowedTypes([
+            'onto' => ['null', 'string'],
+        ]);
     }
-
-} 
+}

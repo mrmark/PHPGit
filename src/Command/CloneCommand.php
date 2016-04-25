@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class CloneCommand extends Command
 {
-
     /**
      * Clone a repository into a new directory
      * 
@@ -34,7 +33,7 @@ class CloneCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function __invoke($repository, $path = null, array $options = array())
+    public function __invoke($repository, $path = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -62,10 +61,9 @@ class CloneCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'shared' => false,
-            'bare'   => false
-        ));
+            'bare'   => false,
+        ]);
     }
-
 }

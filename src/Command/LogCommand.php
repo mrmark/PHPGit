@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class LogCommand extends Command
 {
-
     /**
      * Returns the commit logs
      *
@@ -52,15 +51,15 @@ class LogCommand extends Command
      * @throws GitException
      * @return array
      */
-    public function __invoke($revRange = '', $path = null, array $options = array())
+    public function __invoke($revRange = '', $path = null, array $options = [])
     {
-        $commits = array();
+        $commits = [];
         $options = $this->resolve($options);
 
         $builder = $this->git->getProcessBuilder()
             ->add('log')
             ->add('-n')->add($options['limit'])
-            ->add('--skip=' . $options['skip'])
+            ->add('--skip='.$options['skip'])
             ->add('--format=%H||%aN||%aE||%aD||%s');
 
         if ($revRange) {
@@ -76,13 +75,14 @@ class LogCommand extends Command
 
         foreach ($lines as $line) {
             list($hash, $name, $email, $date, $title) = preg_split('/\|\|/', $line, -1, PREG_SPLIT_NO_EMPTY);
-            $commits[] = array(
+
+            $commits[] = [
                 'hash'  => $hash,
                 'name'  => $name,
                 'email' => $email,
                 'date'  => $date,
-                'title' => $title
-            );
+                'title' => $title,
+            ];
         }
 
         return $commits;
@@ -96,10 +96,9 @@ class LogCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'limit' => 10,
-            'skip'  => 0
-        ));
+            'skip'  => 0,
+        ]);
     }
-
-} 
+}

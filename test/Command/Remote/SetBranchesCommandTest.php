@@ -2,18 +2,17 @@
 
 use PHPGit\Git;
 
-require_once __DIR__ . '/../../BaseTestCase.php';
+require_once __DIR__.'/../../BaseTestCase.php';
 
 class SetBranchesCommandTest extends BaseTestCase
 {
-
     public function testSetBranches()
     {
         $git = new Git();
         $git->clone('https://github.com/kzykhys/Text.git', $this->directory);
         $git->setRepository($this->directory);
 
-        $git->remote->branches('origin', array('master'));
+        $git->remote->branches('origin', ['master']);
     }
 
     public function testSetBranchesAdd()
@@ -22,7 +21,6 @@ class SetBranchesCommandTest extends BaseTestCase
         $git->clone('https://github.com/kzykhys/Text.git', $this->directory);
         $git->setRepository($this->directory);
 
-        $git->remote->branches->add('origin', array('gh-pages'));
+        $git->remote->branches->add('origin', ['gh-pages']);
     }
-
-} 
+}

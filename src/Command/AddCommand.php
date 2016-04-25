@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class AddCommand extends Command
 {
-
     /**
      * Add file contents to the index
      *
@@ -35,7 +34,7 @@ class AddCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function __invoke($file, array $options = array())
+    public function __invoke($file, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -44,7 +43,7 @@ class AddCommand extends Command
         $this->addFlags($builder, $options);
 
         if (!is_array($file) && !($file instanceof \Traversable)) {
-            $file = array($file);
+            $file = [$file];
         }
 
         foreach ($file as $value) {
@@ -64,12 +63,11 @@ class AddCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             //'dry-run'        => false,
-            'force'          => false,
-            'ignore-errors'  => false,
+            'force'         => false,
+            'ignore-errors' => false,
             //'ignore-missing' => false,
-        ));
+        ]);
     }
-
 }

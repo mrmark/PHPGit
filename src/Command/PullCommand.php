@@ -12,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class PullCommand extends Command
 {
-
     /**
      * Fetch from and merge with another repository or a local branch
      *
@@ -22,14 +21,14 @@ class PullCommand extends Command
      * $git->pull('origin', 'master');
      * ```
      *
-     * @param string $repository  The "remote" repository that is the source of a fetch or pull operation
-     * @param string $refspec     The format of a <refspec> parameter is an optional plus +,
-     *                            followed by the source ref <src>, followed by a colon :, followed by the destination ref <dst>
-     * @param array  $options     [optional] An array of options {@see PullCommand::setDefaultOptions}
+     * @param string $repository The "remote" repository that is the source of a fetch or pull operation
+     * @param string $refspec    The format of a <refspec> parameter is an optional plus +,
+     *                           followed by the source ref <src>, followed by a colon :, followed by the destination ref <dst>
+     * @param array  $options    [optional] An array of options {@see PullCommand::setDefaultOptions}
      *
      * @return bool
      */
-    public function __invoke($repository = null, $refspec = null, array $options = array())
+    public function __invoke($repository = null, $refspec = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -53,7 +52,5 @@ class PullCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-
     }
-
 }

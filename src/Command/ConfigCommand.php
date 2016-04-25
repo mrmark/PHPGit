@@ -13,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class ConfigCommand extends Command
 {
-
     /**
      * Returns all variables set in config file
      *
@@ -28,7 +27,7 @@ class ConfigCommand extends Command
      * @throws GitException
      * @return array
      */
-    public function __invoke(array $options = array())
+    public function __invoke(array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -36,9 +35,9 @@ class ConfigCommand extends Command
             ->add('--list')
             ->add('--null');
 
-        $this->addFlags($builder, $options, array('global', 'system'));
+        $this->addFlags($builder, $options, ['global', 'system']);
 
-        $config = array();
+        $config = [];
         $output = $this->git->run($builder->getProcess());
         $lines  = $this->split($output, true);
 
@@ -46,7 +45,7 @@ class ConfigCommand extends Command
             list($name, $value) = explode("\n", $line, 2);
 
             if (isset($config[$name])) {
-                $config[$name] .= "\n" . $value;
+                $config[$name] .= "\n".$value;
             } else {
                 $config[$name] = $value;
             }
@@ -70,13 +69,13 @@ class ConfigCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function set($name, $value, array $options = array())
+    public function set($name, $value, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('config');
 
-        $this->addFlags($builder, $options, array('global', 'system'));
+        $this->addFlags($builder, $options, ['global', 'system']);
 
         $builder->add($name)->add($value);
         $process = $builder->getProcess();
@@ -100,13 +99,13 @@ class ConfigCommand extends Command
      * @throws GitException
      * @return bool
      */
-    public function add($name, $value, array $options = array())
+    public function add($name, $value, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
             ->add('config');
 
-        $this->addFlags($builder, $options, array('global', 'system'));
+        $this->addFlags($builder, $options, ['global', 'system']);
 
         $builder->add('--add')->add($name)->add($value);
         $process = $builder->getProcess();
@@ -123,10 +122,9 @@ class ConfigCommand extends Command
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'global' => false,
             'system' => false,
-        ));
+        ]);
     }
-
-} 
+}
