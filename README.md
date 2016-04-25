@@ -1,15 +1,20 @@
-PHPGit - A Git wrapper for PHP5.3+
-==================================
+PHPGit - A Git wrapper for PHP
+==============================
 
-[![Latest Unstable Version](https://poser.pugx.org/kzykhys/git/v/unstable.png)](https://packagist.org/packages/kzykhys/git)
-[![Build Status](https://travis-ci.org/kzykhys/PHPGit.png?branch=master)](https://travis-ci.org/kzykhys/PHPGit)
-[![Coverage Status](https://coveralls.io/repos/kzykhys/PHPGit/badge.png)](https://coveralls.io/r/kzykhys/PHPGit)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/04f10b57-a113-47ad-8dda-9a6dacbb079f/mini.png)](https://insight.sensiolabs.com/projects/04f10b57-a113-47ad-8dda-9a6dacbb079f)
+[![Build Status](https://travis-ci.org/mrmark/PHPGit.svg?branch=master)](https://travis-ci.org/mrmark/PHPGit)
+[![Coverage Status](https://coveralls.io/repos/github/mrmark/PHPGit/badge.svg?branch=master)](https://coveralls.io/github/mrmark/PHPGit?branch=master)
+
+Disclaimer
+----------
+
+This is a fork from from the [original project](https://github.com/kzykhys/PHPGit) which, at the time of writing this, appears to
+be abandoned.  This fork is for my own personal use, so please understand that contributions may not be accepted and that the
+project might be customized for my own personal use cases.  So, yeah, you probably should not use it, cheers!
 
 Requirements
 ------------
 
-* PHP5.3
+* PHP5.5
 * Git
 
 Installation
