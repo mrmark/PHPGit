@@ -15,9 +15,10 @@ before_script:
   - composer install --no-interaction --prefer-dist
   - git config --global user.name "John Doe"
   - git config --global user.email "example@example.com"
+  - mkdir -p build/logs
 
 script:
-  - mkdir -p build/logs
+  - vendor/bin/php-cs-fixer fix --dry-run -v
   - phpdbg -qrr vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover build/logs/clover.xml
 
 after_script:
