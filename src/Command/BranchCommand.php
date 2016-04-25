@@ -62,8 +62,13 @@ class BranchCommand extends Command
         $lines = preg_split('/\r?\n/', rtrim($process->getOutput()), -1, PREG_SPLIT_NO_EMPTY);
 
         foreach ($lines as $line) {
-            $branch = [];
-            preg_match('/(?<current>\*| ) (?<name>[^\s]+) +((?:->) (?<alias>[^\s]+)|(?<hash>[0-9a-z]{7}) (?<title>.*))/', $line, $matches);
+            $branch = [
+                'title' => '',
+                'alias' => '',
+                'hash'  => '',
+            ];
+
+            preg_match('/(?<current>\*| ) (?<name>[^\s]+) +((?:->) (?<alias>[^\s]+)|(?<hash>[0-9a-z]{7,8}) (?<title>.*))/', $line, $matches);
 
             $branch['current'] = ($matches['current'] == '*');
             $branch['name']    = $matches['name'];
