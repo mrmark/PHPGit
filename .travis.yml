@@ -11,7 +11,6 @@ php:
 
 before_script:
   - phpenv config-rm xdebug.ini
-  - composer selfupdate
   - composer install --no-interaction --prefer-dist
   - git config --global user.name "John Doe"
   - git config --global user.email "example@example.com"
@@ -22,4 +21,4 @@ script:
   - phpdbg -qrr vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover build/logs/clover.xml
 
 after_script:
-  - php vendor/bin/coveralls
+  - php vendor/bin/coveralls -v
