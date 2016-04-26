@@ -17,11 +17,15 @@
         "phpunit/phpunit": "^4.7",
         "fabpot/php-cs-fixer": "^1.10",
         "symfony/filesystem": "^2.8",
-        "satooshi/php-coveralls": "^1.0"
+        "satooshi/php-coveralls": "^1.0",
+        "psr/log": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "PHPGit\\": "src/"
         }
+    },
+    "suggest": {
+        "psr/log": "For logging of commands"
     }
 }
