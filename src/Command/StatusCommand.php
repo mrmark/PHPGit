@@ -94,7 +94,7 @@ class StatusCommand extends Command
      *
      * @param array $options [optional] An array of options {@see StatusCommand::setDefaultOptions}
      *
-     * @return mixed
+     * @return array
      */
     public function __invoke(array $options = [])
     {

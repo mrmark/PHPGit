@@ -11,9 +11,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  *
- * @method head($name, $branch)                                     Sets the default branch for the named remote
- * @method branches($name, $branches)                               Changes the list of branches tracked by the named remote
- * @method url($name, $newUrl, $oldUrl = null, $options = array()) Sets the URL remote to $newUrl
+ * @method bool head($name, $branch)                                     Sets the default branch for the named remote
+ * @method bool branches($name, $branches)                               Changes the list of branches tracked by the named remote
+ * @method bool url($name, $newUrl, $oldUrl = null, $options = array())  Sets the URL remote to $newUrl
  */
 class RemoteCommand extends Command
 {
