@@ -69,6 +69,7 @@ use Symfony\Component\Process\ProcessBuilder;
  * @method bool archive($file, $tree = null, $path = null, $options = [])   Create an archive of files from a named tree
  * @method array branch($options = [])                                      List both remote-tracking branches and local branches
  * @method bool checkout($branch, $options = [])                            Checkout a branch or paths to the working tree
+ * @method bool cherryPick($commit, $options = [])                          Cherry-pick a commit to HEAD
  * @method bool clone($repository, $path = null, $options = [])             Clone a repository into a new directory
  * @method bool commit($message = '', $options = [])                        Record changes to the repository
  * @method array config($options = [])                                      List all variables set in config file
@@ -107,6 +108,9 @@ class Git
 
     /** @var Command\CheckoutCommand */
     public $checkout;
+
+    /** @var Command\CherryPickCommand */
+    public $cherryPick;
 
     /** @var Command\CloneCommand */
     public $clone;
@@ -174,10 +178,10 @@ class Git
     /** @var Command\TreeCommand */
     public $tree;
 
-    /** @var string  */
+    /** @var string */
     private $bin = 'git';
 
-    /** @var string  */
+    /** @var string */
     private $directory = '.';
 
     /** @var float|null */
@@ -191,32 +195,33 @@ class Git
      */
     public function __construct()
     {
-        $this->add      = new Command\AddCommand($this);
-        $this->archive  = new Command\ArchiveCommand($this);
-        $this->branch   = new Command\BranchCommand($this);
-        $this->cat      = new Command\CatCommand($this);
-        $this->checkout = new Command\CheckoutCommand($this);
-        $this->clone    = new Command\CloneCommand($this);
-        $this->commit   = new Command\CommitCommand($this);
-        $this->config   = new Command\ConfigCommand($this);
-        $this->describe = new Command\DescribeCommand($this);
-        $this->fetch    = new Command\FetchCommand($this);
-        $this->init     = new Command\InitCommand($this);
-        $this->log      = new Command\LogCommand($this);
-        $this->merge    = new Command\MergeCommand($this);
-        $this->mv       = new Command\MvCommand($this);
-        $this->pull     = new Command\PullCommand($this);
-        $this->push     = new Command\PushCommand($this);
-        $this->rebase   = new Command\RebaseCommand($this);
-        $this->remote   = new Command\RemoteCommand($this);
-        $this->reset    = new Command\ResetCommand($this);
-        $this->rm       = new Command\RmCommand($this);
-        $this->shortlog = new Command\ShortlogCommand($this);
-        $this->show     = new Command\ShowCommand($this);
-        $this->stash    = new Command\StashCommand($this);
-        $this->status   = new Command\StatusCommand($this);
-        $this->tag      = new Command\TagCommand($this);
-        $this->tree     = new Command\TreeCommand($this);
+        $this->add        = new Command\AddCommand($this);
+        $this->archive    = new Command\ArchiveCommand($this);
+        $this->branch     = new Command\BranchCommand($this);
+        $this->cat        = new Command\CatCommand($this);
+        $this->checkout   = new Command\CheckoutCommand($this);
+        $this->cherryPick = new Command\CherryPickCommand($this);
+        $this->clone      = new Command\CloneCommand($this);
+        $this->commit     = new Command\CommitCommand($this);
+        $this->config     = new Command\ConfigCommand($this);
+        $this->describe   = new Command\DescribeCommand($this);
+        $this->fetch      = new Command\FetchCommand($this);
+        $this->init       = new Command\InitCommand($this);
+        $this->log        = new Command\LogCommand($this);
+        $this->merge      = new Command\MergeCommand($this);
+        $this->mv         = new Command\MvCommand($this);
+        $this->pull       = new Command\PullCommand($this);
+        $this->push       = new Command\PushCommand($this);
+        $this->rebase     = new Command\RebaseCommand($this);
+        $this->remote     = new Command\RemoteCommand($this);
+        $this->reset      = new Command\ResetCommand($this);
+        $this->rm         = new Command\RmCommand($this);
+        $this->shortlog   = new Command\ShortlogCommand($this);
+        $this->show       = new Command\ShowCommand($this);
+        $this->stash      = new Command\StashCommand($this);
+        $this->status     = new Command\StatusCommand($this);
+        $this->tag        = new Command\TagCommand($this);
+        $this->tree       = new Command\TreeCommand($this);
     }
 
     /**
