@@ -84,6 +84,7 @@ use Symfony\Component\Process\ProcessBuilder;
  * @method bool rebase($upstream = null, $branch = null, $options = [])     Forward-port local commits to the updated upstream head
  * @method array remote()                                                   Returns an array of existing remotes
  * @method bool reset($commit = null, $paths = [])                          Resets the index entries for all <paths> to their state at <commit>
+ * @method array revParse($args, $options = [])                             Pick out and massage parameters
  * @method bool rm($file, $options = [])                                    Remove files from the working tree and from the index
  * @method array shortlog($commits = [])                                    Summarize 'git log' output
  * @method string show($object, $options = [])                              Shows one or more objects (blobs, trees, tags and commits)
@@ -160,6 +161,9 @@ class Git
     /** @var Command\ResetCommand */
     public $reset;
 
+    /** @var Command\RevParseCommand */
+    public $revParse;
+
     /** @var Command\RmCommand */
     public $rm;
 
@@ -219,6 +223,7 @@ class Git
         $this->rebase     = new Command\RebaseCommand($this);
         $this->remote     = new Command\RemoteCommand($this);
         $this->reset      = new Command\ResetCommand($this);
+        $this->revParse   = new Command\RevParseCommand($this);
         $this->rm         = new Command\RmCommand($this);
         $this->shortlog   = new Command\ShortlogCommand($this);
         $this->show       = new Command\ShowCommand($this);
