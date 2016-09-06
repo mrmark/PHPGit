@@ -26,8 +26,8 @@
     },
     "scripts": {
         "test-all": [
-            "@test",
-            "@fix"
+            "@fix",
+            "@test"
         ],
         "test": "phpunit",
         "fix": "php-cs-fixer fix -v"
