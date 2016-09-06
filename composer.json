@@ -23,5 +23,13 @@
         "psr-4": {
             "PHPGit\\": "src/"
         }
+    },
+    "scripts": {
+        "test-all": [
+            "@test",
+            "@fix"
+        ],
+        "test": "phpunit",
+        "fix": "php-cs-fixer fix -v"
     }
 }
