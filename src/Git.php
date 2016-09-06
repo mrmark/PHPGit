@@ -180,8 +180,8 @@ class Git
     /** @var string */
     private $bin = 'git';
 
-    /** @var string */
-    private $directory = '.';
+    /** @var string|null */
+    private $directory = null;
 
     /** @var float|null */
     private $timeout = null;
