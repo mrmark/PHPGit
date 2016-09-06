@@ -26,6 +26,7 @@ class CherryPickCommand extends Command
      * @param array  $options [optional] An array of options {@see CherryPickCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($commit, array $options = [])

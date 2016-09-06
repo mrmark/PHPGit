@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * List, create, or delete branches - `git branch`
+ * List, create, or delete branches - `git branch`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class BranchCommand extends Command
 {
     /**
-     * Returns an array of both remote-tracking branches and local branches
+     * Returns an array of both remote-tracking branches and local branches.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -39,6 +39,7 @@ class BranchCommand extends Command
      * @param array $options [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return array
      */
     public function __invoke(array $options = [])
@@ -87,7 +88,7 @@ class BranchCommand extends Command
     }
 
     /**
-     * Creates a new branch head named **$branch** which points to the current HEAD, or **$startPoint** if given
+     * Creates a new branch head named **$branch** which points to the current HEAD, or **$startPoint** if given.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -104,10 +105,11 @@ class BranchCommand extends Command
      * @param string $branch     The name of the branch to create
      * @param string $startPoint [optional] The new branch head will point to this commit.
      *                           It may be given as a branch name, a commit-id, or a tag.
-     *                           If this option is omitted, the current HEAD will be used instead.
+     *                           If this option is omitted, the current HEAD will be used instead
      * @param array  $options    [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function create($branch, $startPoint = null, array $options = [])
@@ -131,7 +133,7 @@ class BranchCommand extends Command
     }
 
     /**
-     * Move/rename a branch and the corresponding reflog
+     * Move/rename a branch and the corresponding reflog.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -148,6 +150,7 @@ class BranchCommand extends Command
      * @param array  $options   [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function move($branch, $newBranch, array $options = [])
@@ -168,7 +171,7 @@ class BranchCommand extends Command
     }
 
     /**
-     * Delete a branch
+     * Delete a branch.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -186,6 +189,7 @@ class BranchCommand extends Command
      * @param array  $options [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function delete($branch, array $options = [])

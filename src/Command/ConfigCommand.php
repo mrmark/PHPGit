@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Get and set repository or global options - `git config`
+ * Get and set repository or global options - `git config`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class ConfigCommand extends Command
 {
     /**
-     * Returns all variables set in config file
+     * Returns all variables set in config file.
      *
      *
      * ##### Options
@@ -25,6 +25,7 @@ class ConfigCommand extends Command
      * @param array $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return array
      */
     public function __invoke(array $options = [])
@@ -55,7 +56,7 @@ class ConfigCommand extends Command
     }
 
     /**
-     * Set an option
+     * Set an option.
      *
      * ##### Options
      *
@@ -67,6 +68,7 @@ class ConfigCommand extends Command
      * @param array  $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function set($name, $value, array $options = [])
@@ -85,7 +87,7 @@ class ConfigCommand extends Command
     }
 
     /**
-     * Adds a new line to the option without altering any existing values
+     * Adds a new line to the option without altering any existing values.
      *
      * ##### Options
      *
@@ -97,6 +99,7 @@ class ConfigCommand extends Command
      * @param array  $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function add($name, $value, array $options = [])

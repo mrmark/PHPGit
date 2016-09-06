@@ -6,14 +6,14 @@ use PHPGit\Command;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Forward-port local commits to the updated upstream head - `git rebase`
+ * Forward-port local commits to the updated upstream head - `git rebase`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class RebaseCommand extends Command
 {
     /**
-     * Forward-port local commits to the updated upstream head
+     * Forward-port local commits to the updated upstream head.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -58,7 +58,7 @@ class RebaseCommand extends Command
     }
 
     /**
-     * Restart the rebasing process after having resolved a merge conflict
+     * Restart the rebasing process after having resolved a merge conflict.
      *
      * @return bool
      */
@@ -74,7 +74,7 @@ class RebaseCommand extends Command
     }
 
     /**
-     * Abort the rebase operation and reset HEAD to the original branch
+     * Abort the rebase operation and reset HEAD to the original branch.
      *
      * @return bool
      */
@@ -90,7 +90,7 @@ class RebaseCommand extends Command
     }
 
     /**
-     * Restart the rebasing process by skipping the current patch
+     * Restart the rebasing process by skipping the current patch.
      *
      * @return bool
      */

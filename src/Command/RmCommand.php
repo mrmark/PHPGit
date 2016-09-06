@@ -6,14 +6,14 @@ use PHPGit\Command;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Remove files from the working tree and from the index - `git rm`
+ * Remove files from the working tree and from the index - `git rm`.
  *
  * @author Kazuyuki Hayashi
  */
 class RmCommand extends Command
 {
     /**
-     * Remove files from the working tree and from the index
+     * Remove files from the working tree and from the index.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -27,7 +27,7 @@ class RmCommand extends Command
      * - **cached**    (_boolean_) Unstage and remove paths only from the index
      * - **recursive** (_boolean_) Allow recursive removal when a leading directory name is given
      *
-     * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files.
+     * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
      * @param array                     $options [optional] An array of options {@see RmCommand::setDefaultOptions}
      *
      * @return bool
@@ -58,14 +58,14 @@ class RmCommand extends Command
     }
 
     /**
-     * Equivalent to $git->rm($file, ['cached' => true]);
+     * Equivalent to $git->rm($file, ['cached' => true]);.
      *
      * ##### Options
      *
      * - **force**     (_boolean_) Override the up-to-date check
      * - **recursive** (_boolean_) Allow recursive removal when a leading directory name is given
      *
-     * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files.
+     * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
      * @param array                     $options [optional] An array of options {@see RmCommand::setDefaultOptions}
      *
      * @return bool

@@ -6,14 +6,14 @@ use PHPGit\Command;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Update remote refs along with associated objects - `git push`
+ * Update remote refs along with associated objects - `git push`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class PushCommand extends Command
 {
     /**
-     * Update remote refs along with associated objects
+     * Update remote refs along with associated objects.
      *
      * ``` php
      * $git = new PHPGit\Git();

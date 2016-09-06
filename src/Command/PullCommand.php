@@ -6,14 +6,14 @@ use PHPGit\Command;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Fetch from and merge with another repository or a local branch - `git pull`
+ * Fetch from and merge with another repository or a local branch - `git pull`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class PullCommand extends Command
 {
     /**
-     * Fetch from and merge with another repository or a local branch
+     * Fetch from and merge with another repository or a local branch.
      *
      * ``` php
      * $git = new PHPGit\Git();

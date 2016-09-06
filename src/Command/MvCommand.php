@@ -6,14 +6,14 @@ use PHPGit\Command;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Move or rename a file, a directory, or a symlink - `git mv`
+ * Move or rename a file, a directory, or a symlink - `git mv`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class MvCommand extends Command
 {
     /**
-     * Move or rename a file, a directory, or a symlink
+     * Move or rename a file, a directory, or a symlink.
      *
      * ``` php
      * $git = new PHPGit\Git();

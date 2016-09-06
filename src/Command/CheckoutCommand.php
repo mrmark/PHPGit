@@ -7,21 +7,21 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Checkout a branch or paths to the working tree - `git checkout`
+ * Checkout a branch or paths to the working tree - `git checkout`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class CheckoutCommand extends Command
 {
     /**
-     * Switches branches by updating the index, working tree, and HEAD to reflect the specified branch or commit
+     * Switches branches by updating the index, working tree, and HEAD to reflect the specified branch or commit.
      *
      * ``` php
      * $git = new PHPGit\Git();
      * $git->setRepository('/path/to/repo');
      * $git->checkout('develop');
      * ```
-     * 
+     *
      * ##### Options
      *
      * - **force** (_boolean_) Proceed even if the index or the working tree differs from HEAD
@@ -31,6 +31,7 @@ class CheckoutCommand extends Command
      * @param array  $options [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($branch, array $options = [])
@@ -48,7 +49,7 @@ class CheckoutCommand extends Command
     }
 
     /**
-     * Create a new branch and checkout
+     * Create a new branch and checkout.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -66,6 +67,7 @@ class CheckoutCommand extends Command
      * @param array  $options    [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function create($branch, $startPoint = null, array $options = [])
@@ -89,7 +91,7 @@ class CheckoutCommand extends Command
     }
 
     /**
-     * Create a new orphan branch, named <new_branch>, started from <start_point> and switch to it
+     * Create a new orphan branch, named <new_branch>, started from <start_point> and switch to it.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -106,6 +108,7 @@ class CheckoutCommand extends Command
      * @param array  $options    [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function orphan($branch, $startPoint = null, array $options = [])

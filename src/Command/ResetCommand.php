@@ -6,14 +6,14 @@ use PHPGit\Command;
 use PHPGit\Exception\GitException;
 
 /**
- * Reset current HEAD to the specified state - `git reset`
+ * Reset current HEAD to the specified state - `git reset`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class ResetCommand extends Command
 {
     /**
-     * Resets the index entries for all **$paths** to their state at **$commit**
+     * Resets the index entries for all **$paths** to their state at **$commit**.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -53,7 +53,7 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**
+     * Resets the current branch head to **$commit**.
      *
      * Does not touch the index file nor the working tree at all (but resets the head to **$commit**,
      * just like all modes do).
@@ -75,7 +75,7 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**
+     * Resets the current branch head to **$commit**.
      *
      * Resets the index but not the working tree (i.e., the changed files are preserved but not marked for commit)
      * and reports what has not been updated. This is the default action.
@@ -96,7 +96,7 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**
+     * Resets the current branch head to **$commit**.
      *
      * Resets the index and working tree. Any changes to tracked files in the working tree since **$commit** are discarded
      *
@@ -116,7 +116,7 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**
+     * Resets the current branch head to **$commit**.
      *
      * Resets the index and updates the files in the working tree that are different between **$commit** and HEAD,
      * but keeps those which are different between the index and working tree
@@ -139,7 +139,7 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**
+     * Resets the current branch head to **$commit**.
      *
      * Resets index entries and updates files in the working tree that are different between **$commit** and HEAD.
      * If a file that is different between **$commit** and HEAD has local changes, reset is aborted.
@@ -160,7 +160,7 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**
+     * Resets the current branch head to **$commit**.
      *
      * Possibly updates the index (resetting it to the tree of **$commit**) and the working tree depending on **$mode**
      *
@@ -174,6 +174,7 @@ class ResetCommand extends Command
      * @param string $commit The commit
      *
      * @throws \InvalidArgumentException
+     *
      * @return bool
      */
     public function mode($mode, $commit = null)

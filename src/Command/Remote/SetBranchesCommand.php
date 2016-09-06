@@ -5,14 +5,14 @@ namespace PHPGit\Command\Remote;
 use PHPGit\Command;
 
 /**
- * Changes the list of branches tracked by the named remote
+ * Changes the list of branches tracked by the named remote.
  *
  * @author Kazuyuki Hayashi
  */
 class SetBranchesCommand extends Command
 {
     /**
-     * Alias of set()
+     * Alias of set().
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -32,7 +32,7 @@ class SetBranchesCommand extends Command
     }
 
     /**
-     * Changes the list of branches tracked by the named remote
+     * Changes the list of branches tracked by the named remote.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -63,7 +63,7 @@ class SetBranchesCommand extends Command
     }
 
     /**
-     * Adds to the list of branches tracked by the named remote
+     * Adds to the list of branches tracked by the named remote.
      *
      * ``` php
      * $git = new PHPGit\Git();

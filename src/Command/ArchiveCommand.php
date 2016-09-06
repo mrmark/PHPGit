@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Create an archive of files from a named tree - `git archive`
+ * Create an archive of files from a named tree - `git archive`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class ArchiveCommand extends Command
 {
     /**
-     * Create an archive of files from a named tree
+     * Create an archive of files from a named tree.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -33,6 +33,7 @@ class ArchiveCommand extends Command
      * @param array                     $options [optional] An array of options {@see ArchiveCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($file, $tree = null, $path = null, array $options = [])

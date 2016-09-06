@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Create, list, delete or verify a tag object signed with GPG - `git tag`
+ * Create, list, delete or verify a tag object signed with GPG - `git tag`.
  *
  * @author Kazuyuki Hayashi
  */
 class TagCommand extends Command
 {
     /**
-     * Returns an array of tags
+     * Returns an array of tags.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -30,6 +30,7 @@ class TagCommand extends Command
      * ```
      *
      * @throws GitException
+     *
      * @return array
      */
     public function __invoke()
@@ -43,7 +44,7 @@ class TagCommand extends Command
     }
 
     /**
-     * Creates a tag object
+     * Creates a tag object.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -62,6 +63,7 @@ class TagCommand extends Command
      * @param array  $options [optional] An array of options {@see TagCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function create($tag, $commit = null, array $options = [])
@@ -83,11 +85,12 @@ class TagCommand extends Command
     }
 
     /**
-     * Delete existing tags with the given names
+     * Delete existing tags with the given names.
      *
      * @param string|array|\Traversable $tag The name of the tag to create
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function delete($tag)
@@ -110,11 +113,12 @@ class TagCommand extends Command
     }
 
     /**
-     * Verify the gpg signature of the given tag names
+     * Verify the gpg signature of the given tag names.
      *
      * @param string|array|\Traversable $tag The name of the tag to create
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function verify($tag)

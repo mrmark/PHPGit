@@ -7,15 +7,15 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Clone a repository into a new directory - `git clone`
+ * Clone a repository into a new directory - `git clone`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class CloneCommand extends Command
 {
     /**
-     * Clone a repository into a new directory
-     * 
+     * Clone a repository into a new directory.
+     *
      * ``` php
      * $git = new PHPGit\Git();
      * $git->clone('https://github.com/kzykhys/PHPGit.git', '/path/to/repo');
@@ -31,6 +31,7 @@ class CloneCommand extends Command
      * @param array  $options    [optional] An array of options {@see CloneCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($repository, $path = null, array $options = [])

@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Join two or more development histories together - `git merge`
+ * Join two or more development histories together - `git merge`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class MergeCommand extends Command
 {
     /**
-     * Incorporates changes from the named commits into the current branch
+     * Incorporates changes from the named commits into the current branch.
      *
      * ```php
      * $git = new PHPGit\Git();
@@ -36,6 +36,7 @@ class MergeCommand extends Command
      * @param array                     $options [optional] An array of options {@see MergeCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($commit, $message = null, array $options = [])
@@ -59,7 +60,7 @@ class MergeCommand extends Command
     }
 
     /**
-     * Abort the merge process and try to reconstruct the pre-merge state
+     * Abort the merge process and try to reconstruct the pre-merge state.
      *
      * ```php
      * $git = new PHPGit\Git();
@@ -72,6 +73,7 @@ class MergeCommand extends Command
      * ```
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function abort()

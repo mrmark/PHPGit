@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Record changes to the repository - `git commit`
+ * Record changes to the repository - `git commit`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class CommitCommand extends Command
 {
     /**
-     * Record changes to the repository
+     * Record changes to the repository.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -38,6 +38,7 @@ class CommitCommand extends Command
      * @param array  $options [optional] An array of options {@see CloneCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($message, array $options = [])

@@ -6,14 +6,14 @@ use PHPGit\Command;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Changes URL remote points to
+ * Changes URL remote points to.
  *
  * @author Kazuyuki Hayashi
  */
 class SetUrlCommand extends Command
 {
     /**
-     * Alias of set()
+     * Alias of set().
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -39,7 +39,7 @@ class SetUrlCommand extends Command
     }
 
     /**
-     * Sets the URL remote to $newUrl
+     * Sets the URL remote to $newUrl.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -82,7 +82,7 @@ class SetUrlCommand extends Command
     }
 
     /**
-     * Adds new URL to remote
+     * Adds new URL to remote.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -121,7 +121,7 @@ class SetUrlCommand extends Command
     }
 
     /**
-     * Deletes all URLs matching regex $url
+     * Deletes all URLs matching regex $url.
      *
      * ``` php
      * $git = new PHPGit\Git();

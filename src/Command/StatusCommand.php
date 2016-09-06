@@ -6,7 +6,7 @@ use PHPGit\Command;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Show the working tree status - `git status`
+ * Show the working tree status - `git status`.
  *
  *   = unmodified
  * M = modified
@@ -55,7 +55,7 @@ class StatusCommand extends Command
     const IGNORED              = '!';
 
     /**
-     * Returns the working tree status
+     * Returns the working tree status.
      *
      * ``` php
      * $git = new PHPGit\Git();

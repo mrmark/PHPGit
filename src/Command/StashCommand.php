@@ -5,14 +5,14 @@ namespace PHPGit\Command;
 use PHPGit\Command;
 
 /**
- * Stash the changes in a dirty working directory away - `git stash`
+ * Stash the changes in a dirty working directory away - `git stash`.
  *
  * @author Kazuyuki Hayashi
  */
 class StashCommand extends Command
 {
     /**
-     * Save your local modifications to a new stash, and run git reset --hard to revert them
+     * Save your local modifications to a new stash, and run git reset --hard to revert them.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -61,7 +61,7 @@ class StashCommand extends Command
     }
 
     /**
-     * Returns the stashes that you currently have
+     * Returns the stashes that you currently have.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -105,7 +105,7 @@ class StashCommand extends Command
     }
 
     /**
-     * Show the changes recorded in the stash as a diff between the stashed state and its original parent
+     * Show the changes recorded in the stash as a diff between the stashed state and its original parent.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -138,7 +138,7 @@ class StashCommand extends Command
     }
 
     /**
-     * Remove a single stashed state from the stash list
+     * Remove a single stashed state from the stash list.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -164,7 +164,7 @@ class StashCommand extends Command
     }
 
     /**
-     * Remove a single stashed state from the stash list and apply it on top of the current working tree state
+     * Remove a single stashed state from the stash list and apply it on top of the current working tree state.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -196,7 +196,7 @@ class StashCommand extends Command
     }
 
     /**
-     * Like pop, but do not remove the state from the stash list
+     * Like pop, but do not remove the state from the stash list.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -228,7 +228,7 @@ class StashCommand extends Command
     }
 
     /**
-     * Creates and checks out a new branch named <branchname> starting from the commit at which the <stash> was originally created, applies the changes recorded in <stash> to the new working tree and index
+     * Creates and checks out a new branch named <branchname> starting from the commit at which the <stash> was originally created, applies the changes recorded in <stash> to the new working tree and index.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -258,7 +258,7 @@ class StashCommand extends Command
     }
 
     /**
-     * Remove all the stashed states
+     * Remove all the stashed states.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -280,7 +280,7 @@ class StashCommand extends Command
     }
 
     /**
-     * Create a stash (which is a regular commit object) and return its object name, without storing it anywhere in the ref namespace
+     * Create a stash (which is a regular commit object) and return its object name, without storing it anywhere in the ref namespace.
      *
      * ``` php
      * $git = new PHPGit\Git();

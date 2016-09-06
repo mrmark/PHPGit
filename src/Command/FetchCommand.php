@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Download objects and refs from another repository - `git fetch`
+ * Download objects and refs from another repository - `git fetch`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class FetchCommand extends Command
 {
     /**
-     * Fetches named heads or tags from one or more other repositories, along with the objects necessary to complete them
+     * Fetches named heads or tags from one or more other repositories, along with the objects necessary to complete them.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -35,6 +35,7 @@ class FetchCommand extends Command
      * @param array  $options    [optional] An array of options {@see FetchCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($repository, $refspec = null, array $options = [])
@@ -56,7 +57,7 @@ class FetchCommand extends Command
     }
 
     /**
-     * Fetch all remotes
+     * Fetch all remotes.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -75,6 +76,7 @@ class FetchCommand extends Command
      * @param array $options [optional] An array of options {@see FetchCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function all(array $options = [])

@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Add file contents to the index - `git add`
+ * Add file contents to the index - `git add`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class AddCommand extends Command
 {
     /**
-     * Add file contents to the index
+     * Add file contents to the index.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -32,6 +32,7 @@ class AddCommand extends Command
      * @param array                     $options [optional] An array of options {@see AddCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($file, array $options = [])

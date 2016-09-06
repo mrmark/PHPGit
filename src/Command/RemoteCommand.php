@@ -7,7 +7,7 @@ use PHPGit\Git;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Manage set of tracked repositories - `git remote`
+ * Manage set of tracked repositories - `git remote`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  *
@@ -39,12 +39,13 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Calls sub-commands
+     * Calls sub-commands.
      *
      * @param string $name      The name of a property
      * @param array  $arguments An array of arguments
      *
      * @throws \BadMethodCallException
+     *
      * @return mixed
      */
     public function __call($name, $arguments)
@@ -57,7 +58,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Returns an array of existing remotes
+     * Returns an array of existing remotes.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -103,7 +104,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Adds a remote named **$name** for the repository at **$url**
+     * Adds a remote named **$name** for the repository at **$url**.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -140,7 +141,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Rename the remote named **$name** to **$newName**
+     * Rename the remote named **$name** to **$newName**.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -168,7 +169,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Remove the remote named **$name**
+     * Remove the remote named **$name**.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -194,7 +195,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Gives some information about the remote **$name**
+     * Gives some information about the remote **$name**.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -233,7 +234,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Deletes all stale remote-tracking branches under **$name**
+     * Deletes all stale remote-tracking branches under **$name**.
      *
      * ``` php
      * $git = new PHPGit\Git();

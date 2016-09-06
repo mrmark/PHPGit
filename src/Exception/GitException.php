@@ -15,8 +15,8 @@ class GitException extends \Exception
     /**
      * Construct the exception. Note: The message is NOT binary safe.
      *
-     * @param string     $message     [optional] The Exception message to throw.
-     * @param int        $code        [optional] The Exception code.
+     * @param string     $message     [optional] The Exception message to throw
+     * @param int        $code        [optional] The Exception code
      * @param string     $commandLine [optional] Command-line
      * @param \Exception $previous    [optional] The previous exception used for the exception chaining. Since 5.3.0
      */

@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Create an empty git repository or reinitialize an existing one - `git init`
+ * Create an empty git repository or reinitialize an existing one - `git init`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class InitCommand extends Command
 {
     /**
-     * Create an empty git repository or reinitialize an existing one
+     * Create an empty git repository or reinitialize an existing one.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -31,6 +31,7 @@ class InitCommand extends Command
      * @param array  $options [optional] An array of options {@see InitCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return bool
      */
     public function __invoke($path, array $options = [])

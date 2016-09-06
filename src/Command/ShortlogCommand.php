@@ -5,14 +5,14 @@ namespace PHPGit\Command;
 use PHPGit\Command;
 
 /**
- * Summarize 'git log' output - `git shortlog`
+ * Summarize 'git log' output - `git shortlog`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class ShortlogCommand extends Command
 {
     /**
-     * Summarize 'git log' output
+     * Summarize 'git log' output.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -31,6 +31,7 @@ class ShortlogCommand extends Command
      *     //...
      * ]
      * ```
+     *
      * @param string|array|\Traversable $commits [optional] Defaults to HEAD
      *
      * @return array
@@ -81,7 +82,7 @@ class ShortlogCommand extends Command
     }
 
     /**
-     * Suppress commit description and provide a commit count summary only
+     * Suppress commit description and provide a commit count summary only.
      *
      * ``` php
      * $git = new PHPGit\Git();

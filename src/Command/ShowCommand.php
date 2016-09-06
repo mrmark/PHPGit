@@ -6,14 +6,14 @@ use PHPGit\Command;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Show various types of objects - `git show`
+ * Show various types of objects - `git show`.
  *
  * @author Kazuyuki Hayashi
  */
 class ShowCommand extends Command
 {
     /**
-     * Shows one or more objects (blobs, trees, tags and commits)
+     * Shows one or more objects (blobs, trees, tags and commits).
      *
      * ``` php
      * $git = new PHPGit\Git();

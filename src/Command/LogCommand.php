@@ -7,14 +7,14 @@ use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Show commit logs - `git log`
+ * Show commit logs - `git log`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class LogCommand extends Command
 {
     /**
-     * Returns the commit logs
+     * Returns the commit logs.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -49,6 +49,7 @@ class LogCommand extends Command
      * @param array  $options  [optional] An array of options {@see LogCommand::setDefaultOptions}
      *
      * @throws GitException
+     *
      * @return array
      */
     public function __invoke($revRange = '', $path = null, array $options = [])

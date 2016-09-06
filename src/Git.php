@@ -9,7 +9,7 @@ use Symfony\Component\Process\ProcessBuilder;
 
 /**
  * PHPGit - A Git wrapper for PHP5.3+
- * ==================================
+ * ==================================.
  *
  * [![Latest Unstable Version](https://poser.pugx.org/kzykhys/git/v/unstable.png)](https://packagist.org/packages/kzykhys/git)
  * [![Build Status](https://travis-ci.org/kzykhys/PHPGit.png?branch=master)](https://travis-ci.org/kzykhys/PHPGit)
@@ -191,7 +191,7 @@ class Git
     private $logger;
 
     /**
-     * Initializes sub-commands
+     * Initializes sub-commands.
      */
     public function __construct()
     {
@@ -225,12 +225,13 @@ class Git
     }
 
     /**
-     * Calls sub-commands
+     * Calls sub-commands.
      *
      * @param string $name      The name of a property
      * @param array  $arguments An array of arguments
      *
      * @throws \BadMethodCallException
+     *
      * @return mixed
      */
     public function __call($name, $arguments)
@@ -243,7 +244,7 @@ class Git
     }
 
     /**
-     * Sets the Git binary path
+     * Sets the Git binary path.
      *
      * @param string $bin
      *
@@ -257,7 +258,7 @@ class Git
     }
 
     /**
-     * Sets the Git repository path
+     * Sets the Git repository path.
      *
      * @param string $directory
      *
@@ -271,7 +272,7 @@ class Git
     }
 
     /**
-     * Returns version number
+     * Returns version number.
      *
      * @return mixed
      */
@@ -285,7 +286,7 @@ class Git
     }
 
     /**
-     * Set git command timeout
+     * Set git command timeout.
      *
      * @param float|null $timeout
      *
@@ -299,7 +300,7 @@ class Git
     }
 
     /**
-     * Returns git command timeout
+     * Returns git command timeout.
      *
      * @return float|null
      */
@@ -309,7 +310,7 @@ class Git
     }
 
     /**
-     * Set the logger
+     * Set the logger.
      *
      * @param LoggerInterface $logger
      *
@@ -323,7 +324,7 @@ class Git
     }
 
     /**
-     * Returns the logger
+     * Returns the logger.
      *
      * @return LoggerInterface
      */
@@ -333,7 +334,7 @@ class Git
     }
 
     /**
-     * Determine if a logger is available
+     * Determine if a logger is available.
      *
      * @return bool
      */
@@ -343,7 +344,7 @@ class Git
     }
 
     /**
-     * Returns an instance of ProcessBuilder
+     * Returns an instance of ProcessBuilder.
      *
      * @return ProcessBuilder
      */
@@ -356,11 +357,12 @@ class Git
     }
 
     /**
-     * Executes a process
+     * Executes a process.
      *
      * @param Process $process The process to run
      *
      * @throws Exception\GitException
+     *
      * @return mixed
      */
     public function run(Process $process)

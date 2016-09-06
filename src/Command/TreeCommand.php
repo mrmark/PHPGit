@@ -5,14 +5,14 @@ namespace PHPGit\Command;
 use PHPGit\Command;
 
 /**
- * List the contents of a tree object - `git ls-tree`
+ * List the contents of a tree object - `git ls-tree`.
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
 class TreeCommand extends Command
 {
     /**
-     * Returns the contents of a tree object
+     * Returns the contents of a tree object.
      *
      * ``` php
      * $git = new PHPGit\Git();
