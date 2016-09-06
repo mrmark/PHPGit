@@ -186,6 +186,9 @@ class Git
     /** @var float|null */
     private $timeout = null;
 
+    /** @var null|callable */
+    private $runCallback = null;
+
     /**
      * Initializes sub-commands.
      */
@@ -306,6 +309,22 @@ class Git
     }
 
     /**
+     * Delegate process running to a callback.
+     *
+     * The callback should expect one parameter of type Process.
+     *
+     * @param callable|null $callback
+     *
+     * @return Git
+     */
+    public function setRunCallback(callable $callback = null)
+    {
+        $this->runCallback = $callback;
+
+        return $this;
+    }
+
+    /**
      * Returns an instance of ProcessBuilder.
      *
      * @return ProcessBuilder
@@ -329,7 +348,11 @@ class Git
      */
     public function run(Process $process)
     {
-        $process->run();
+        if (is_callable($this->runCallback)) {
+            call_user_func($this->runCallback, $process);
+        } else {
+            $process->run();
+        }
 
         if (!$process->isSuccessful()) {
             throw new GitException($process->getErrorOutput(), $process->getExitCode(), $process->getCommandLine());
