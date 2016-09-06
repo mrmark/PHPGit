@@ -34,9 +34,7 @@ class AmCommand extends Command
         $builder = $this->git->getProcessBuilder()
             ->add('am');
 
-        if ($options['directory']) {
-            $builder->add('--directory='.$options['directory']);
-        }
+        $this->addValues($builder, $options, ['directory']);
 
         if (!is_array($file) && !($file instanceof \Traversable)) {
             $file = [$file];
