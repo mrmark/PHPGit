@@ -363,7 +363,7 @@ class Git
      *
      * @throws Exception\GitException
      *
-     * @return mixed
+     * @return string
      */
     public function run(Process $process)
     {
