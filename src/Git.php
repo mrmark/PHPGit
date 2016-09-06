@@ -3,7 +3,6 @@
 namespace PHPGit;
 
 use PHPGit\Exception\GitException;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
 
@@ -187,9 +186,6 @@ class Git
     /** @var float|null */
     private $timeout = null;
 
-    /** @var LoggerInterface */
-    private $logger;
-
     /**
      * Initializes sub-commands.
      */
@@ -310,40 +306,6 @@ class Git
     }
 
     /**
-     * Set the logger.
-     *
-     * @param LoggerInterface $logger
-     *
-     * @return $this
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
-
-        return $this;
-    }
-
-    /**
-     * Returns the logger.
-     *
-     * @return LoggerInterface
-     */
-    public function getLogger()
-    {
-        return $this->logger;
-    }
-
-    /**
-     * Determine if a logger is available.
-     *
-     * @return bool
-     */
-    public function hasLogger()
-    {
-        return $this->logger instanceof LoggerInterface;
-    }
-
-    /**
      * Returns an instance of ProcessBuilder.
      *
      * @return ProcessBuilder
@@ -367,23 +329,12 @@ class Git
      */
     public function run(Process $process)
     {
-        if ($this->hasLogger()) {
-            $this->logger->info(sprintf('RUN  %s ', $process->getCommandLine()));
-        }
-
         $process->run();
 
         if (!$process->isSuccessful()) {
             throw new GitException($process->getErrorOutput(), $process->getExitCode(), $process->getCommandLine());
         }
 
-        $output = $process->getOutput();
-
-        if ($this->hasLogger()) {
-            $this->logger->debug(sprintf('OUT  %s', $output));
-            $this->logger->info('RES  Command ran successfully');
-        }
-
-        return $output;
+        return $process->getOutput();
     }
 }

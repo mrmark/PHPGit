@@ -1,9 +1,6 @@
 <?php
 
 use PHPGit\Git;
-use Prophecy\Argument;
-use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 use Symfony\Component\Process\Process;
 
 class GitTest extends PHPUnit_Framework_TestCase
@@ -27,18 +24,6 @@ class GitTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(60, $process->getTimeout());
     }
 
-    public function testLogger()
-    {
-        $git    = new Git();
-        $logger = new NullLogger();
-
-        $this->assertFalse($git->hasLogger());
-
-        $git->setLogger($logger);
-        $this->assertSame($logger, $git->getLogger());
-        $this->assertTrue($git->hasLogger());
-    }
-
     public function testRun()
     {
         $git = new Git();
@@ -52,19 +37,6 @@ class GitTest extends PHPUnit_Framework_TestCase
     {
         $git = new Git();
         $git->run(new Process('php -r "exit(1);"'));
-    }
-
-    public function testRunLogging()
-    {
-        $git = new Git();
-
-        $logger = $this->prophesize(LoggerInterface::class);
-
-        $git->setLogger($logger->reveal());
-        $git->run(new Process('echo "Hi!"'));
-
-        $logger->info(Argument::type('string'))->shouldHaveBeenCalledTimes(2);
-        $logger->debug(Argument::type('string'))->shouldHaveBeenCalled();
     }
 
     /**
