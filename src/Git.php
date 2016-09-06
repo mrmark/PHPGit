@@ -65,6 +65,7 @@ use Symfony\Component\Process\ProcessBuilder;
  * @license MIT
  *
  * @method bool add($file, $options = [])                                   Add file contents to the index
+ * @method bool am($file, $options = [])                                    Apply a series of patches from a mailbox
  * @method bool archive($file, $tree = null, $path = null, $options = [])   Create an archive of files from a named tree
  * @method array branch($options = [])                                      List both remote-tracking branches and local branches
  * @method bool checkout($branch, $options = [])                            Checkout a branch or paths to the working tree
@@ -95,6 +96,9 @@ class Git
 {
     /** @var Command\AddCommand */
     public $add;
+
+    /** @var Command\AmCommand */
+    public $am;
 
     /** @var Command\ArchiveCommand */
     public $archive;
@@ -195,6 +199,7 @@ class Git
     public function __construct()
     {
         $this->add        = new Command\AddCommand($this);
+        $this->am         = new Command\AmCommand($this);
         $this->archive    = new Command\ArchiveCommand($this);
         $this->branch     = new Command\BranchCommand($this);
         $this->cat        = new Command\CatCommand($this);
