@@ -14,12 +14,11 @@ class RemoteCommandTest extends BaseTestCase
 
         $remotes = $git->remote();
 
-        $this->assertEquals([
-            'origin' => [
-                'fetch' => 'https://github.com/kzykhys/Text.git',
-                'push'  => 'https://github.com/kzykhys/Text.git',
-            ],
-        ], $remotes);
+        $this->assertCount(1, $remotes);
+        $this->assertArrayHasKey('origin', $remotes);
+        $this->assertEquals('origin', $remotes['origin']->name);
+        $this->assertEquals('https://github.com/kzykhys/Text.git', $remotes['origin']->fetch);
+        $this->assertEquals('https://github.com/kzykhys/Text.git', $remotes['origin']->push);
     }
 
     public function testRemoteAdd()
@@ -31,12 +30,11 @@ class RemoteCommandTest extends BaseTestCase
 
         $remotes = $git->remote();
 
-        $this->assertEquals([
-            'origin' => [
-                'fetch' => 'https://github.com/kzykhys/Text.git',
-                'push'  => 'https://github.com/kzykhys/Text.git',
-            ],
-        ], $remotes);
+        $this->assertCount(1, $remotes);
+        $this->assertArrayHasKey('origin', $remotes);
+        $this->assertEquals('origin', $remotes['origin']->name);
+        $this->assertEquals('https://github.com/kzykhys/Text.git', $remotes['origin']->fetch);
+        $this->assertEquals('https://github.com/kzykhys/Text.git', $remotes['origin']->push);
     }
 
     public function testRemoteRename()
@@ -48,12 +46,12 @@ class RemoteCommandTest extends BaseTestCase
         $git->remote->rename('origin', 'upstream');
 
         $remotes = $git->remote();
-        $this->assertEquals([
-            'upstream' => [
-                'fetch' => 'https://github.com/kzykhys/Text.git',
-                'push'  => 'https://github.com/kzykhys/Text.git',
-            ],
-        ], $remotes);
+
+        $this->assertCount(1, $remotes);
+        $this->assertArrayHasKey('upstream', $remotes);
+        $this->assertEquals('upstream', $remotes['upstream']->name);
+        $this->assertEquals('https://github.com/kzykhys/Text.git', $remotes['upstream']->fetch);
+        $this->assertEquals('https://github.com/kzykhys/Text.git', $remotes['upstream']->push);
     }
 
     public function testRemoteRm()

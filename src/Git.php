@@ -82,7 +82,7 @@ use Symfony\Component\Process\ProcessBuilder;
  * @method bool pull($repository = null, $refspec = null, $options = [])       Fetch from and merge with another repository or a local branch
  * @method bool push($repository = null, $refspec = null, $options = [])       Update remote refs along with associated objects
  * @method bool rebase($upstream = null, $branch = null, $options = [])        Forward-port local commits to the updated upstream head
- * @method array remote()                                                      Returns an array of existing remotes
+ * @method Model\Remote[] remote()                                             Returns an array of existing remotes
  * @method bool reset($commit = null, $paths = [])                             Resets the index entries for all <paths> to their state at <commit>
  * @method array revParse($args, $options = [])                                Pick out and massage parameters
  * @method bool rm($file, $options = [])                                       Remove files from the working tree and from the index

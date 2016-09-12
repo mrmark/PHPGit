@@ -3,7 +3,11 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
+use PHPGit\Command\Remote\SetBranchesCommand;
+use PHPGit\Command\Remote\SetHeadCommand;
+use PHPGit\Command\Remote\SetUrlCommand;
 use PHPGit\Git;
+use PHPGit\Model\Remote;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -17,13 +21,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class RemoteCommand extends Command
 {
-    /** @var Remote\SetHeadCommand */
+    /** @var SetHeadCommand */
     public $head;
 
-    /** @var Remote\SetBranchesCommand */
+    /** @var SetBranchesCommand */
     public $branches;
 
-    /** @var Remote\SetUrlCommand */
+    /** @var SetUrlCommand */
     public $url;
 
     /**
@@ -33,9 +37,9 @@ class RemoteCommand extends Command
     {
         parent::__construct($git);
 
-        $this->head     = new Remote\SetHeadCommand($git);
-        $this->branches = new Remote\SetBranchesCommand($git);
-        $this->url      = new Remote\SetUrlCommand($git);
+        $this->head     = new SetHeadCommand($git);
+        $this->branches = new SetBranchesCommand($git);
+        $this->url      = new SetUrlCommand($git);
     }
 
     /**
@@ -71,14 +75,15 @@ class RemoteCommand extends Command
      *
      * ``` php
      * [
-     *     'origin' => [
+     *     'origin' => new Remote[
+     *         'name'  => 'origin',
      *         'fetch' => 'https://github.com/kzykhys/Text.git',
      *         'push'  => 'https://github.com/kzykhys/Text.git'
      *     ]
      * ]
      * ```
      *
-     * @return array
+     * @return Remote[]
      */
     public function __invoke()
     {
@@ -98,6 +103,20 @@ class RemoteCommand extends Command
 
                 $remotes[$matches[1]][$matches[3]] = $matches[2];
             }
+        }
+
+        // Remap the array data to the Remote model.
+        foreach ($remotes as $name => $urls) {
+            $remote = new Remote($name);
+
+            if (array_key_exists('fetch', $urls)) {
+                $remote->fetch = $urls['fetch'];
+            }
+            if (array_key_exists('push', $urls)) {
+                $remote->push = $urls['push'];
+            }
+
+            $remotes[$name] = $remote;
         }
 
         return $remotes;

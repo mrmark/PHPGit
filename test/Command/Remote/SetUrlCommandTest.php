@@ -16,7 +16,7 @@ class SetUrlCommandTest extends BaseTestCase
 
         $remotes = $git->remote();
 
-        $this->assertEquals('https://github.com/kzykhys/Text.git', $remotes['origin']['fetch']);
+        $this->assertEquals('https://github.com/kzykhys/Text.git', $remotes['origin']->fetch);
     }
 
     public function testSetUrlAdd()
@@ -39,6 +39,6 @@ class SetUrlCommandTest extends BaseTestCase
 
         $remotes = $git->remote();
 
-        $this->assertEquals('http://example.com/test.git', $remotes['origin']['fetch']);
+        $this->assertEquals('http://example.com/test.git', $remotes['origin']->fetch);
     }
 }
