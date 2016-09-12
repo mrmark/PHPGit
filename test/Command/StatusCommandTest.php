@@ -49,7 +49,7 @@ class StatusCommandTest extends BaseTestCase
         $git->add('item1.txt');
         $git->commit('initial commit');
         $logs = $git->log();
-        $hash = $logs[0]['hash'];
+        $hash = $logs[0]->hash;
 
         $git->checkout($hash);
         $status = $git->status();

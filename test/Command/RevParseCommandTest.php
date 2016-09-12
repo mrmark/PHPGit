@@ -29,7 +29,7 @@ class RevParseCommandTest extends BaseTestCase
         $result = $git->revParse('master');
 
         $this->assertCount(1, $result);
-        $this->assertEquals($git->log()[0]['hash'], $result[0]);
+        $this->assertEquals($git->log()[0]->hash, $result[0]);
     }
 
     public function testRevParseCurrentBranch()

@@ -4,6 +4,7 @@ namespace PHPGit\Command;
 
 use PHPGit\Command;
 use PHPGit\Exception\GitException;
+use PHPGit\Model\Log;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -50,7 +51,7 @@ class LogCommand extends Command
      *
      * @throws GitException
      *
-     * @return array
+     * @return Log[]
      */
     public function __invoke($revRange = '', $path = null, array $options = [])
     {
@@ -77,13 +78,7 @@ class LogCommand extends Command
         foreach ($lines as $line) {
             list($hash, $name, $email, $date, $title) = preg_split('/\|\|/', $line, -1, PREG_SPLIT_NO_EMPTY);
 
-            $commits[] = [
-                'hash'  => $hash,
-                'name'  => $name,
-                'email' => $email,
-                'date'  => $date,
-                'title' => $title,
-            ];
+            $commits[] = new Log($name, $email, $date, $title, $hash);
         }
 
         return $commits;

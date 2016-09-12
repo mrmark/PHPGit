@@ -36,7 +36,7 @@ class CherryPickCommandTest extends BaseTestCase
         $git->commit('Pick me');
 
         $log  = $git->log();
-        $hash = $log[0]['hash'];
+        $hash = $log[0]->hash;
 
         $git->checkout('master');
         $git->cherryPick($hash, ['x' => true]);
@@ -46,7 +46,7 @@ class CherryPickCommandTest extends BaseTestCase
         $log = $git->log();
 
         $this->assertCount(2, $log);
-        $this->assertEquals('Pick me', $log[0]['title']);
-        $this->assertNotEquals($hash, $log[0]['hash']);
+        $this->assertEquals('Pick me', $log[0]->title);
+        $this->assertNotEquals($hash, $log[0]->hash);
     }
 }
