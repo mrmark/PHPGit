@@ -30,9 +30,9 @@ class BranchCommandTest extends BaseTestCase
         $branches = $git->branch();
 
         $this->assertCount(1, $branches);
-        $this->assertEquals('master', $branches['master']['name']);
-        $this->assertTrue($branches['master']['current']);
-        $this->assertEquals('Initial commit', $branches['master']['title']);
+        $this->assertEquals('master', $branches['master']->name);
+        $this->assertTrue($branches['master']->current);
+        $this->assertEquals('Initial commit', $branches['master']->title);
     }
 
     public function testAllBranch()

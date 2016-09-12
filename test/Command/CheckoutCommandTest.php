@@ -31,7 +31,7 @@ class CheckoutCommandTest extends BaseTestCase
 
         $branches = $git->branch();
         $this->assertArrayHasKey('next', $branches);
-        $this->assertTrue($branches['next']['current']);
+        $this->assertTrue($branches['next']->current);
     }
 
     public function testCheckoutCreate()
@@ -42,13 +42,13 @@ class CheckoutCommandTest extends BaseTestCase
 
         $branches = $git->branch();
         $this->assertArrayHasKey('next', $branches);
-        $this->assertTrue($branches['next']['current']);
+        $this->assertTrue($branches['next']->current);
 
         $git->checkout->create('develop', 'next');
 
         $branches = $git->branch();
         $this->assertArrayHasKey('develop', $branches);
-        $this->assertTrue($branches['develop']['current']);
+        $this->assertTrue($branches['develop']->current);
     }
 
     public function testCheckoutOrphan()

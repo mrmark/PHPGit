@@ -67,7 +67,7 @@ use Symfony\Component\Process\ProcessBuilder;
  * @method bool add($file, $options = [])                                   Add file contents to the index
  * @method bool am($file, $options = [])                                    Apply a series of patches from a mailbox
  * @method bool archive($file, $tree = null, $path = null, $options = [])   Create an archive of files from a named tree
- * @method array branch($options = [])                                      List both remote-tracking branches and local branches
+ * @method Model\Branch[] branch($options = [])                             List both remote-tracking branches and local branches
  * @method bool checkout($branch, $options = [])                            Checkout a branch or paths to the working tree
  * @method bool cherryPick($commit, $options = [])                          Cherry-pick a commit to HEAD
  * @method bool clone($repository, $path = null, $options = [])             Clone a repository into a new directory

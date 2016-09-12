@@ -4,6 +4,7 @@ namespace PHPGit\Command;
 
 use PHPGit\Command;
 use PHPGit\Exception\GitException;
+use PHPGit\Model\Branch;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -26,8 +27,8 @@ class BranchCommand extends Command
      *
      * ```
      * [
-     *     'master' => ['current' => true, 'name' => 'master', 'hash' => 'bf231bb', 'title' => 'Initial Commit'],
-     *     'origin/master' => ['current' => false, 'name' => 'origin/master', 'alias' => 'remotes/origin/master']
+     *     'master' => new Branch['current' => true, 'name' => 'master', 'hash' => 'bf231bb', 'title' => 'Initial Commit'],
+     *     'origin/master' => new Branch['current' => false, 'name' => 'origin/master', 'alias' => 'remotes/origin/master']
      * ]
      * ```
      *
@@ -40,7 +41,7 @@ class BranchCommand extends Command
      *
      * @throws GitException
      *
-     * @return array
+     * @return Branch[]
      */
     public function __invoke(array $options = [])
     {
@@ -63,22 +64,18 @@ class BranchCommand extends Command
         $lines = preg_split('/\r?\n/', rtrim($process->getOutput()), -1, PREG_SPLIT_NO_EMPTY);
 
         foreach ($lines as $line) {
-            $branch = [
-                'title' => '',
-                'alias' => '',
-                'hash'  => '',
-            ];
+            $branch = new Branch();
 
             preg_match('/(?<current>\*| ) (?<name>[^\s]+) +((?:->) (?<alias>[^\s]+)|(?<hash>[0-9a-z]{7,8}) (?<title>.*))/', $line, $matches);
 
-            $branch['current'] = ($matches['current'] == '*');
-            $branch['name']    = $matches['name'];
+            $branch->current = ($matches['current'] == '*');
+            $branch->name    = $matches['name'];
 
             if (isset($matches['hash'])) {
-                $branch['hash']  = $matches['hash'];
-                $branch['title'] = $matches['title'];
+                $branch->hash  = $matches['hash'];
+                $branch->title = $matches['title'];
             } else {
-                $branch['alias'] = $matches['alias'];
+                $branch->alias = $matches['alias'];
             }
 
             $branches[$matches['name']] = $branch;
