@@ -32,6 +32,24 @@ class RevParseCommandTest extends BaseTestCase
         $this->assertEquals($git->log()[0]->hash, $result[0]);
     }
 
+    public function testRevParseShort()
+    {
+        $git = new Git();
+        $git->setRepository($this->directory);
+
+        $hash   = $git->log()[0]->hash;
+        $result = $git->revParse('master', ['short' => 10]);
+
+        $this->assertCount(1, $result);
+        $this->assertEquals(10, strlen($result[0]));
+        $this->assertStringStartsWith($result[0], $hash);
+
+        $result = $git->revParse('master', ['short' => true]);
+
+        $this->assertCount(1, $result);
+        $this->assertStringStartsWith($result[0], $hash);
+    }
+
     public function testRevParseCurrentBranch()
     {
         $git = new Git();
