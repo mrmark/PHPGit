@@ -42,8 +42,12 @@ class LogCommand extends Command
      *
      * ##### Options
      *
-     * - **limit** (_integer_) Limits the number of commits to show
-     * - **skip**  (_integer_) Skip number commits before starting to show the commit output
+     * - **limit**            (_integer_) Limits the number of commits to show
+     * - **skip**             (_integer_) Skip number commits before starting to show the commit output
+     * - **grep**             (_integer_) Limit the commits output to ones with log message that matches the specified pattern (regular expression)
+     * - **extended-regexp**  (_bool_)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
+     * - **no-merges**        (_bool_)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
+     * - **reverse**          (_bool_)    Reverse the order of the commits
      *
      * @param string $revRange [optional] Show only commits in the specified revision range
      * @param string $path     [optional] Show only commits that are enough to explain how the files that match the specified paths came to be
@@ -63,6 +67,12 @@ class LogCommand extends Command
             ->add('-n')->add($options['limit'])
             ->add('--skip='.$options['skip'])
             ->add('--format=%H||%aN||%aE||%aD||%s');
+
+        $this->addFlags($builder, $options, ['extended-regexp', 'no-merges', 'reverse']);
+
+        if ($options['grep']) {
+            $builder->add('--grep='.$options['grep']);
+        }
 
         if ($revRange) {
             $builder->add($revRange);
@@ -93,8 +103,12 @@ class LogCommand extends Command
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'limit' => 1000,
-            'skip'  => 0,
+            'limit'           => 1000,
+            'skip'            => 0,
+            'grep'            => null,
+            'extended-regexp' => false,
+            'no-merges'       => false,
+            'reverse'         => false,
         ]);
     }
 }
