@@ -34,8 +34,9 @@ class BranchCommand extends Command
      *
      * ##### Options
      *
-     * - **all**     (_boolean_) List both remote-tracking branches and local branches
-     * - **remotes** (_boolean_) List the remote-tracking branches
+     * - **all**     (_boolean_)        List both remote-tracking branches and local branches
+     * - **remotes** (_boolean_)        List the remote-tracking branches
+     * - **merged**  (_boolean|string_) Only list branches whose tips are reachable from the specified commit (HEAD if not specified)
      *
      * @param array $options [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
@@ -56,6 +57,14 @@ class BranchCommand extends Command
 
         if ($options['all']) {
             $builder->add('--all');
+        }
+
+        if ($options['merged']) {
+            $builder->add('--merged');
+
+            if (is_string($options['merged'])) {
+                $builder->add($options['merged']);
+            }
         }
 
         $process = $builder->getProcess();
@@ -211,6 +220,7 @@ class BranchCommand extends Command
      * - **force**   (_boolean_) Reset <branchname> to <startpoint> if <branchname> exists already
      * - **all**     (_boolean_) List both remote-tracking branches and local branches
      * - **remotes** (_boolean_) List or delete (if used with delete()) the remote-tracking branches
+     * - **merged**  (_boolean|string_) Only list branches whose tips are reachable from the specified commit (HEAD if not specified)
      */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
@@ -218,6 +228,7 @@ class BranchCommand extends Command
             'force'   => false,
             'all'     => false,
             'remotes' => false,
+            'merged'  => null,
         ]);
     }
 
