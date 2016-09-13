@@ -15,33 +15,49 @@ class Branch
      *
      * @var string
      */
-    public $name = '';
+    public $name;
 
     /**
      *  If the branch is the current branch or not.
      *
      * @var bool
      */
-    public $current = false;
+    public $current;
 
     /**
      * The branches HEAD commit summary.
      *
      * @var string
      */
-    public $title = '';
+    public $title;
 
     /**
      * Branch alias, if this is set, then hash and title are empty.
      *
      * @var string
      */
-    public $alias = '';
+    public $alias;
 
     /**
      * The SHA.
      *
      * @var string
      */
-    public $hash = '';
+    public $hash;
+
+    /**
+     * @param string $name
+     * @param string $hash
+     * @param bool   $current
+     * @param string $title
+     * @param string $alias
+     */
+    public function __construct($name, $hash = '', $current = false, $title = '', $alias = '')
+    {
+        $this->name    = $name;
+        $this->hash    = $hash;
+        $this->current = $current;
+        $this->title   = $title;
+        $this->alias   = $alias;
+    }
 }
