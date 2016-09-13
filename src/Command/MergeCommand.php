@@ -25,7 +25,8 @@ class MergeCommand extends Command
      *
      * ##### Options
      *
-     * - **no-ff**               (_boolean_) Do not generate a merge commit if the merge resolved as a fast-forward, only update the branch pointer
+     * - **no-ff**               (_boolean_) Create a merge commit even when the merge resolves as a fast-forward
+     * - **ff-only**             (_boolean_) Refuse to merge and exit with a non-zero status unless the current HEAD is already up-to-date or the merge can be resolved as a fast-forward
      * - **rerere-autoupdate**   (_boolean_) Allow the rerere mechanism to update the index with the result of auto-conflict resolution if possible
      * - **squash**              (_boolean_) Allows you to create a single commit on top of the current branch whose effect is the same as merging another branch
      * - **strategy**            (_string_)  Use the given merge strategy
@@ -45,7 +46,11 @@ class MergeCommand extends Command
         $builder = $this->git->getProcessBuilder()
             ->add('merge');
 
-        $this->addFlags($builder, $options, ['no-ff', 'rerere-autoupdate', 'squash']);
+        $this->addFlags($builder, $options, ['no-ff', 'ff-only', 'rerere-autoupdate', 'squash']);
+
+        if ($message) {
+            $builder->add('-m')->add($message);
+        }
 
         if (!is_array($commit) && !($commit instanceof \Traversable)) {
             $commit = [$commit];
@@ -90,7 +95,8 @@ class MergeCommand extends Command
     /**
      * {@inheritdoc}
      *
-     * - **no-ff**               (_boolean_) Do not generate a merge commit if the merge resolved as a fast-forward, only update the branch pointer
+     * - **no-ff**               (_boolean_) Create a merge commit even when the merge resolves as a fast-forward
+     * - **ff-only**             (_boolean_) Refuse to merge and exit with a non-zero status unless the current HEAD is already up-to-date or the merge can be resolved as a fast-forward
      * - **rerere-autoupdate**   (_boolean_) Allow the rerere mechanism to update the index with the result of auto-conflict resolution if possible
      * - **squash**              (_boolean_) Allows you to create a single commit on top of the current branch whose effect is the same as merging another branch
      * - **strategy**            (_string_)  Use the given merge strategy
@@ -100,6 +106,7 @@ class MergeCommand extends Command
     {
         $resolver->setDefaults([
             'no-ff'             => false,
+            'ff-only'           => false,
             'rerere-autoupdate' => false,
             'squash'            => false,
 
