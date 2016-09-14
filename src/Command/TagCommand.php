@@ -57,6 +57,7 @@ class TagCommand extends Command
      * - **annotate** (_boolean_) Make an unsigned, annotated tag object
      * - **sign**     (_boolean_) Make a GPG-signed tag, using the default e-mail address’s key
      * - **force**    (_boolean_) Replace an existing tag with the given name (instead of failing)
+     * - **message**  (_string_)  Tag message
      *
      * @param string $tag     The name of the tag to create
      * @param string $commit  The SHA1 object name of the commit object
@@ -75,6 +76,9 @@ class TagCommand extends Command
 
         $this->addFlags($builder, $options, ['annotate', 'sign', 'force']);
 
+        if ($options['message']) {
+            $builder->add('-m')->add($options['message']);
+        }
         if ($commit) {
             $builder->add($commit);
         }
@@ -146,6 +150,7 @@ class TagCommand extends Command
      * - **annotate** (_boolean_) Make an unsigned, annotated tag object
      * - **sign**     (_boolean_) Make a GPG-signed tag, using the default e-mail address’s key
      * - **force**    (_boolean_) Replace an existing tag with the given name (instead of failing)
+     * - **message**  (_string_)  Tag message
      */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
@@ -153,6 +158,7 @@ class TagCommand extends Command
             'annotate' => false,
             'sign'     => false,
             'force'    => false,
+            'message'  => null,
         ]);
     }
 }
