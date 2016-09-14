@@ -74,6 +74,7 @@ use Symfony\Component\Process\ProcessBuilder;
  * @method bool commit($message = '', $options = [])                           Record changes to the repository
  * @method array config($options = [])                                         List all variables set in config file
  * @method string describe($committish = null, $options = [])                  Returns the most recent tag that is reachable from a commit
+ * @method string diff($commit = null, $path = null, $options = [])            Show changes between commits, commit and working tree, etc
  * @method bool fetch($repository, $refspec = null, $options = [])             Fetches named heads or tags from one or more other repositories
  * @method bool init($path, $options = [])                                     Create an empty git repository or reinitialize an existing one
  * @method Model\Log[] log($revRange = '', $path = null, array $options = [])  Returns the commit logs
@@ -128,7 +129,7 @@ class Git
     /** @var Command\DescribeCommand */
     public $describe;
 
-    // Not implemented yet
+    /** @var Command\DiffCommand */
     public $diff;
 
     /** @var Command\FetchCommand */
@@ -213,6 +214,7 @@ class Git
         $this->commit     = new Command\CommitCommand($this);
         $this->config     = new Command\ConfigCommand($this);
         $this->describe   = new Command\DescribeCommand($this);
+        $this->diff       = new Command\DiffCommand($this);
         $this->fetch      = new Command\FetchCommand($this);
         $this->init       = new Command\InitCommand($this);
         $this->log        = new Command\LogCommand($this);
