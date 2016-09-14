@@ -27,6 +27,7 @@ class AddCommand extends Command
      *
      * - **force**          (_boolean_) Allow adding otherwise ignored files
      * - **ignore-errors**  (_boolean_) Do not abort the operation
+     * - **all**            (_boolean_) This adds, modifies, and removes index entries to match the working tree
      *
      * @param string|array|\Traversable $file    Files to add content from
      * @param array                     $options [optional] An array of options {@see AddCommand::setDefaultOptions}
@@ -61,6 +62,7 @@ class AddCommand extends Command
      *
      * - **force**          (_boolean_) Allow adding otherwise ignored files
      * - **ignore-errors**  (_boolean_) Do not abort the operation
+     * - **all**            (_boolean_) This adds, modifies, and removes index entries to match the working tree
      */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
@@ -68,6 +70,7 @@ class AddCommand extends Command
             //'dry-run'        => false,
             'force'         => false,
             'ignore-errors' => false,
+            'all'           => false,
             //'ignore-missing' => false,
         ]);
     }
