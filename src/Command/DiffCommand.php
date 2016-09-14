@@ -21,6 +21,7 @@ class DiffCommand extends Command
      *
      * - **stat**      (_boolean_) Generate a diff stat
      * - **shortstat** (_boolean_) Output only the last line of the --stat format containing total number of modified files, as well as number of added and deleted lines
+     * - **cached**    (_boolean_) Work on files staged in the index
      *
      * @param string $commit  Commit or commit range to diff, EG: 'A..B' or 'A' or 'A B", etc
      * @param string $path    Restrict diff to file path
@@ -56,6 +57,7 @@ class DiffCommand extends Command
         $resolver->setDefaults([
             'stat'      => false,
             'shortstat' => false,
+            'cached'    => false,
         ]);
     }
 }
