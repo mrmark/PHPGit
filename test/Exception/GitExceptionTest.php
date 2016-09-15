@@ -13,7 +13,7 @@ class GitExceptionTest extends PHPUnit_Framework_TestCase
             $git->status();
             $this->fail('Previous operation should fail');
         } catch (GitException $e) {
-            $command = $e->getCommandLine();
+            $command = $e->getProcess()->getCommandLine();
             $command = str_replace(['"', "'"], '', $command);
             $this->assertStringEndsWith('status --porcelain -s -b --null', $command);
         }

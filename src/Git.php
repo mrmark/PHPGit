@@ -354,7 +354,7 @@ class Git
      *
      * @param Process $process The process to run
      *
-     * @throws Exception\GitException
+     * @throws GitException
      *
      * @return string
      */
@@ -367,7 +367,7 @@ class Git
         }
 
         if (!$process->isSuccessful()) {
-            throw new GitException($process->getErrorOutput(), $process->getExitCode(), $process->getCommandLine());
+            throw new GitException($process);
         }
 
         return $process->getOutput();
