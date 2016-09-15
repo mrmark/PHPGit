@@ -3,6 +3,7 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
+use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -96,7 +97,7 @@ class RevParseCommand extends Command
     {
         try {
             $this->__invoke($arg);
-        } catch (\Exception $e) {
+        } catch (GitException $e) {
             return false;
         }
 
