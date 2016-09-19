@@ -140,8 +140,6 @@ class RemoteCommand extends Command
      * @param string $name    The name of the remote
      * @param string $url     The url of the remote
      * @param array  $options [optional] An array of options {@see RemoteCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function add($name, $url, array $options = [])
     {
@@ -155,8 +153,6 @@ class RemoteCommand extends Command
         $builder->add($name)->add($url);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -171,8 +167,6 @@ class RemoteCommand extends Command
      *
      * @param string $name    The remote name to rename
      * @param string $newName The new remote name
-     *
-     * @return bool
      */
     public function rename($name, $newName)
     {
@@ -183,8 +177,6 @@ class RemoteCommand extends Command
             ->add($newName);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -198,8 +190,6 @@ class RemoteCommand extends Command
      * ```
      *
      * @param string $name The remote name to remove
-     *
-     * @return bool
      */
     public function rm($name)
     {
@@ -209,8 +199,6 @@ class RemoteCommand extends Command
             ->add($name);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -262,8 +250,6 @@ class RemoteCommand extends Command
      * ```
      *
      * @param string $name The remote name
-     *
-     * @return bool
      */
     public function prune($name = null)
     {
@@ -276,8 +262,6 @@ class RemoteCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

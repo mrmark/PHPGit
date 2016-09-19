@@ -64,35 +64,35 @@ use Symfony\Component\Process\ProcessBuilder;
  * @author  Kazuyuki Hayashi <hayashi@valnur.net>
  * @license MIT
  *
- * @method bool add($file, $options = [])                                      Add file contents to the index
- * @method bool am($file, $options = [])                                       Apply a series of patches from a mailbox
- * @method bool archive($file, $tree = null, $path = null, $options = [])      Create an archive of files from a named tree
- * @method Model\Branch[] branch($options = [])                                List both remote-tracking branches and local branches
- * @method bool checkout($branch, $options = [])                               Checkout a branch or paths to the working tree
- * @method bool cherryPick($commit, $options = [])                             Cherry-pick a commit to HEAD
- * @method bool clone($repository, $path = null, $options = [])                Clone a repository into a new directory
- * @method bool commit($message = '', $options = [])                           Record changes to the repository
- * @method array config($options = [])                                         List all variables set in config file
- * @method string describe($committish = null, $options = [])                  Returns the most recent tag that is reachable from a commit
- * @method string diff($commit = null, $path = null, $options = [])            Show changes between commits, commit and working tree, etc
- * @method bool fetch($repository, $refspec = null, $options = [])             Fetches named heads or tags from one or more other repositories
- * @method bool init($path, $options = [])                                     Create an empty git repository or reinitialize an existing one
+ * @method add($file, $options = [])                                      Add file contents to the index
+ * @method am($file, $options = [])                                       Apply a series of patches from a mailbox
+ * @method archive($file, $tree = null, $path = null, $options = [])      Create an archive of files from a named tree
+ * @method Model\Branch[] branch($options = [])                           List both remote-tracking branches and local branches
+ * @method checkout($branch, $options = [])                               Checkout a branch or paths to the working tree
+ * @method cherryPick($commit, $options = [])                             Cherry-pick a commit to HEAD
+ * @method clone($repository, $path = null, $options = [])                Clone a repository into a new directory
+ * @method commit($message = '', $options = [])                           Record changes to the repository
+ * @method array config($options = [])                                    List all variables set in config file
+ * @method string describe($committish = null, $options = [])             Returns the most recent tag that is reachable from a commit
+ * @method string diff($commit = null, $path = null, $options = [])       Show changes between commits, commit and working tree, etc
+ * @method fetch($repository, $refspec = null, $options = [])             Fetches named heads or tags from one or more other repositories
+ * @method init($path, $options = [])                                     Create an empty git repository or reinitialize an existing one
  * @method Model\Log[] log($revRange = '', $path = null, array $options = [])  Returns the commit logs
- * @method bool merge($commit, $message = null, $options = [])                 Incorporates changes from the named commits into the current branch
- * @method bool mv($source, $destination, $options = [])                       Move or rename a file, a directory, or a symlink
- * @method bool pull($repository = null, $refspec = null, $options = [])       Fetch from and merge with another repository or a local branch
- * @method bool push($repository = null, $refspec = null, $options = [])       Update remote refs along with associated objects
- * @method bool rebase($upstream = null, $branch = null, $options = [])        Forward-port local commits to the updated upstream head
- * @method Model\Remote[] remote()                                             Returns an array of existing remotes
- * @method bool reset($commit = null, $paths = [])                             Resets the index entries for all <paths> to their state at <commit>
- * @method array revParse($args, $options = [])                                Pick out and massage parameters
- * @method bool rm($file, $options = [])                                       Remove files from the working tree and from the index
- * @method array shortlog($commits = [])                                       Summarize 'git log' output
- * @method string show($object, $options = [])                                 Shows one or more objects (blobs, trees, tags and commits)
- * @method bool stash()                                                        Save your local modifications to a new stash, and run git reset --hard to revert them
- * @method array status($options = [])                                         Show the working tree status
- * @method array tag()                                                         Returns an array of tags
- * @method array tree($branch = 'master', $path = '')                          List the contents of a tree object
+ * @method merge($commit, $message = null, $options = [])                 Incorporates changes from the named commits into the current branch
+ * @method mv($source, $destination, $options = [])                       Move or rename a file, a directory, or a symlink
+ * @method pull($repository = null, $refspec = null, $options = [])       Fetch from and merge with another repository or a local branch
+ * @method push($repository = null, $refspec = null, $options = [])       Update remote refs along with associated objects
+ * @method rebase($upstream = null, $branch = null, $options = [])        Forward-port local commits to the updated upstream head
+ * @method Model\Remote[] remote()                                        Returns an array of existing remotes
+ * @method reset($commit = null, $paths = [])                             Resets the index entries for all <paths> to their state at <commit>
+ * @method array revParse($args, $options = [])                           Pick out and massage parameters
+ * @method rm($file, $options = [])                                       Remove files from the working tree and from the index
+ * @method array shortlog($commits = [])                                  Summarize 'git log' output
+ * @method string show($object, $options = [])                            Shows one or more objects (blobs, trees, tags and commits)
+ * @method stash()                                                        Save your local modifications to a new stash, and run git reset --hard to revert them
+ * @method array status($options = [])                                    Show the working tree status
+ * @method array tag()                                                    Returns an array of tags
+ * @method array tree($branch = 'master', $path = '')                     List the contents of a tree object
  */
 class Git
 {

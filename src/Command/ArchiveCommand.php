@@ -33,8 +33,6 @@ class ArchiveCommand extends Command
      * @param array                     $options [optional] An array of options {@see ArchiveCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function __invoke($file, $tree = null, $path = null, array $options = [])
     {
@@ -65,8 +63,6 @@ class ArchiveCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

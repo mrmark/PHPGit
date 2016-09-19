@@ -28,8 +28,6 @@ class MvCommand extends Command
      * @param string|array|\Iterator $source      The files to move
      * @param string                 $destination The destination
      * @param array                  $options     [optional] An array of options {@see MvCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function __invoke($source, $destination, array $options = [])
     {
@@ -50,8 +48,6 @@ class MvCommand extends Command
         $builder->add($destination);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

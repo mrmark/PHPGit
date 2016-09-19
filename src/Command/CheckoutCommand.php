@@ -31,8 +31,6 @@ class CheckoutCommand extends Command
      * @param array  $options [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function __invoke($branch, array $options = [])
     {
@@ -44,8 +42,6 @@ class CheckoutCommand extends Command
 
         $builder->add($branch);
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -67,8 +63,6 @@ class CheckoutCommand extends Command
      * @param array  $options    [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function create($branch, $startPoint = null, array $options = [])
     {
@@ -86,8 +80,6 @@ class CheckoutCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -108,8 +100,6 @@ class CheckoutCommand extends Command
      * @param array  $options    [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function orphan($branch, $startPoint = null, array $options = [])
     {
@@ -126,8 +116,6 @@ class CheckoutCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

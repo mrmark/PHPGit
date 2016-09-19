@@ -68,8 +68,6 @@ class ConfigCommand extends Command
      * @param array  $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function set($name, $value, array $options = [])
     {
@@ -82,8 +80,6 @@ class ConfigCommand extends Command
         $builder->add($name)->add($value);
         $process = $builder->getProcess();
         $this->git->run($process);
-
-        return true;
     }
 
     /**
@@ -99,8 +95,6 @@ class ConfigCommand extends Command
      * @param array  $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function add($name, $value, array $options = [])
     {
@@ -113,8 +107,6 @@ class ConfigCommand extends Command
         $builder->add('--add')->add($name)->add($value);
         $process = $builder->getProcess();
         $this->git->run($process);
-
-        return true;
     }
 
     /**

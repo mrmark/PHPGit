@@ -25,8 +25,6 @@ class AmCommand extends Command
      *
      * @param string|array|\Traversable $file    Mailbox files or directories or more likely, a formatted patch file
      * @param array                     $options [optional] An array of options
-     *
-     * @return bool
      */
     public function __invoke($file, array $options = [])
     {
@@ -45,8 +43,6 @@ class AmCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

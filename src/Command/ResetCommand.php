@@ -23,8 +23,6 @@ class ResetCommand extends Command
      *
      * @param string|array|\Traversable $paths  The paths to reset
      * @param string                    $commit The commit
-     *
-     * @return bool
      */
     public function __invoke($paths, $commit = null)
     {
@@ -48,8 +46,6 @@ class ResetCommand extends Command
         } catch (GitException $e) {
             // Confirm exit code
         }
-
-        return true;
     }
 
     /**
@@ -66,12 +62,10 @@ class ResetCommand extends Command
      * ```
      *
      * @param string $commit The commit
-     *
-     * @return bool
      */
     public function soft($commit = null)
     {
-        return $this->mode('soft', $commit);
+        $this->mode('soft', $commit);
     }
 
     /**
@@ -87,12 +81,10 @@ class ResetCommand extends Command
      * ```
      *
      * @param string $commit The commit
-     *
-     * @return bool
      */
     public function mixed($commit = null)
     {
-        return $this->mode('mixed', $commit);
+        $this->mode('mixed', $commit);
     }
 
     /**
@@ -107,12 +99,10 @@ class ResetCommand extends Command
      * ```
      *
      * @param string $commit The commit
-     *
-     * @return bool
      */
     public function hard($commit = null)
     {
-        return $this->mode('hard', $commit);
+        $this->mode('hard', $commit);
     }
 
     /**
@@ -130,12 +120,10 @@ class ResetCommand extends Command
      * ```
      *
      * @param string $commit The commit
-     *
-     * @return bool
      */
     public function merge($commit = null)
     {
-        return $this->mode('merge', $commit);
+        $this->mode('merge', $commit);
     }
 
     /**
@@ -151,12 +139,10 @@ class ResetCommand extends Command
      * ```
      *
      * @param string $commit The commit
-     *
-     * @return bool
      */
     public function keep($commit = null)
     {
-        return $this->mode('keep', $commit);
+        $this->mode('keep', $commit);
     }
 
     /**
@@ -174,8 +160,6 @@ class ResetCommand extends Command
      * @param string $commit The commit
      *
      * @throws \InvalidArgumentException
-     *
-     * @return bool
      */
     public function mode($mode, $commit = null)
     {
@@ -192,7 +176,5 @@ class ResetCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 }

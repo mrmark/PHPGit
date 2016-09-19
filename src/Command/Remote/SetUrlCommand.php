@@ -30,12 +30,10 @@ class SetUrlCommand extends Command
      * @param string $newUrl  The new URL
      * @param string $oldUrl  [optional] The old URL
      * @param array  $options [optional] An array of options {@see SetUrlCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function __invoke($name, $newUrl, $oldUrl = null, array $options = [])
     {
-        return $this->set($name, $newUrl, $oldUrl, $options);
+        $this->set($name, $newUrl, $oldUrl, $options);
     }
 
     /**
@@ -56,8 +54,6 @@ class SetUrlCommand extends Command
      * @param string $newUrl  The new URL
      * @param string $oldUrl  [optional] The old URL
      * @param array  $options [optional] An array of options {@see SetUrlCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function set($name, $newUrl, $oldUrl = null, array $options = [])
     {
@@ -77,8 +73,6 @@ class SetUrlCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -98,8 +92,6 @@ class SetUrlCommand extends Command
      * @param string $name    The name of remote
      * @param string $newUrl  The new URL
      * @param array  $options [optional] An array of options {@see SetUrlCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function add($name, $newUrl, array $options = [])
     {
@@ -116,8 +108,6 @@ class SetUrlCommand extends Command
             ->add($newUrl);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -137,8 +127,6 @@ class SetUrlCommand extends Command
      * @param string $name    The remote name
      * @param string $url     The URL to delete
      * @param array  $options [optional] An array of options {@see SetUrlCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function delete($name, $url, array $options = [])
     {
@@ -155,8 +143,6 @@ class SetUrlCommand extends Command
             ->add($url);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

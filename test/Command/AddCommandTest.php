@@ -22,8 +22,8 @@ class AddCommandTest extends BaseTestCase
         $filesystem->dumpFile($this->directory.'/test.txt', 'foo');
         $filesystem->dumpFile($this->directory.'/test.md', '**foo**');
 
-        $this->assertTrue($git->add('test.txt'));
-        $this->assertTrue($git->add(['test.md'], ['force' => true]));
+        $git->add('test.txt');
+        $git->add(['test.md'], ['force' => true]);
     }
 
     /**

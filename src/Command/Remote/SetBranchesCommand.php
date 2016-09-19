@@ -23,12 +23,10 @@ class SetBranchesCommand extends Command
      *
      * @param string $name     The remote name
      * @param array  $branches The names of the tracked branch
-     *
-     * @return bool
      */
     public function __invoke($name, array $branches)
     {
-        return $this->set($name, $branches);
+        $this->set($name, $branches);
     }
 
     /**
@@ -43,8 +41,6 @@ class SetBranchesCommand extends Command
      *
      * @param string $name     The remote name
      * @param array  $branches The names of the tracked branch
-     *
-     * @return bool
      */
     public function set($name, array $branches)
     {
@@ -58,8 +54,6 @@ class SetBranchesCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -74,8 +68,6 @@ class SetBranchesCommand extends Command
      *
      * @param string $name     The remote name
      * @param array  $branches The names of the tracked branch
-     *
-     * @return bool
      */
     public function add($name, array $branches)
     {
@@ -90,7 +82,5 @@ class SetBranchesCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 }

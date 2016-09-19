@@ -24,8 +24,6 @@ class PushCommand extends Command
      * @param string $repository The "remote" repository that is destination of a push operation
      * @param string $refspec    Specify what destination ref to update with what source object
      * @param array  $options    [optional] An array of options {@see PushCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function __invoke($repository = null, $refspec = null, array $options = [])
     {
@@ -44,8 +42,6 @@ class PushCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

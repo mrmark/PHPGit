@@ -25,8 +25,6 @@ class PullCommand extends Command
      * @param string $refspec    The format of a <refspec> parameter is an optional plus +,
      *                           followed by the source ref <src>, followed by a colon :, followed by the destination ref <dst>
      * @param array  $options    [optional] An array of options {@see PullCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function __invoke($repository = null, $refspec = null, array $options = [])
     {
@@ -43,8 +41,6 @@ class PullCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

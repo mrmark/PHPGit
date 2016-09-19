@@ -19,8 +19,6 @@ class StashCommand extends Command
      * $git->setRepository('/path/to/repo');
      * $git->stash();
      * ```
-     *
-     * @return bool
      */
     public function __invoke()
     {
@@ -28,8 +26,6 @@ class StashCommand extends Command
             ->add('stash');
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -43,8 +39,6 @@ class StashCommand extends Command
      *
      * @param string $message [optional] The description along with the stashed state
      * @param array  $options [optional] An array of options {@see StashCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function save($message = null, array $options = [])
     {
@@ -56,8 +50,6 @@ class StashCommand extends Command
         $builder->add($message);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -174,8 +166,6 @@ class StashCommand extends Command
      *
      * @param string $stash   The stash to pop
      * @param array  $options [optional] An array of options {@see StashCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function pop($stash = null, array $options = [])
     {
@@ -191,8 +181,6 @@ class StashCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -206,8 +194,6 @@ class StashCommand extends Command
      *
      * @param string $stash   The stash to apply
      * @param array  $options [optional] An array of options {@see StashCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function apply($stash = null, array $options = [])
     {
@@ -223,8 +209,6 @@ class StashCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -238,8 +222,6 @@ class StashCommand extends Command
      *
      * @param string $name  The name of the branch
      * @param string $stash The stash
-     *
-     * @return bool
      */
     public function branch($name, $stash = null)
     {
@@ -253,8 +235,6 @@ class StashCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -265,8 +245,6 @@ class StashCommand extends Command
      * $git->setRepository('/path/to/repo');
      * $git->stash->clear();
      * ```
-     *
-     * @return bool
      */
     public function clear()
     {
@@ -275,8 +253,6 @@ class StashCommand extends Command
             ->add('clear');
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

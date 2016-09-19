@@ -35,8 +35,6 @@ class FetchCommand extends Command
      * @param array  $options    [optional] An array of options {@see FetchCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function __invoke($repository, $refspec = null, array $options = [])
     {
@@ -52,8 +50,6 @@ class FetchCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -76,8 +72,6 @@ class FetchCommand extends Command
      * @param array $options [optional] An array of options {@see FetchCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function all(array $options = [])
     {
@@ -89,8 +83,6 @@ class FetchCommand extends Command
         $this->addFlags($builder, $options);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

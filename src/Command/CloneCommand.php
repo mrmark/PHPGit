@@ -31,8 +31,6 @@ class CloneCommand extends Command
      * @param array  $options    [optional] An array of options {@see CloneCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function __invoke($repository, $path = null, array $options = [])
     {
@@ -50,8 +48,6 @@ class CloneCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

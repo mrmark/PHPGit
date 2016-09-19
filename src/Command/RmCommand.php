@@ -29,8 +29,6 @@ class RmCommand extends Command
      *
      * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
      * @param array                     $options [optional] An array of options {@see RmCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function __invoke($file, array $options = [])
     {
@@ -53,8 +51,6 @@ class RmCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -67,14 +63,12 @@ class RmCommand extends Command
      *
      * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
      * @param array                     $options [optional] An array of options {@see RmCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function cached($file, array $options = [])
     {
         $options['cached'] = true;
 
-        return $this->__invoke($file, $options);
+        $this->__invoke($file, $options);
     }
 
     /**

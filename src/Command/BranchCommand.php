@@ -114,8 +114,6 @@ class BranchCommand extends Command
      * @param array  $options    [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function create($branch, $startPoint = null, array $options = [])
     {
@@ -133,8 +131,6 @@ class BranchCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -155,8 +151,6 @@ class BranchCommand extends Command
      * @param array  $options   [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function move($branch, $newBranch, array $options = [])
     {
@@ -171,8 +165,6 @@ class BranchCommand extends Command
 
         $builder->add($branch)->add($newBranch);
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -194,8 +186,6 @@ class BranchCommand extends Command
      * @param array  $options [optional] An array of options {@see BranchCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function delete($branch, array $options = [])
     {
@@ -210,8 +200,6 @@ class BranchCommand extends Command
 
         $builder->add($branch);
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

@@ -33,8 +33,6 @@ class AddCommand extends Command
      * @param array                     $options [optional] An array of options {@see AddCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function __invoke($file, array $options = [])
     {
@@ -53,8 +51,6 @@ class AddCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

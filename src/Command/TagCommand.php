@@ -64,8 +64,6 @@ class TagCommand extends Command
      * @param array  $options [optional] An array of options {@see TagCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function create($tag, $commit = null, array $options = [])
     {
@@ -84,8 +82,6 @@ class TagCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -94,8 +90,6 @@ class TagCommand extends Command
      * @param string|array|\Traversable $tag The name of the tag to create
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function delete($tag)
     {
@@ -112,8 +106,6 @@ class TagCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -122,8 +114,6 @@ class TagCommand extends Command
      * @param string|array|\Traversable $tag The name of the tag to create
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function verify($tag)
     {
@@ -140,8 +130,6 @@ class TagCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

@@ -31,8 +31,6 @@ class RebaseCommand extends Command
      * @param string $upstream [optional] Upstream branch to compare against
      * @param string $branch   [optional] Working branch; defaults to HEAD
      * @param array  $options  [optional] An array of options {@see RebaseCommand::setDefaultOptions}
-     *
-     * @return bool
      */
     public function __invoke($upstream = null, $branch = null, array $options = [])
     {
@@ -53,14 +51,10 @@ class RebaseCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
      * Restart the rebasing process after having resolved a merge conflict.
-     *
-     * @return bool
      */
     public function continues()
     {
@@ -69,14 +63,10 @@ class RebaseCommand extends Command
             ->add('--continue');
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
      * Abort the rebase operation and reset HEAD to the original branch.
-     *
-     * @return bool
      */
     public function abort()
     {
@@ -85,14 +75,10 @@ class RebaseCommand extends Command
             ->add('--abort');
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
      * Restart the rebasing process by skipping the current patch.
-     *
-     * @return bool
      */
     public function skip()
     {
@@ -101,8 +87,6 @@ class RebaseCommand extends Command
             ->add('--skip');
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

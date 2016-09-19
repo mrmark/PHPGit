@@ -31,8 +31,6 @@ class InitCommand extends Command
      * @param array  $options [optional] An array of options {@see InitCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function __invoke($path, array $options = [])
     {
@@ -44,8 +42,6 @@ class InitCommand extends Command
 
         $process = $builder->add($path)->getProcess();
         $this->git->run($process);
-
-        return true;
     }
 
     /**

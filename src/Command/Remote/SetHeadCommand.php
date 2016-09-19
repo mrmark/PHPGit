@@ -23,12 +23,10 @@ class SetHeadCommand extends Command
      *
      * @param string $name   The remote name
      * @param string $branch [optional] The symbolic-ref to set
-     *
-     * @return bool
      */
     public function __invoke($name, $branch = null)
     {
-        return $this->set($name, $branch);
+        $this->set($name, $branch);
     }
 
     /**
@@ -43,8 +41,6 @@ class SetHeadCommand extends Command
      *
      * @param string $name   The remote name
      * @param string $branch [optional] The symbolic-ref to set
-     *
-     * @return bool
      */
     public function set($name, $branch)
     {
@@ -58,8 +54,6 @@ class SetHeadCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -73,8 +67,6 @@ class SetHeadCommand extends Command
      * ```
      *
      * @param string $name The remote name
-     *
-     * @return bool
      */
     public function delete($name)
     {
@@ -85,8 +77,6 @@ class SetHeadCommand extends Command
             ->add('-d');
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -100,8 +90,6 @@ class SetHeadCommand extends Command
      * ```
      *
      * @param string $name The remote name
-     *
-     * @return bool
      */
     public function remote($name)
     {
@@ -112,7 +100,5 @@ class SetHeadCommand extends Command
             ->add('-a');
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 }

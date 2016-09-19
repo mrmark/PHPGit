@@ -38,8 +38,6 @@ class CommitCommand extends Command
      * @param array  $options [optional] An array of options {@see CloneCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function __invoke($message, array $options = [])
     {
@@ -52,8 +50,6 @@ class CommitCommand extends Command
         $this->addValues($builder, $options, ['reuse-message', 'squash', 'author', 'date', 'cleanup']);
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**

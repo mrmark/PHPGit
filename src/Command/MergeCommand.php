@@ -37,8 +37,6 @@ class MergeCommand extends Command
      * @param array                     $options [optional] An array of options {@see MergeCommand::setDefaultOptions}
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function __invoke($commit, $message = null, array $options = [])
     {
@@ -60,8 +58,6 @@ class MergeCommand extends Command
         }
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
@@ -78,8 +74,6 @@ class MergeCommand extends Command
      * ```
      *
      * @throws GitException
-     *
-     * @return bool
      */
     public function abort()
     {
@@ -88,8 +82,6 @@ class MergeCommand extends Command
             ->add('--abort');
 
         $this->git->run($builder->getProcess());
-
-        return true;
     }
 
     /**
