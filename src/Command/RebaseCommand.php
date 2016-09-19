@@ -13,24 +13,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class RebaseCommand extends Command
 {
     /**
-     * Forward-port local commits to the updated upstream head.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->fetch('origin');
-     * $git->rebase('origin/master');
-     * ```
-     *
-     * ##### Options
-     *
-     * - **onto**          (_string_)  Starting point at which to create the new commits
-     * - **no-verify**     (_boolean_) Bypasses the pre-rebase hook
-     * - **force-rebase**  (_boolean_) Force the rebase even if the current branch is a descendant of the commit you are rebasing onto
+     * @see \PHPGit\Git::rebase()
      *
      * @param string $upstream [optional] Upstream branch to compare against
      * @param string $branch   [optional] Working branch; defaults to HEAD
-     * @param array  $options  [optional] An array of options {@see RebaseCommand::setDefaultOptions}
+     * @param array  $options  [optional] An array of options
      */
     public function __invoke($upstream = null, $branch = null, array $options = [])
     {
@@ -89,13 +76,6 @@ class RebaseCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **onto**          (_string_)  Starting point at which to create the new commits
-     * - **no-verify**     (_boolean_) Bypasses the pre-rebase hook
-     * - **force-rebase**  (_boolean_) Force the rebase even if the current branch is a descendant of the commit you are rebasing onto
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

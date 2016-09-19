@@ -29,7 +29,7 @@ class SetUrlCommand extends Command
      * @param string $name    The name of remote
      * @param string $newUrl  The new URL
      * @param string $oldUrl  [optional] The old URL
-     * @param array  $options [optional] An array of options {@see SetUrlCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function __invoke($name, $newUrl, $oldUrl = null, array $options = [])
     {
@@ -53,7 +53,7 @@ class SetUrlCommand extends Command
      * @param string $name    The name of remote
      * @param string $newUrl  The new URL
      * @param string $oldUrl  [optional] The old URL
-     * @param array  $options [optional] An array of options {@see SetUrlCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function set($name, $newUrl, $oldUrl = null, array $options = [])
     {
@@ -91,7 +91,7 @@ class SetUrlCommand extends Command
      *
      * @param string $name    The name of remote
      * @param string $newUrl  The new URL
-     * @param array  $options [optional] An array of options {@see SetUrlCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function add($name, $newUrl, array $options = [])
     {
@@ -126,7 +126,7 @@ class SetUrlCommand extends Command
      *
      * @param string $name    The remote name
      * @param string $url     The URL to delete
-     * @param array  $options [optional] An array of options {@see SetUrlCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function delete($name, $url, array $options = [])
     {

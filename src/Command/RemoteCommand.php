@@ -60,26 +60,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Returns an array of existing remotes.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->clone('https://github.com/kzykhys/Text.git', '/path/to/repo');
-     * $git->setRepository('/path/to/repo');
-     * $remotes = $git->remote();
-     * ```
-     *
-     * ##### Output Example
-     *
-     * ``` php
-     * [
-     *     'origin' => new Remote[
-     *         'name'  => 'origin',
-     *         'fetch' => 'https://github.com/kzykhys/Text.git',
-     *         'push'  => 'https://github.com/kzykhys/Text.git'
-     *     ]
-     * ]
-     * ```
+     * @see \PHPGit\Git::remote()
      *
      * @return Remote[]
      */
@@ -137,7 +118,7 @@ class RemoteCommand extends Command
      *
      * @param string $name    The name of the remote
      * @param string $url     The url of the remote
-     * @param array  $options [optional] An array of options {@see RemoteCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function add($name, $url, array $options = [])
     {
@@ -262,12 +243,6 @@ class RemoteCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **tags**    (_boolean_) With this option, `git fetch <name>` imports every tag from the remote repository
-     * - **no-tags** (_boolean_) With this option, `git fetch <name>` does not import tags from the remote repository
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

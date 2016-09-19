@@ -13,22 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class RmCommand extends Command
 {
     /**
-     * Remove files from the working tree and from the index.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->rm('CHANGELOG-1.0-1.1.txt', ['force' => true]);
-     * ```
-     *
-     * ##### Options
-     *
-     * - **force**     (_boolean_) Override the up-to-date check
-     * - **cached**    (_boolean_) Unstage and remove paths only from the index
-     * - **recursive** (_boolean_) Allow recursive removal when a leading directory name is given
+     * @see \PHPGit\Git::rm()
      *
      * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
-     * @param array                     $options [optional] An array of options {@see RmCommand::setDefaultOptions}
+     * @param array                     $options [optional] An array of options
      */
     public function __invoke($file, array $options = [])
     {
@@ -62,7 +50,7 @@ class RmCommand extends Command
      * - **recursive** (_boolean_) Allow recursive removal when a leading directory name is given
      *
      * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
-     * @param array                     $options [optional] An array of options {@see RmCommand::setDefaultOptions}
+     * @param array                     $options [optional] An array of options
      */
     public function cached($file, array $options = [])
     {
@@ -71,13 +59,6 @@ class RmCommand extends Command
         $this->__invoke($file, $options);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **force**     (_boolean_) Override the up-to-date check
-     * - **cached**    (_boolean_) Unstage and remove paths only from the index
-     * - **recursive** (_boolean_) Allow recursive removal when a leading directory name is given
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

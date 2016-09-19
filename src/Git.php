@@ -3,6 +3,9 @@
 namespace PHPGit;
 
 use PHPGit\Exception\GitException;
+use PHPGit\Model\Branch;
+use PHPGit\Model\Log;
+use PHPGit\Model\Remote;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
 
@@ -64,35 +67,7 @@ use Symfony\Component\Process\ProcessBuilder;
  * @author  Kazuyuki Hayashi <hayashi@valnur.net>
  * @license MIT
  *
- * @method add($file, $options = [])                                      Add file contents to the index
- * @method am($file, $options = [])                                       Apply a series of patches from a mailbox
- * @method archive($file, $tree = null, $path = null, $options = [])      Create an archive of files from a named tree
- * @method Model\Branch[] branch($options = [])                           List both remote-tracking branches and local branches
- * @method checkout($branch, $options = [])                               Checkout a branch or paths to the working tree
- * @method cherryPick($commit, $options = [])                             Cherry-pick a commit to HEAD
- * @method clone($repository, $path = null, $options = [])                Clone a repository into a new directory
- * @method commit($message = '', $options = [])                           Record changes to the repository
- * @method array config($options = [])                                    List all variables set in config file
- * @method string describe($committish = null, $options = [])             Returns the most recent tag that is reachable from a commit
- * @method string diff($commit = null, $path = null, $options = [])       Show changes between commits, commit and working tree, etc
- * @method fetch($repository, $refspec = null, $options = [])             Fetches named heads or tags from one or more other repositories
- * @method init($path, $options = [])                                     Create an empty git repository or reinitialize an existing one
- * @method Model\Log[] log($revRange = '', $path = null, array $options = [])  Returns the commit logs
- * @method merge($commit, $message = null, $options = [])                 Incorporates changes from the named commits into the current branch
- * @method mv($source, $destination, $options = [])                       Move or rename a file, a directory, or a symlink
- * @method pull($repository = null, $refspec = null, $options = [])       Fetch from and merge with another repository or a local branch
- * @method push($repository = null, $refspec = null, $options = [])       Update remote refs along with associated objects
- * @method rebase($upstream = null, $branch = null, $options = [])        Forward-port local commits to the updated upstream head
- * @method Model\Remote[] remote()                                        Returns an array of existing remotes
- * @method reset($commit = null, $paths = [])                             Resets the index entries for all <paths> to their state at <commit>
- * @method array revParse($args, $options = [])                           Pick out and massage parameters
- * @method rm($file, $options = [])                                       Remove files from the working tree and from the index
- * @method array shortlog($commits = [])                                  Summarize 'git log' output
- * @method string show($object, $options = [])                            Shows one or more objects (blobs, trees, tags and commits)
- * @method stash()                                                        Save your local modifications to a new stash, and run git reset --hard to revert them
- * @method array status($options = [])                                    Show the working tree status
- * @method array tag()                                                    Returns an array of tags
- * @method array tree($branch = 'master', $path = '')                     List the contents of a tree object
+ * @method clone(string $repository, string $path = null, array $options = []) Clone a repository into a new directory
  */
 class Git
 {
@@ -367,5 +342,716 @@ class Git
         }
 
         return $process->getOutput();
+    }
+
+    /**
+     * Add file contents to the index.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->add('file.txt');
+     * $git->add('file.txt', ['force' => false, 'ignore-errors' => false);
+     * ```
+     *
+     * ##### Options
+     *
+     * - **force**          (_boolean_) Allow adding otherwise ignored files
+     * - **ignore-errors**  (_boolean_) Do not abort the operation
+     * - **all**            (_boolean_) This adds, modifies, and removes index entries to match the working tree
+     *
+     * @param string|array|\Traversable $file    Files to add content from
+     * @param array                     $options [optional] An array of options
+     */
+    public function add($file, array $options = [])
+    {
+        $this->add->__invoke($file, $options);
+    }
+
+    /**
+     * Apply a series of patches from a mailbox (AKA patches).
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->am('file.patch');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **directory** (_string_) Prepend this to all file names
+     *
+     * @param string|array|\Traversable $file    Mailbox files or directories or more likely, a formatted patch file
+     * @param array                     $options [optional] An array of options
+     */
+    public function am($file, array $options = [])
+    {
+        $this->am->__invoke($file, $options);
+    }
+
+    /**
+     * Create an archive of files from a named tree.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->archive('repo.zip', 'master', null, ['format' => 'zip']);
+     * ```
+     *
+     * ##### Options
+     *
+     * - **format** (_boolean_) Format of the resulting archive: tar or zip
+     * - **prefix** (_boolean_) Prepend prefix/ to each filename in the archive
+     *
+     * @param string                    $file    The filename
+     * @param string                    $tree    [optional] The tree or commit to produce an archive for
+     * @param string|array|\Traversable $path    [optional] If one or more paths are specified, only these are included
+     * @param array                     $options [optional] An array of options
+     */
+    public function archive($file, $tree = null, $path = null, array $options = [])
+    {
+        $this->archive->__invoke($file, $tree, $path, $options);
+    }
+
+    /**
+     * Returns an array of both remote-tracking branches and local branches.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $branches = $git->branch();
+     * ```
+     *
+     * ##### Output Example
+     *
+     * ```
+     * [
+     *     'master' => new Branch['current' => true, 'name' => 'master', 'hash' => 'bf231bb', 'title' => 'Initial Commit'],
+     *     'origin/master' => new Branch['current' => false, 'name' => 'origin/master', 'alias' => 'remotes/origin/master']
+     * ]
+     * ```
+     *
+     * ##### Options
+     *
+     * - **all**     (_boolean_)        List both remote-tracking branches and local branches
+     * - **remotes** (_boolean_)        List the remote-tracking branches
+     * - **merged**  (_boolean|string_) Only list branches whose tips are reachable from the specified commit (HEAD if not specified)
+     *
+     * @param array $options [optional] An array of options
+     *
+     * @return Branch[]
+     */
+    public function branch(array $options = [])
+    {
+        return $this->branch->__invoke($options);
+    }
+
+    /**
+     * Switches branches by updating the index, working tree, and HEAD to reflect the specified branch or commit.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->checkout('develop');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **force** (_boolean_) Proceed even if the index or the working tree differs from HEAD
+     * - **merge** (_boolean_) Merges local modification
+     *
+     * @param string $branch  Branch to checkout
+     * @param array  $options [optional] An array of options
+     */
+    public function checkout($branch, array $options = [])
+    {
+        $this->checkout->__invoke($branch, $options);
+    }
+
+    /**
+     * Given existing commit, apply the change it introduces, recording a new commit.
+     * This requires your working tree to be clean (no modifications from the HEAD commit).
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->cherryPick('abc123');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **x** (_boolean_) When recording the commit, append a line that says "(cherry picked from commit ...)" to the original commit message
+     *
+     * @param string $commit  The commit to pick
+     * @param array  $options [optional] An array of options
+     */
+    public function cherryPick($commit, array $options = [])
+    {
+        $this->cherryPick->__invoke($commit, $options);
+    }
+
+    /**
+     * Record changes to the repository.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->clone('https://github.com/kzykhys/PHPGit.git', '/path/to/repo');
+     * $git->setRepository('/path/to/repo');
+     * $git->add('README.md');
+     * $git->commit('Fixes README.md');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **all**           (_boolean_) Stage files that have been modified and deleted
+     * - **reuse-message** (_string_)  Take an existing commit object, and reuse the log message and the authorship information (including the timestamp) when creating the commit
+     * - **squash**        (_string_)  Construct a commit message for use with rebase --autosquash
+     * - **author**        (_string_)  Override the commit author
+     * - **date**          (_string_)  Override the author date used in the commit
+     * - **cleanup**       (_string_)  Can be one of verbatim, whitespace, strip, and default
+     * - **amend**         (_boolean_) Used to amend the tip of the current branch
+     *
+     * @param string $message Use the given <$msg> as the commit message
+     * @param array  $options [optional] An array of options
+     */
+    public function commit($message, array $options = [])
+    {
+        $this->commit->__invoke($message, $options);
+    }
+
+    /**
+     * Returns all variables set in config file.
+     *
+     * ##### Options
+     *
+     * - **global** (_boolean_) Read or write configuration options for the current user
+     * - **system** (_boolean_) Read or write configuration options for all users on the current machine
+     *
+     * @param array $options [optional] An array of options
+     *
+     * @return array
+     */
+    public function config(array $options = [])
+    {
+        return $this->config->__invoke($options);
+    }
+
+    /**
+     * Returns the most recent tag that is reachable from a commit.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->tag->create('v1.0.0');
+     * $git->commit('Fixes #14');
+     * echo $git->describe('HEAD', ['tags' => true]);
+     * ```
+     *
+     * ##### Output Example
+     *
+     * ```
+     * v1.0.0-1-g7049efc
+     * ```
+     *
+     * ##### Options
+     *
+     * - **all**    (_boolean_) Enables matching any known branch, remote-tracking branch, or lightweight tag
+     * - **tags**   (_boolean_) Enables matching a lightweight (non-annotated) tag
+     * - **always** (_boolean_) Show uniquely abbreviated commit object as fallback
+     *
+     * @param string $committish [optional] Committish object names to describe
+     * @param array  $options    [optional] An array of options
+     *
+     * @return string
+     */
+    public function describe($committish = null, array $options = [])
+    {
+        return $this->describe->__invoke($committish, $options);
+    }
+
+    /**
+     * Show changes between commits, commit and working tree, etc.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $output = $git->diff('A..B');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **stat**      (_boolean_) Generate a diff stat
+     * - **shortstat** (_boolean_) Output only the last line of the --stat format containing total number of modified files, as well as number of added and deleted lines
+     * - **cached**    (_boolean_) Work on files staged in the index
+     *
+     * @param string $commit  Commit or commit range to diff, EG: 'A..B' or 'A' or 'A B", etc
+     * @param string $path    Restrict diff to file path
+     * @param array  $options [optional] An array of options
+     *
+     * @return string
+     */
+    public function diff($commit = null, $path = null, array $options = [])
+    {
+        return $this->diff->__invoke($commit, $path, $options);
+    }
+
+    /**
+     * Fetches named heads or tags from one or more other repositories, along with the objects necessary to complete them.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->remote->add('origin', 'git://your/repo.git');
+     * $git->fetch('origin');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **append** (_boolean_) Append ref names and object names of fetched refs to the existing contents of .git/FETCH_HEAD
+     * - **keep**   (_boolean_) Keep downloaded pack
+     * - **prune**  (_boolean_) After fetching, remove any remote-tracking branches which no longer exist on the remote
+     *
+     * @param string $repository The "remote" repository that is the source of a fetch or pull operation
+     * @param string $refspec    The format of a <refspec> parameter is an optional plus +, followed by the source ref <src>,
+     *                           followed by a colon :, followed by the destination ref <dst>
+     * @param array  $options    [optional] An array of options
+     */
+    public function fetch($repository, $refspec = null, array $options = [])
+    {
+        $this->fetch->__invoke($repository, $refspec, $options);
+    }
+
+    /**
+     * Create an empty git repository or reinitialize an existing one.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->init('/path/to/repo1');
+     * $git->init('/path/to/repo2', array('shared' => true, 'bare' => true));
+     * ```
+     *
+     * ##### Options
+     *
+     * - **shared** (_boolean_) Specify that the git repository is to be shared amongst several users
+     * - **bare**   (_boolean_) Create a bare repository
+     *
+     * @param string $path    The directory to create an empty repository
+     * @param array  $options [optional] An array of options
+     */
+    public function init($path, array $options = [])
+    {
+        $this->init->__invoke($path, $options);
+    }
+
+    /**
+     * Returns the commit logs.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $logs = $git->log(array('limit' => 10));
+     * ```
+     *
+     * ##### Output Example
+     *
+     * ``` php
+     * [
+     *     0 => new Log[
+     *         'hash'  => '1a821f3f8483747fd045eb1f5a31c3cc3063b02b',
+     *         'name'  => 'John Doe',
+     *         'email' => 'john@example.com',
+     *         'date'  => 'Fri Jan 17 16:32:49 2014 +0900',
+     *         'title' => 'Initial Commit'
+     *     ],
+     *     1 => new Log(),
+     * ]
+     * ```
+     *
+     * ##### Options
+     *
+     * - **limit**            (_integer_) Limits the number of commits to show
+     * - **skip**             (_integer_) Skip number commits before starting to show the commit output
+     * - **grep**             (_string_) Limit the commits output to ones with log message that matches the specified pattern (regular expression)
+     * - **extended-regexp**  (_bool_)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
+     * - **no-merges**        (_bool_)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
+     * - **reverse**          (_bool_)    Reverse the order of the commits
+     *
+     * @param string $revRange [optional] Show only commits in the specified revision range
+     * @param string $path     [optional] Show only commits that are enough to explain how the files that match the specified paths came to be
+     * @param array  $options  [optional] An array of options
+     *
+     * @return Log[]
+     */
+    public function log($revRange = '', $path = null, array $options = [])
+    {
+        return $this->log->__invoke($revRange, $path, $options);
+    }
+
+    /**
+     * Incorporates changes from the named commits into the current branch.
+     *
+     * ```php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->merge('1.0');
+     * $git->merge('1.1', 'Merge message', ['strategy' => 'ours']);
+     * ```
+     *
+     * ##### Options
+     *
+     * - **no-ff**               (_boolean_) Create a merge commit even when the merge resolves as a fast-forward
+     * - **ff-only**             (_boolean_) Refuse to merge and exit with a non-zero status unless the current HEAD is already up-to-date or the merge can be resolved as a fast-forward
+     * - **rerere-autoupdate**   (_boolean_) Allow the rerere mechanism to update the index with the result of auto-conflict resolution if possible
+     * - **squash**              (_boolean_) Allows you to create a single commit on top of the current branch whose effect is the same as merging another branch
+     * - **strategy**            (_string_)  Use the given merge strategy
+     * - **strategy-option**     (_string_)  Pass merge strategy specific option through to the merge strategy
+     *
+     * @param string|array|\Traversable $commit  Commits to merge into our branch
+     * @param string                    $message [optional] Commit message to be used for the merge commit
+     * @param array                     $options [optional] An array of options
+     */
+    public function merge($commit, $message = null, array $options = [])
+    {
+        $this->merge->__invoke($commit, $message, $options);
+    }
+
+    /**
+     * Move or rename a file, a directory, or a symlink.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->mv('UPGRADE-1.0.md', 'UPGRADE-1.1.md');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **force** (_boolean_) Force renaming or moving of a file even if the target exists
+     *
+     * @param string|array|\Iterator $source      The files to move
+     * @param string                 $destination The destination
+     * @param array                  $options     [optional] An array of options
+     */
+    public function mv($source, $destination, array $options = [])
+    {
+        $this->mv->__invoke($source, $destination, $options);
+    }
+
+    /**
+     * Fetch from and merge with another repository or a local branch.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->pull('origin', 'master');
+     * ```
+     *
+     * @param string $repository The "remote" repository that is the source of a fetch or pull operation
+     * @param string $refspec    The format of a <refspec> parameter is an optional plus +,
+     *                           followed by the source ref <src>, followed by a colon :, followed by the destination ref <dst>
+     */
+    public function pull($repository = null, $refspec = null)
+    {
+        $this->pull->__invoke($repository, $refspec);
+    }
+
+    /**
+     * Update remote refs along with associated objects.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->push('origin', 'master');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **all**    (_boolean_) Push all branches
+     * - **mirror** (_boolean_) All refs under refs/ be mirrored to the remote repository
+     * - **tags**   (_boolean_)
+     * - **force**  (_boolean_)
+     *
+     * @param string $repository The "remote" repository that is destination of a push operation
+     * @param string $refspec    Specify what destination ref to update with what source object
+     * @param array  $options    [optional] An array of options
+     */
+    public function push($repository = null, $refspec = null, array $options = [])
+    {
+        $this->push->__invoke($repository, $refspec, $options);
+    }
+
+    /**
+     * Forward-port local commits to the updated upstream head.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->fetch('origin');
+     * $git->rebase('origin/master');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **onto**          (_string_)  Starting point at which to create the new commits
+     * - **no-verify**     (_boolean_) Bypasses the pre-rebase hook
+     * - **force-rebase**  (_boolean_) Force the rebase even if the current branch is a descendant of the commit you are rebasing onto
+     *
+     * @param string $upstream [optional] Upstream branch to compare against
+     * @param string $branch   [optional] Working branch; defaults to HEAD
+     * @param array  $options  [optional] An array of options
+     */
+    public function rebase($upstream = null, $branch = null, array $options = [])
+    {
+        $this->rebase->__invoke($upstream, $branch, $options);
+    }
+
+    /**
+     * Returns an array of existing remotes.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->clone('https://github.com/kzykhys/Text.git', '/path/to/repo');
+     * $git->setRepository('/path/to/repo');
+     * $remotes = $git->remote();
+     * ```
+     *
+     * ##### Output Example
+     *
+     * ``` php
+     * [
+     *     'origin' => new Remote[
+     *         'name'  => 'origin',
+     *         'fetch' => 'https://github.com/kzykhys/Text.git',
+     *         'push'  => 'https://github.com/kzykhys/Text.git'
+     *     ]
+     * ]
+     * ```
+     *
+     * @return Remote[]
+     */
+    public function remote()
+    {
+        return $this->remote->__invoke();
+    }
+
+    /**
+     * Resets the index entries for all **$paths** to their state at **$commit**.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->reset();
+     * ```
+     *
+     * @param string|array|\Traversable $paths  The paths to reset
+     * @param string                    $commit The commit
+     */
+    public function reset($paths, $commit = null)
+    {
+        $this->reset->__invoke($paths, $commit);
+    }
+
+    /**
+     * Pick out and massage parameters.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->revParse();
+     * ```
+     *
+     * ##### Options
+     *
+     * - **abbrev-ref** (_string_)   A non-ambiguous short name of the objects name (AKA branch name)
+     * - **short**      (_int|bool_) Instead of outputting the full SHA-1 values of object names try to abbreviate
+     *                               them to a shorter unique name. When true, 7 or shorter is used. The minimum length is 4.
+     *
+     * @param string|array|\Traversable $args    Flags and parameters to be parsed
+     * @param array                     $options [optional] An array of options
+     *
+     * @return array
+     */
+    public function revParse($args, array $options = [])
+    {
+        return $this->revParse->__invoke($args, $options);
+    }
+
+    /**
+     * Remove files from the working tree and from the index.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->rm('CHANGELOG-1.0-1.1.txt', ['force' => true]);
+     * ```
+     *
+     * ##### Options
+     *
+     * - **force**     (_boolean_) Override the up-to-date check
+     * - **cached**    (_boolean_) Unstage and remove paths only from the index
+     * - **recursive** (_boolean_) Allow recursive removal when a leading directory name is given
+     *
+     * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
+     * @param array                     $options [optional] An array of options
+     */
+    public function rm($file, array $options = [])
+    {
+        $this->rm->__invoke($file, $options);
+    }
+
+    /**
+     * Summarize 'git log' output.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $shortlog = $git->shortlog();
+     * ```
+     *
+     * ##### Output Example
+     *
+     * ``` php
+     * [
+     *     'John Doe <john@example.com>' => [
+     *         0 => ['commit' => '589de67', 'date' => new \DateTime('2014-02-10 12:56:15 +0300'), 'subject' => 'Update README'],
+     *         1 => ['commit' => '589de67', 'date' => new \DateTime('2014-02-15 12:56:15 +0300'), 'subject' => 'Update README'],
+     *     ],
+     *     //...
+     * ]
+     * ```
+     *
+     * @param string|array|\Traversable $commits [optional] Defaults to HEAD
+     *
+     * @return array
+     */
+    public function shortlog($commits = 'HEAD')
+    {
+        return $this->shortlog->__invoke($commits);
+    }
+
+    /**
+     * Shows one or more objects (blobs, trees, tags and commits).
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * echo $git->show('3ddee587e209661c8265d5bfd0df999836f6dfa2');
+     * ```
+     *
+     * ##### Options
+     *
+     * - **format**        (_string_)  Pretty-print the contents of the commit logs in a given format, where <format> can be one of oneline, short, medium, full, fuller, email, raw and format:<string>
+     * - **abbrev-commit** (_boolean_) Instead of showing the full 40-byte hexadecimal commit object name, show only a partial prefix
+     *
+     * @param string $object  The names of objects to show
+     * @param array  $options [optional] An array of options
+     *
+     * @return string
+     */
+    public function show($object, array $options = [])
+    {
+        return $this->show->__invoke($object, $options);
+    }
+
+    /**
+     * Save your local modifications to a new stash, and run git reset --hard to revert them.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $git->stash();
+     * ```
+     */
+    public function stash()
+    {
+        $this->stash->__invoke();
+    }
+
+    /**
+     * Returns the working tree status.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->setRepository('/path/to/repo');
+     * $status = $git->status();
+     * ```
+     *
+     * ##### Output Example
+     *
+     * ``` php
+     * [
+     *     'branch' => 'master',
+     *     'changes' => [
+     *         ['file' => 'item1.txt', 'index' => 'A', 'work_tree' => 'M'],
+     *         ['file' => 'item2.txt', 'index' => 'A', 'work_tree' => ' '],
+     *         ['file' => 'item3.txt', 'index' => '?', 'work_tree' => '?'],
+     *     ]
+     * ]
+     * ```
+     *
+     * ##### Options
+     *
+     * - **ignored** (_boolean_) Show ignored files as well
+     *
+     * @param array $options [optional] An array of options
+     *
+     * @return array
+     */
+    public function status(array $options = [])
+    {
+        return $this->status->__invoke($options);
+    }
+
+    /**
+     * Returns an array of tags.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->clone('https://github.com/kzykhys/PHPGit.git', '/path/to/repo');
+     * $git->setRepository('/path/to/repo');
+     * $tags = $git->tag();
+     * ```
+     *
+     * ##### Output Example
+     *
+     * ```
+     * ['v1.0.0', 'v1.0.1', 'v1.0.2']
+     * ```
+     *
+     * @return array
+     */
+    public function tag()
+    {
+        return $this->tag->__invoke();
+    }
+
+    /**
+     * Returns the contents of a tree object.
+     *
+     * ``` php
+     * $git = new PHPGit\Git();
+     * $git->clone('https://github.com/kzykhys/PHPGit.git', '/path/to/repo');
+     * $git->setRepository('/path/to/repo');
+     * $tree = $git->tree('master');
+     * ```
+     *
+     * ##### Output Example
+     *
+     * ``` php
+     * [
+     *     ['mode' => '100644', 'type' => 'blob', 'hash' => '1f100ce9855b66111d34b9807e47a73a9e7359f3', 'file' => '.gitignore', 'sort' => '2:.gitignore'],
+     *     ['mode' => '100644', 'type' => 'blob', 'hash' => 'e0bfe494537037451b09c32636c8c2c9795c05c0', 'file' => '.travis.yml', 'sort' => '2:.travis.yml'],
+     *     ['mode' => '040000', 'type' => 'tree', 'hash' => '8d5438e79f77cd72de80c49a413f4edde1f3e291', 'file' => 'bin', 'sort' => '1:.bin'],
+     * ]
+     * ```
+     *
+     * @param string $branch The commit
+     * @param string $path   The path
+     *
+     * @return array
+     */
+    public function tree($branch = 'master', $path = '')
+    {
+        return $this->tree->__invoke($branch, $path);
     }
 }

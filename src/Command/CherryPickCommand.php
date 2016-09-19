@@ -8,21 +8,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CherryPickCommand extends Command
 {
     /**
-     * Given existing commit, apply the change it introduces, recording a new commit.
-     * This requires your working tree to be clean (no modifications from the HEAD commit).
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->cherryPick('abc123');
-     * ```
-     *
-     * ##### Options
-     *
-     * - **x** (_boolean_) When recording the commit, append a line that says "(cherry picked from commit ...)" to the original commit message
+     * @see \PHPGit\Git::cherryPick()
      *
      * @param string $commit  The commit to pick
-     * @param array  $options [optional] An array of options {@see CherryPickCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function __invoke($commit, array $options = [])
     {
@@ -38,11 +27,6 @@ class CherryPickCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **x** (_boolean_) When recording the commit, append a line that says "(cherry picked from commit ...)" to the original commit message
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

@@ -13,21 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class InitCommand extends Command
 {
     /**
-     * Create an empty git repository or reinitialize an existing one.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->init('/path/to/repo1');
-     * $git->init('/path/to/repo2', array('shared' => true, 'bare' => true));
-     * ```
-     *
-     * ##### Options
-     *
-     * - **shared** (_boolean_) Specify that the git repository is to be shared amongst several users
-     * - **bare**   (_boolean_) Create a bare repository
+     * @see \PHPGit\Git::init()
      *
      * @param string $path    The directory to create an empty repository
-     * @param array  $options [optional] An array of options {@see InitCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function __invoke($path, array $options = [])
     {
@@ -41,12 +30,6 @@ class InitCommand extends Command
         $this->git->run($process);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **shared** (_boolean_) Specify that the git repository is to be shared amongst several users
-     * - **bare**   (_boolean_) Create a bare repository
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

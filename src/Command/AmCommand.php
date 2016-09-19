@@ -11,17 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class AmCommand extends Command
 {
     /**
-     * Apply a series of patches from a mailbox (AKA patches).
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->am('file.patch');
-     * ```
-     *
-     * ##### Options
-     *
-     * - **directory** (_string_) Prepend this to all file names
+     * @see \PHPGit\Git::am()
      *
      * @param string|array|\Traversable $file    Mailbox files or directories or more likely, a formatted patch file
      * @param array                     $options [optional] An array of options
@@ -45,9 +35,6 @@ class AmCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

@@ -13,21 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ShowCommand extends Command
 {
     /**
-     * Shows one or more objects (blobs, trees, tags and commits).
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * echo $git->show('3ddee587e209661c8265d5bfd0df999836f6dfa2');
-     * ```
-     *
-     * ##### Options
-     *
-     * - **format**        (_string_)  Pretty-print the contents of the commit logs in a given format, where <format> can be one of oneline, short, medium, full, fuller, email, raw and format:<string>
-     * - **abbrev-commit** (_boolean_) Instead of showing the full 40-byte hexadecimal commit object name, show only a partial prefix
+     * @see \PHPGit\Git::show()
      *
      * @param string $object  The names of objects to show
-     * @param array  $options [optional] An array of options {@see ShowCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      *
      * @return string
      */
@@ -48,12 +37,6 @@ class ShowCommand extends Command
         return $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **format**        (_string_)  Pretty-print the contents of the commit logs in a given format, where <format> can be one of oneline, short, medium, full, fuller, email, raw and format:<string>
-     * - **abbrev-commit** (_boolean_) Instead of showing the full 40-byte hexadecimal commit object name, show only a partial prefix
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

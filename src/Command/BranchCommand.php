@@ -14,30 +14,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class BranchCommand extends Command
 {
     /**
-     * Returns an array of both remote-tracking branches and local branches.
+     * @see \PHPGit\Git::branch()
      *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $branches = $git->branch();
-     * ```
-     *
-     * ##### Output Example
-     *
-     * ```
-     * [
-     *     'master' => new Branch['current' => true, 'name' => 'master', 'hash' => 'bf231bb', 'title' => 'Initial Commit'],
-     *     'origin/master' => new Branch['current' => false, 'name' => 'origin/master', 'alias' => 'remotes/origin/master']
-     * ]
-     * ```
-     *
-     * ##### Options
-     *
-     * - **all**     (_boolean_)        List both remote-tracking branches and local branches
-     * - **remotes** (_boolean_)        List the remote-tracking branches
-     * - **merged**  (_boolean|string_) Only list branches whose tips are reachable from the specified commit (HEAD if not specified)
-     *
-     * @param array $options [optional] An array of options {@see BranchCommand::setDefaultOptions}
+     * @param array $options [optional] An array of options
      *
      * @return Branch[]
      */
@@ -108,7 +87,7 @@ class BranchCommand extends Command
      * @param string $startPoint [optional] The new branch head will point to this commit.
      *                           It may be given as a branch name, a commit-id, or a tag.
      *                           If this option is omitted, the current HEAD will be used instead
-     * @param array  $options    [optional] An array of options {@see BranchCommand::setDefaultOptions}
+     * @param array  $options    [optional] An array of options
      */
     public function create($branch, $startPoint = null, array $options = [])
     {
@@ -143,7 +122,7 @@ class BranchCommand extends Command
      *
      * @param string $branch    The name of an existing branch to rename
      * @param string $newBranch The new name for an existing branch
-     * @param array  $options   [optional] An array of options {@see BranchCommand::setDefaultOptions}
+     * @param array  $options   [optional] An array of options
      */
     public function move($branch, $newBranch, array $options = [])
     {
@@ -176,7 +155,7 @@ class BranchCommand extends Command
      * - **force**   (_boolean_) Delete a branch irrespective of its merged status
      *
      * @param string $branch  The name of the branch to delete
-     * @param array  $options [optional] An array of options {@see BranchCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function delete($branch, array $options = [])
     {
@@ -193,14 +172,6 @@ class BranchCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **force**   (_boolean_) Reset <branchname> to <startpoint> if <branchname> exists already
-     * - **all**     (_boolean_) List both remote-tracking branches and local branches
-     * - **remotes** (_boolean_) List or delete (if used with delete()) the remote-tracking branches
-     * - **merged**  (_boolean|string_) Only list branches whose tips are reachable from the specified commit (HEAD if not specified)
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

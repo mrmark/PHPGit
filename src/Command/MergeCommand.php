@@ -13,27 +13,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class MergeCommand extends Command
 {
     /**
-     * Incorporates changes from the named commits into the current branch.
-     *
-     * ```php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->merge('1.0');
-     * $git->merge('1.1', 'Merge message', ['strategy' => 'ours']);
-     * ```
-     *
-     * ##### Options
-     *
-     * - **no-ff**               (_boolean_) Create a merge commit even when the merge resolves as a fast-forward
-     * - **ff-only**             (_boolean_) Refuse to merge and exit with a non-zero status unless the current HEAD is already up-to-date or the merge can be resolved as a fast-forward
-     * - **rerere-autoupdate**   (_boolean_) Allow the rerere mechanism to update the index with the result of auto-conflict resolution if possible
-     * - **squash**              (_boolean_) Allows you to create a single commit on top of the current branch whose effect is the same as merging another branch
-     * - **strategy**            (_string_)  Use the given merge strategy
-     * - **strategy-option**     (_string_)  Pass merge strategy specific option through to the merge strategy
+     * @see \PHPGit\Git::merge()
      *
      * @param string|array|\Traversable $commit  Commits to merge into our branch
      * @param string                    $message [optional] Commit message to be used for the merge commit
-     * @param array                     $options [optional] An array of options {@see MergeCommand::setDefaultOptions}
+     * @param array                     $options [optional] An array of options
      */
     public function __invoke($commit, $message = null, array $options = [])
     {
@@ -79,16 +63,6 @@ class MergeCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **no-ff**               (_boolean_) Create a merge commit even when the merge resolves as a fast-forward
-     * - **ff-only**             (_boolean_) Refuse to merge and exit with a non-zero status unless the current HEAD is already up-to-date or the merge can be resolved as a fast-forward
-     * - **rerere-autoupdate**   (_boolean_) Allow the rerere mechanism to update the index with the result of auto-conflict resolution if possible
-     * - **squash**              (_boolean_) Allows you to create a single commit on top of the current branch whose effect is the same as merging another branch
-     * - **strategy**            (_string_)  Use the given merge strategy
-     * - **strategy-option**     (_string_)  Pass merge strategy specific option through to the merge strategy
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

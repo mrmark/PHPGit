@@ -14,43 +14,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class LogCommand extends Command
 {
     /**
-     * Returns the commit logs.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $logs = $git->log(array('limit' => 10));
-     * ```
-     *
-     * ##### Output Example
-     *
-     * ``` php
-     * [
-     *     0 => [
-     *         'hash'  => '1a821f3f8483747fd045eb1f5a31c3cc3063b02b',
-     *         'name'  => 'John Doe',
-     *         'email' => 'john@example.com',
-     *         'date'  => 'Fri Jan 17 16:32:49 2014 +0900',
-     *         'title' => 'Initial Commit'
-     *     ],
-     *     1 => [
-     *         //...
-     *     ]
-     * ]
-     * ```
-     *
-     * ##### Options
-     *
-     * - **limit**            (_integer_) Limits the number of commits to show
-     * - **skip**             (_integer_) Skip number commits before starting to show the commit output
-     * - **grep**             (_integer_) Limit the commits output to ones with log message that matches the specified pattern (regular expression)
-     * - **extended-regexp**  (_bool_)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
-     * - **no-merges**        (_bool_)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
-     * - **reverse**          (_bool_)    Reverse the order of the commits
+     * @see \PHPGit\Git::log()
      *
      * @param string $revRange [optional] Show only commits in the specified revision range
      * @param string $path     [optional] Show only commits that are enough to explain how the files that match the specified paths came to be
-     * @param array  $options  [optional] An array of options {@see LogCommand::setDefaultOptions}
+     * @param array  $options  [optional] An array of options
      *
      * @return Log[]
      */
@@ -91,12 +59,6 @@ class LogCommand extends Command
         return $commits;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **limit** (_integer_) Limits the number of commits to show
-     * - **skip**  (_integer_) Skip number commits before starting to show the commit output
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

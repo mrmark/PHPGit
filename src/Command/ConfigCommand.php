@@ -13,15 +13,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ConfigCommand extends Command
 {
     /**
-     * Returns all variables set in config file.
+     * @see \PHPGit\Git::config()
      *
-     *
-     * ##### Options
-     *
-     * - **global** (_boolean_) Read or write configuration options for the current user
-     * - **system** (_boolean_) Read or write configuration options for all users on the current machine
-     *
-     * @param array $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
+     * @param array $options [optional] An array of options
      *
      * @return array
      */
@@ -62,7 +56,7 @@ class ConfigCommand extends Command
      *
      * @param string $name    The name of the option
      * @param string $value   The value to set
-     * @param array  $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function set($name, $value, array $options = [])
     {
@@ -87,7 +81,7 @@ class ConfigCommand extends Command
      *
      * @param string $name    The name of the option
      * @param string $value   The value to add
-     * @param array  $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function add($name, $value, array $options = [])
     {
@@ -102,12 +96,6 @@ class ConfigCommand extends Command
         $this->git->run($process);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **global** (_boolean_) Read or write configuration options for the current user
-     * - **system** (_boolean_) Read or write configuration options for all users on the current machine
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

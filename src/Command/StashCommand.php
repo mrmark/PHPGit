@@ -12,13 +12,7 @@ use PHPGit\Command;
 class StashCommand extends Command
 {
     /**
-     * Save your local modifications to a new stash, and run git reset --hard to revert them.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->stash();
-     * ```
+     * @see \PHPGit\Git::stash()
      */
     public function __invoke()
     {
@@ -38,7 +32,7 @@ class StashCommand extends Command
      * ```
      *
      * @param string $message [optional] The description along with the stashed state
-     * @param array  $options [optional] An array of options {@see StashCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function save($message = null, array $options = [])
     {
@@ -70,7 +64,7 @@ class StashCommand extends Command
      * ]
      * ```
      *
-     * @param array $options [optional] An array of options {@see StashCommand::setDefaultOptions}
+     * @param array $options [optional] An array of options
      *
      * @return array
      */
@@ -165,7 +159,7 @@ class StashCommand extends Command
      * ```
      *
      * @param string $stash   The stash to pop
-     * @param array  $options [optional] An array of options {@see StashCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function pop($stash = null, array $options = [])
     {
@@ -193,7 +187,7 @@ class StashCommand extends Command
      * ```
      *
      * @param string $stash   The stash to apply
-     * @param array  $options [optional] An array of options {@see StashCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function apply($stash = null, array $options = [])
     {

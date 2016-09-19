@@ -12,19 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class RevParseCommand extends Command
 {
     /**
-     * Pick out and massage parameters.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->revParse();
-     * ```
-     *
-     * ##### Options
-     *
-     * - **abbrev-ref** (_string_)   A non-ambiguous short name of the objects name (AKA branch name)
-     * - **short**      (_int|bool_) Instead of outputting the full SHA-1 values of object names try to abbreviate
-     *                               them to a shorter unique name. When true, 7 or shorter is used. The minimum length is 4.
+     * @see \PHPGit\Git::revParse()
      *
      * @param string|array|\Traversable $args    Flags and parameters to be parsed
      * @param array                     $options [optional] An array of options
@@ -104,9 +92,6 @@ class RevParseCommand extends Command
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

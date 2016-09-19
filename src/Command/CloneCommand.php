@@ -27,7 +27,7 @@ class CloneCommand extends Command
      *
      * @param string $repository The repository to clone from
      * @param string $path       [optional] The name of a new directory to clone into
-     * @param array  $options    [optional] An array of options {@see CloneCommand::setDefaultOptions}
+     * @param array  $options    [optional] An array of options
      */
     public function __invoke($repository, $path = null, array $options = [])
     {
@@ -47,12 +47,6 @@ class CloneCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **shared** (_boolean_) Starts out without any object of its own
-     * - **bare**   (_boolean_) Make a bare GIT repository
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

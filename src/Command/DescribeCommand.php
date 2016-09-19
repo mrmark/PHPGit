@@ -13,30 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class DescribeCommand extends Command
 {
     /**
-     * Returns the most recent tag that is reachable from a commit.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->tag->create('v1.0.0');
-     * $git->commit('Fixes #14');
-     * echo $git->describe('HEAD', ['tags' => true]);
-     * ```
-     *
-     * ##### Output Example
-     *
-     * ```
-     * v1.0.0-1-g7049efc
-     * ```
-     *
-     * ##### Options
-     *
-     * - **all**    (_boolean_) Enables matching any known branch, remote-tracking branch, or lightweight tag
-     * - **tags**   (_boolean_) Enables matching a lightweight (non-annotated) tag
-     * - **always** (_boolean_) Show uniquely abbreviated commit object as fallback
+     * @see \PHPGit\Git::describe()
      *
      * @param string $committish [optional] Committish object names to describe
-     * @param array  $options    [optional] An array of options {@see DescribeCommand::setDefaultOptions}
+     * @param array  $options    [optional] An array of options
      *
      * @return string
      */
@@ -59,7 +39,7 @@ class DescribeCommand extends Command
      * Equivalent to $git->describe($committish, ['tags' => true]);.
      *
      * @param string $committish [optional] Committish object names to describe
-     * @param array  $options    [optional] An array of options {@see DescribeCommand::setDefaultOptions}
+     * @param array  $options    [optional] An array of options
      *
      * @return string
      */
@@ -70,13 +50,6 @@ class DescribeCommand extends Command
         return $this->__invoke($committish, $options);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **all**    (_boolean_) Enables matching any known branch, remote-tracking branch, or lightweight tag
-     * - **tags**   (_boolean_) Enables matching a lightweight (non-annotated) tag
-     * - **always** (_boolean_) Show uniquely abbreviated commit object as fallback
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

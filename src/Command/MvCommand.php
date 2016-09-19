@@ -13,21 +13,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class MvCommand extends Command
 {
     /**
-     * Move or rename a file, a directory, or a symlink.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->mv('UPGRADE-1.0.md', 'UPGRADE-1.1.md');
-     * ```
-     *
-     * ##### Options
-     *
-     * - **force** (_boolean_) Force renaming or moving of a file even if the target exists
+     * @see \PHPGit\Git::mv()
      *
      * @param string|array|\Iterator $source      The files to move
      * @param string                 $destination The destination
-     * @param array                  $options     [optional] An array of options {@see MvCommand::setDefaultOptions}
+     * @param array                  $options     [optional] An array of options
      */
     public function __invoke($source, $destination, array $options = [])
     {
@@ -50,11 +40,6 @@ class MvCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **force** (_boolean_) Force renaming or moving of a file even if the target exists
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

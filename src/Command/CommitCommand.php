@@ -13,28 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CommitCommand extends Command
 {
     /**
-     * Record changes to the repository.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->clone('https://github.com/kzykhys/PHPGit.git', '/path/to/repo');
-     * $git->setRepository('/path/to/repo');
-     * $git->add('README.md');
-     * $git->commit('Fixes README.md');
-     * ```
-     *
-     * ##### Options
-     *
-     * - **all**           (_boolean_) Stage files that have been modified and deleted
-     * - **reuse-message** (_string_)  Take an existing commit object, and reuse the log message and the authorship information (including the timestamp) when creating the commit
-     * - **squash**        (_string_)  Construct a commit message for use with rebase --autosquash
-     * - **author**        (_string_)  Override the commit author
-     * - **date**          (_string_)  Override the author date used in the commit
-     * - **cleanup**       (_string_)  Can be one of verbatim, whitespace, strip, and default
-     * - **amend**         (_boolean_) Used to amend the tip of the current branch
+     * @see \PHPGit\Git::commit()
      *
      * @param string $message Use the given <$msg> as the commit message
-     * @param array  $options [optional] An array of options {@see CloneCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function __invoke($message, array $options = [])
     {
@@ -49,17 +31,6 @@ class CommitCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **all**           (_boolean_) Stage files that have been modified and deleted
-     * - **reuse-message** (_string_)  Take an existing commit object, and reuse the log message and the authorship information (including the timestamp) when creating the commit
-     * - **squash**        (_string_)  Construct a commit message for use with rebase --autosquash
-     * - **author**        (_string_)  Override the commit author
-     * - **date**          (_string_)  Override the author date used in the commit
-     * - **cleanup**       (_string_)  Can be one of verbatim, whitespace, strip, and default
-     * - **amend**         (_boolean_) Used to amend the tip of the current branch
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

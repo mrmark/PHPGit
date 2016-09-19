@@ -12,25 +12,7 @@ use PHPGit\Command;
 class ShortlogCommand extends Command
 {
     /**
-     * Summarize 'git log' output.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $shortlog = $git->shortlog();
-     * ```
-     *
-     * ##### Output Example
-     *
-     * ``` php
-     * [
-     *     'John Doe <john@example.com>' => [
-     *         0 => ['commit' => '589de67', 'date' => new \DateTime('2014-02-10 12:56:15 +0300'), 'subject' => 'Update README'],
-     *         1 => ['commit' => '589de67', 'date' => new \DateTime('2014-02-15 12:56:15 +0300'), 'subject' => 'Update README'],
-     *     ],
-     *     //...
-     * ]
-     * ```
+     * @see \PHPGit\Git::shortlog()
      *
      * @param string|array|\Traversable $commits [optional] Defaults to HEAD
      *

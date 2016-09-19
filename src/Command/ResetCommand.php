@@ -13,13 +13,7 @@ use PHPGit\Exception\GitException;
 class ResetCommand extends Command
 {
     /**
-     * Resets the index entries for all **$paths** to their state at **$commit**.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->reset();
-     * ```
+     * @see \PHPGit\Git::reset()
      *
      * @param string|array|\Traversable $paths  The paths to reset
      * @param string                    $commit The commit

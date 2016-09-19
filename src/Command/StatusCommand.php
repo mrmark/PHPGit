@@ -55,44 +55,9 @@ class StatusCommand extends Command
     const IGNORED              = '!';
 
     /**
-     * Returns the working tree status.
+     * @see \PHPGit\Git::status()
      *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $status = $git->status();
-     * ```
-     *
-     * ##### Constants
-     *
-     * - StatusCommand::UNMODIFIED            [=' '] unmodified
-     * - StatusCommand::MODIFIED              [='M'] modified
-     * - StatusCommand::ADDED                 [='A'] added
-     * - StatusCommand::DELETED               [='D'] deleted
-     * - StatusCommand::RENAMED               [='R'] renamed
-     * - StatusCommand::COPIED                [='C'] copied
-     * - StatusCommand::UPDATED_BUT_UNMERGED  [='U'] updated but unmerged
-     * - StatusCommand::UNTRACKED             [='?'] untracked
-     * - StatusCommand::IGNORED               [='!'] ignored
-     *
-     * ##### Output Example
-     *
-     * ``` php
-     * [
-     *     'branch' => 'master',
-     *     'changes' => [
-     *         ['file' => 'item1.txt', 'index' => 'A', 'work_tree' => 'M'],
-     *         ['file' => 'item2.txt', 'index' => 'A', 'work_tree' => ' '],
-     *         ['file' => 'item3.txt', 'index' => '?', 'work_tree' => '?'],
-     *     ]
-     * ]
-     * ```
-     *
-     * ##### Options
-     *
-     * - **ignored** (_boolean_) Show ignored files as well
-     *
-     * @param array $options [optional] An array of options {@see StatusCommand::setDefaultOptions}
+     * @param array $options [optional] An array of options
      *
      * @return array
      */
@@ -131,11 +96,6 @@ class StatusCommand extends Command
         return $result;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **ignored** (_boolean_) Show ignored files as well
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

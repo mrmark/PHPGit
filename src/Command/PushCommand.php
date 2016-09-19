@@ -13,17 +13,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class PushCommand extends Command
 {
     /**
-     * Update remote refs along with associated objects.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->push('origin', 'master');
-     * ```
+     * @see \PHPGit\Git::push()
      *
      * @param string $repository The "remote" repository that is destination of a push operation
      * @param string $refspec    Specify what destination ref to update with what source object
-     * @param array  $options    [optional] An array of options {@see PushCommand::setDefaultOptions}
+     * @param array  $options    [optional] An array of options
      */
     public function __invoke($repository = null, $refspec = null, array $options = [])
     {
@@ -44,9 +38,6 @@ class PushCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

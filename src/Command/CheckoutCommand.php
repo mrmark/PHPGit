@@ -13,21 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CheckoutCommand extends Command
 {
     /**
-     * Switches branches by updating the index, working tree, and HEAD to reflect the specified branch or commit.
-     *
-     * ``` php
-     * $git = new PHPGit\Git();
-     * $git->setRepository('/path/to/repo');
-     * $git->checkout('develop');
-     * ```
-     *
-     * ##### Options
-     *
-     * - **force** (_boolean_) Proceed even if the index or the working tree differs from HEAD
-     * - **merge** (_boolean_) Merges local modification
+     * @see \PHPGit\Git::checkout()
      *
      * @param string $branch  Branch to checkout
-     * @param array  $options [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
+     * @param array  $options [optional] An array of options
      */
     public function __invoke($branch, array $options = [])
     {
@@ -57,7 +46,7 @@ class CheckoutCommand extends Command
      *
      * @param string $branch     Branch to checkout
      * @param string $startPoint The name of a commit at which to start the new branch
-     * @param array  $options    [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
+     * @param array  $options    [optional] An array of options
      */
     public function create($branch, $startPoint = null, array $options = [])
     {
@@ -92,7 +81,7 @@ class CheckoutCommand extends Command
      *
      * @param string $branch     Branch to checkout
      * @param string $startPoint [optional] The name of a commit at which to start the new branch
-     * @param array  $options    [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
+     * @param array  $options    [optional] An array of options
      */
     public function orphan($branch, $startPoint = null, array $options = [])
     {
@@ -111,12 +100,6 @@ class CheckoutCommand extends Command
         $this->git->run($builder->getProcess());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * - **force** (_boolean_) Proceed even if the index or the working tree differs from HEAD
-     * - **merge** (_boolean_) Merges local modification
-     */
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
