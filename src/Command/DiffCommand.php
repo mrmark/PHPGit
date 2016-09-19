@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DiffCommand extends Command
@@ -26,8 +25,6 @@ class DiffCommand extends Command
      * @param string $commit  Commit or commit range to diff, EG: 'A..B' or 'A' or 'A B", etc
      * @param string $path    Restrict diff to file path
      * @param array  $options [optional] An array of options {@see DiffCommand::setDefaultOptions}
-     *
-     * @throws GitException
      *
      * @return string
      */

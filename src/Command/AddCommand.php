@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -31,8 +30,6 @@ class AddCommand extends Command
      *
      * @param string|array|\Traversable $file    Files to add content from
      * @param array                     $options [optional] An array of options {@see AddCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($file, array $options = [])
     {

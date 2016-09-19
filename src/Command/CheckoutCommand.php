@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -29,8 +28,6 @@ class CheckoutCommand extends Command
      *
      * @param string $branch  Branch to checkout
      * @param array  $options [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($branch, array $options = [])
     {
@@ -61,8 +58,6 @@ class CheckoutCommand extends Command
      * @param string $branch     Branch to checkout
      * @param string $startPoint The name of a commit at which to start the new branch
      * @param array  $options    [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function create($branch, $startPoint = null, array $options = [])
     {
@@ -98,8 +93,6 @@ class CheckoutCommand extends Command
      * @param string $branch     Branch to checkout
      * @param string $startPoint [optional] The name of a commit at which to start the new branch
      * @param array  $options    [optional] An array of options {@see CheckoutCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function orphan($branch, $startPoint = null, array $options = [])
     {

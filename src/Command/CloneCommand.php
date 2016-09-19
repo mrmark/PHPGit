@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -29,8 +28,6 @@ class CloneCommand extends Command
      * @param string $repository The repository to clone from
      * @param string $path       [optional] The name of a new directory to clone into
      * @param array  $options    [optional] An array of options {@see CloneCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($repository, $path = null, array $options = [])
     {

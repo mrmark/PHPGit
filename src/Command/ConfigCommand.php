@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -23,8 +22,6 @@ class ConfigCommand extends Command
      * - **system** (_boolean_) Read or write configuration options for all users on the current machine
      *
      * @param array $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
-     *
-     * @throws GitException
      *
      * @return array
      */
@@ -66,8 +63,6 @@ class ConfigCommand extends Command
      * @param string $name    The name of the option
      * @param string $value   The value to set
      * @param array  $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function set($name, $value, array $options = [])
     {
@@ -93,8 +88,6 @@ class ConfigCommand extends Command
      * @param string $name    The name of the option
      * @param string $value   The value to add
      * @param array  $options [optional] An array of options {@see ConfigCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function add($name, $value, array $options = [])
     {

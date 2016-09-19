@@ -158,8 +158,6 @@ class ResetCommand extends Command
      *
      * @param string $mode   --<mode>
      * @param string $commit The commit
-     *
-     * @throws \InvalidArgumentException
      */
     public function mode($mode, $commit = null)
     {

@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 
 /**
  * Provide content or type and size information for repository objects - `git cat-file`.
@@ -22,8 +21,6 @@ class CatCommand extends Command
      * ```
      *
      * @param string $object The name of the blob object to show
-     *
-     * @throws GitException
      *
      * @return string
      */
@@ -49,8 +46,6 @@ class CatCommand extends Command
      *
      * @param string $object The name of the object to show
      *
-     * @throws GitException
-     *
      * @return string
      */
     public function type($object)
@@ -74,8 +69,6 @@ class CatCommand extends Command
      * ```
      *
      * @param string $object The name of the object to show
-     *
-     * @throws GitException
      *
      * @return string
      */

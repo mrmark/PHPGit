@@ -48,8 +48,6 @@ class RemoteCommand extends Command
      * @param string $name      The name of a property
      * @param array  $arguments An array of arguments
      *
-     * @throws \BadMethodCallException
-     *
      * @return mixed
      */
     public function __call($name, $arguments)

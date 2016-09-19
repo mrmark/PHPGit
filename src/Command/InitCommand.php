@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -29,8 +28,6 @@ class InitCommand extends Command
      *
      * @param string $path    The directory to create an empty repository
      * @param array  $options [optional] An array of options {@see InitCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($path, array $options = [])
     {

@@ -241,8 +241,6 @@ class Git
      * @param string $name      The name of a property
      * @param array  $arguments An array of arguments
      *
-     * @throws \BadMethodCallException
-     *
      * @return mixed
      */
     public function __call($name, $arguments)
@@ -353,8 +351,6 @@ class Git
      * Executes a process.
      *
      * @param Process $process The process to run
-     *
-     * @throws GitException
      *
      * @return string
      */

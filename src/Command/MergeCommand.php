@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -35,8 +34,6 @@ class MergeCommand extends Command
      * @param string|array|\Traversable $commit  Commits to merge into our branch
      * @param string                    $message [optional] Commit message to be used for the merge commit
      * @param array                     $options [optional] An array of options {@see MergeCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($commit, $message = null, array $options = [])
     {
@@ -72,8 +69,6 @@ class MergeCommand extends Command
      *     $git->merge->abort();
      * }
      * ```
-     *
-     * @throws GitException
      */
     public function abort()
     {

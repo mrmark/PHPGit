@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use PHPGit\Model\Log;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -52,8 +51,6 @@ class LogCommand extends Command
      * @param string $revRange [optional] Show only commits in the specified revision range
      * @param string $path     [optional] Show only commits that are enough to explain how the files that match the specified paths came to be
      * @param array  $options  [optional] An array of options {@see LogCommand::setDefaultOptions}
-     *
-     * @throws GitException
      *
      * @return Log[]
      */

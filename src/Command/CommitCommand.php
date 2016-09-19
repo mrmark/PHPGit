@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -36,8 +35,6 @@ class CommitCommand extends Command
      *
      * @param string $message Use the given <$msg> as the commit message
      * @param array  $options [optional] An array of options {@see CloneCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($message, array $options = [])
     {

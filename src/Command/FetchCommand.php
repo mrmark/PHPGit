@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -33,8 +32,6 @@ class FetchCommand extends Command
      * @param string $refspec    The format of a <refspec> parameter is an optional plus +, followed by the source ref <src>,
      *                           followed by a colon :, followed by the destination ref <dst>
      * @param array  $options    [optional] An array of options {@see FetchCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($repository, $refspec = null, array $options = [])
     {
@@ -70,8 +67,6 @@ class FetchCommand extends Command
      * - **prune**  (_boolean_) After fetching, remove any remote-tracking branches which no longer exist on the remote
      *
      * @param array $options [optional] An array of options {@see FetchCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function all(array $options = [])
     {

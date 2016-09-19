@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -29,7 +28,6 @@ class TagCommand extends Command
      * ['v1.0.0', 'v1.0.1', 'v1.0.2']
      * ```
      *
-     * @throws GitException
      *
      * @return array
      */
@@ -62,8 +60,6 @@ class TagCommand extends Command
      * @param string $tag     The name of the tag to create
      * @param string $commit  The SHA1 object name of the commit object
      * @param array  $options [optional] An array of options {@see TagCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function create($tag, $commit = null, array $options = [])
     {
@@ -88,8 +84,6 @@ class TagCommand extends Command
      * Delete existing tags with the given names.
      *
      * @param string|array|\Traversable $tag The name of the tag to create
-     *
-     * @throws GitException
      */
     public function delete($tag)
     {
@@ -112,8 +106,6 @@ class TagCommand extends Command
      * Verify the gpg signature of the given tag names.
      *
      * @param string|array|\Traversable $tag The name of the tag to create
-     *
-     * @throws GitException
      */
     public function verify($tag)
     {

@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -31,8 +30,6 @@ class ArchiveCommand extends Command
      * @param string                    $tree    [optional] The tree or commit to produce an archive for
      * @param string|array|\Traversable $path    [optional] If one or more paths are specified, only these are included
      * @param array                     $options [optional] An array of options {@see ArchiveCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($file, $tree = null, $path = null, array $options = [])
     {

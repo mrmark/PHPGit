@@ -3,7 +3,6 @@
 namespace PHPGit\Command;
 
 use PHPGit\Command;
-use PHPGit\Exception\GitException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CherryPickCommand extends Command
@@ -24,8 +23,6 @@ class CherryPickCommand extends Command
      *
      * @param string $commit  The commit to pick
      * @param array  $options [optional] An array of options {@see CherryPickCommand::setDefaultOptions}
-     *
-     * @throws GitException
      */
     public function __invoke($commit, array $options = [])
     {
