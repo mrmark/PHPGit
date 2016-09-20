@@ -42,7 +42,7 @@ class SetHeadCommand extends Command
      * @param string $name   The remote name
      * @param string $branch The symbolic-ref to set
      */
-    public function set($name, $branch)
+    public function set($name, $branch = null)
     {
         $builder = $this->git->getProcessBuilder()
             ->add('remote')
