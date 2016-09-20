@@ -16,7 +16,7 @@ class ShowCommand extends Command
      * @see \PHPGit\Git::show()
      *
      * @param string $object  The names of objects to show
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      *
      * @return string
      */

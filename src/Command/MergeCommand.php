@@ -16,8 +16,8 @@ class MergeCommand extends Command
      * @see \PHPGit\Git::merge()
      *
      * @param string|array|\Traversable $commit  Commits to merge into our branch
-     * @param string                    $message [optional] Commit message to be used for the merge commit
-     * @param array                     $options [optional] An array of options
+     * @param string                    $message Commit message to be used for the merge commit
+     * @param array                     $options An array of options
      */
     public function __invoke($commit, $message = null, array $options = [])
     {

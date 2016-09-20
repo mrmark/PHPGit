@@ -18,7 +18,7 @@ class FetchCommand extends Command
      * @param string $repository The "remote" repository that is the source of a fetch or pull operation
      * @param string $refspec    The format of a <refspec> parameter is an optional plus +, followed by the source ref <src>,
      *                           followed by a colon :, followed by the destination ref <dst>
-     * @param array  $options    [optional] An array of options
+     * @param array  $options    An array of options
      */
     public function __invoke($repository, $refspec = null, array $options = [])
     {
@@ -47,13 +47,12 @@ class FetchCommand extends Command
      * $git->fetch->all();
      * ```
      *
-     * ##### Options
+     * Options:
+     * - append (boolean) Append ref names and object names of fetched refs to the existing contents of .git/FETCH_HEAD
+     * - keep   (boolean) Keep downloaded pack
+     * - prune  (boolean) After fetching, remove any remote-tracking branches which no longer exist on the remote
      *
-     * - **append** (_boolean_) Append ref names and object names of fetched refs to the existing contents of .git/FETCH_HEAD
-     * - **keep**   (_boolean_) Keep downloaded pack
-     * - **prune**  (_boolean_) After fetching, remove any remote-tracking branches which no longer exist on the remote
-     *
-     * @param array $options [optional] An array of options
+     * @param array $options An array of options
      */
     public function all(array $options = [])
     {

@@ -16,7 +16,7 @@ class BranchCommand extends Command
     /**
      * @see \PHPGit\Git::branch()
      *
-     * @param array $options [optional] An array of options
+     * @param array $options An array of options
      *
      * @return Branch[]
      */
@@ -69,7 +69,7 @@ class BranchCommand extends Command
     }
 
     /**
-     * Creates a new branch head named **$branch** which points to the current HEAD, or **$startPoint** if given.
+     * Creates a new branch head named $branch which points to the current HEAD, or $startPoint if given.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -79,15 +79,14 @@ class BranchCommand extends Command
      * $git->branch->create('1.0.x-fix', 'v1.0.2'); // from tag
      * ```
      *
-     * ##### Options
-     *
-     * - **force**   (_boolean_) Reset **$branch**  to **$startPoint** if **$branch** exists already
+     * Options:
+     * - force (boolean) Reset $branch to $startPoint if $branch exists already
      *
      * @param string $branch     The name of the branch to create
-     * @param string $startPoint [optional] The new branch head will point to this commit.
+     * @param string $startPoint The new branch head will point to this commit.
      *                           It may be given as a branch name, a commit-id, or a tag.
      *                           If this option is omitted, the current HEAD will be used instead
-     * @param array  $options    [optional] An array of options
+     * @param array  $options    An array of options
      */
     public function create($branch, $startPoint = null, array $options = [])
     {
@@ -116,13 +115,12 @@ class BranchCommand extends Command
      * $git->branch->move('bugfix', '2.0');
      * ```
      *
-     * ##### Options
-     *
-     * - **force**   (_boolean_) Move/rename a branch even if the new branch name already exists
+     * Options:
+     * - force (boolean) Move/rename a branch even if the new branch name already exists
      *
      * @param string $branch    The name of an existing branch to rename
      * @param string $newBranch The new name for an existing branch
-     * @param array  $options   [optional] An array of options
+     * @param array  $options   An array of options
      */
     public function move($branch, $newBranch, array $options = [])
     {
@@ -150,12 +148,11 @@ class BranchCommand extends Command
      *
      * The branch must be fully merged in its upstream branch, or in HEAD if no upstream was set with --track or --set-upstream.
      *
-     * ##### Options
-     *
-     * - **force**   (_boolean_) Delete a branch irrespective of its merged status
+     * Options:
+     * - force (boolean) Delete a branch irrespective of its merged status
      *
      * @param string $branch  The name of the branch to delete
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function delete($branch, array $options = [])
     {

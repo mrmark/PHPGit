@@ -16,7 +16,7 @@ class CommitCommand extends Command
      * @see \PHPGit\Git::commit()
      *
      * @param string $message Use the given <$msg> as the commit message
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function __invoke($message, array $options = [])
     {

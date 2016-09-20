@@ -15,8 +15,8 @@ class DescribeCommand extends Command
     /**
      * @see \PHPGit\Git::describe()
      *
-     * @param string $committish [optional] Committish object names to describe
-     * @param array  $options    [optional] An array of options
+     * @param string $committish Committish object names to describe
+     * @param array  $options    An array of options
      *
      * @return string
      */
@@ -38,8 +38,8 @@ class DescribeCommand extends Command
     /**
      * Equivalent to $git->describe($committish, ['tags' => true]);.
      *
-     * @param string $committish [optional] Committish object names to describe
-     * @param array  $options    [optional] An array of options
+     * @param string $committish Committish object names to describe
+     * @param array  $options    An array of options
      *
      * @return string
      */

@@ -102,7 +102,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Adds a remote named **$name** for the repository at **$url**.
+     * Adds a remote named $name for the repository at $url.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -111,14 +111,13 @@ class RemoteCommand extends Command
      * $git->fetch('origin');
      * ```
      *
-     * ##### Options
-     *
-     * - **tags**    (_boolean_) With this option, `git fetch <name>` imports every tag from the remote repository
-     * - **no-tags** (_boolean_) With this option, `git fetch <name>` does not import tags from the remote repository
+     * Options:
+     * - tags    (boolean) With this option, `git fetch <name>` imports every tag from the remote repository
+     * - no-tags (boolean) With this option, `git fetch <name>` does not import tags from the remote repository
      *
      * @param string $name    The name of the remote
      * @param string $url     The url of the remote
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function add($name, $url, array $options = [])
     {
@@ -135,7 +134,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Rename the remote named **$name** to **$newName**.
+     * Rename the remote named $name to $newName.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -159,7 +158,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Remove the remote named **$name**.
+     * Remove the remote named $name.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -181,7 +180,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Gives some information about the remote **$name**.
+     * Gives some information about the remote $name.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -190,7 +189,7 @@ class RemoteCommand extends Command
      * echo $git->remote->show('origin');
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ```
      * \* remote origin
@@ -220,7 +219,7 @@ class RemoteCommand extends Command
     }
 
     /**
-     * Deletes all stale remote-tracking branches under **$name**.
+     * Deletes all stale remote-tracking branches under $name.
      *
      * ``` php
      * $git = new PHPGit\Git();

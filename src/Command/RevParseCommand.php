@@ -15,7 +15,7 @@ class RevParseCommand extends Command
      * @see \PHPGit\Git::revParse()
      *
      * @param string|array|\Traversable $args    Flags and parameters to be parsed
-     * @param array                     $options [optional] An array of options
+     * @param array                     $options An array of options
      *
      * @return array
      */
@@ -55,7 +55,7 @@ class RevParseCommand extends Command
      * $branch = $git->revParse->currentBranch();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ```
      * 'master'

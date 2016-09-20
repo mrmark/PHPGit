@@ -57,7 +57,7 @@ class StatusCommand extends Command
     /**
      * @see \PHPGit\Git::status()
      *
-     * @param array $options [optional] An array of options
+     * @param array $options An array of options
      *
      * @return array
      */

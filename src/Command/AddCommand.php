@@ -16,7 +16,7 @@ class AddCommand extends Command
      * @see \PHPGit\Git::add()
      *
      * @param string|array|\Traversable $file    Files to add content from
-     * @param array                     $options [optional] An array of options
+     * @param array                     $options An array of options
      */
     public function __invoke($file, array $options = [])
     {

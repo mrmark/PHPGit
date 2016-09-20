@@ -17,7 +17,7 @@ class MvCommand extends Command
      *
      * @param string|array|\Iterator $source      The files to move
      * @param string                 $destination The destination
-     * @param array                  $options     [optional] An array of options
+     * @param array                  $options     An array of options
      */
     public function __invoke($source, $destination, array $options = [])
     {

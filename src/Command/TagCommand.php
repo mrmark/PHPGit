@@ -36,16 +36,15 @@ class TagCommand extends Command
      * $git->tag->create('v1.0.0');
      * ```
      *
-     * ##### Options
-     *
-     * - **annotate** (_boolean_) Make an unsigned, annotated tag object
-     * - **sign**     (_boolean_) Make a GPG-signed tag, using the default e-mail address’s key
-     * - **force**    (_boolean_) Replace an existing tag with the given name (instead of failing)
-     * - **message**  (_string_)  Tag message
+     * Options:
+     * - annotate (boolean) Make an unsigned, annotated tag object
+     * - sign     (boolean) Make a GPG-signed tag, using the default e-mail address’s key
+     * - force    (boolean) Replace an existing tag with the given name (instead of failing)
+     * - message  (string)  Tag message
      *
      * @param string $tag     The name of the tag to create
      * @param string $commit  The SHA1 object name of the commit object
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function create($tag, $commit = null, array $options = [])
     {

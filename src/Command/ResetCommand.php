@@ -43,9 +43,9 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**.
+     * Resets the current branch head to $commit.
      *
-     * Does not touch the index file nor the working tree at all (but resets the head to **$commit**,
+     * Does not touch the index file nor the working tree at all (but resets the head to $commit,
      * just like all modes do).
      * This leaves all your changed files "Changes to be committed", as git status would put it.
      *
@@ -63,7 +63,7 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**.
+     * Resets the current branch head to $commit.
      *
      * Resets the index but not the working tree (i.e., the changed files are preserved but not marked for commit)
      * and reports what has not been updated. This is the default action.
@@ -82,9 +82,9 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**.
+     * Resets the current branch head to $commit.
      *
-     * Resets the index and working tree. Any changes to tracked files in the working tree since **$commit** are discarded
+     * Resets the index and working tree. Any changes to tracked files in the working tree since $commit are discarded
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -100,11 +100,11 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**.
+     * Resets the current branch head to $commit.
      *
-     * Resets the index and updates the files in the working tree that are different between **$commit** and HEAD,
+     * Resets the index and updates the files in the working tree that are different between $commit and HEAD,
      * but keeps those which are different between the index and working tree
-     * (i.e. which have changes which have not been added). If a file that is different between **$commit** and
+     * (i.e. which have changes which have not been added). If a file that is different between $commit and
      * the index has unstaged changes, reset is aborted
      *
      * ``` php
@@ -121,10 +121,10 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**.
+     * Resets the current branch head to $commit.
      *
-     * Resets index entries and updates files in the working tree that are different between **$commit** and HEAD.
-     * If a file that is different between **$commit** and HEAD has local changes, reset is aborted.
+     * Resets index entries and updates files in the working tree that are different between $commit and HEAD.
+     * If a file that is different between $commit and HEAD has local changes, reset is aborted.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -140,9 +140,9 @@ class ResetCommand extends Command
     }
 
     /**
-     * Resets the current branch head to **$commit**.
+     * Resets the current branch head to $commit.
      *
-     * Possibly updates the index (resetting it to the tree of **$commit**) and the working tree depending on **$mode**
+     * Possibly updates the index (resetting it to the tree of $commit) and the working tree depending on $mode
      *
      * ``` php
      * $git = new PHPGit\Git();

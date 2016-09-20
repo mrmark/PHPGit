@@ -14,7 +14,7 @@ class ShortlogCommand extends Command
     /**
      * @see \PHPGit\Git::shortlog()
      *
-     * @param string|array|\Traversable $commits [optional] Defaults to HEAD
+     * @param string|array|\Traversable $commits Defaults to HEAD
      *
      * @return array
      */
@@ -72,7 +72,7 @@ class ShortlogCommand extends Command
      * $shortlog = $git->shortlog->summary();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ``` php
      * [
@@ -81,7 +81,7 @@ class ShortlogCommand extends Command
      * ]
      * ```
      *
-     * @param string $commits [optional] Defaults to HEAD
+     * @param string $commits Defaults to HEAD
      *
      * @return array
      */

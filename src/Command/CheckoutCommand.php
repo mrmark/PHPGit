@@ -16,7 +16,7 @@ class CheckoutCommand extends Command
      * @see \PHPGit\Git::checkout()
      *
      * @param string $branch  Branch to checkout
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function __invoke($branch, array $options = [])
     {
@@ -40,13 +40,12 @@ class CheckoutCommand extends Command
      * $git->checkout->create('patch-2', 'develop');
      * ```
      *
-     * ##### Options
-     *
-     * - **force** (_boolean_) Proceed even if the index or the working tree differs from HEAD
+     * Options:
+     * - force (boolean) Proceed even if the index or the working tree differs from HEAD
      *
      * @param string $branch     Branch to checkout
      * @param string $startPoint The name of a commit at which to start the new branch
-     * @param array  $options    [optional] An array of options
+     * @param array  $options    An array of options
      */
     public function create($branch, $startPoint = null, array $options = [])
     {
@@ -75,13 +74,12 @@ class CheckoutCommand extends Command
      * $git->checkout->orphan('gh-pages');
      * ```
      *
-     * ##### Options
-     *
-     * - **force** (_boolean_) Proceed even if the index or the working tree differs from HEAD
+     * Options:
+     * - force (boolean) Proceed even if the index or the working tree differs from HEAD
      *
      * @param string $branch     Branch to checkout
-     * @param string $startPoint [optional] The name of a commit at which to start the new branch
-     * @param array  $options    [optional] An array of options
+     * @param string $startPoint The name of a commit at which to start the new branch
+     * @param array  $options    An array of options
      */
     public function orphan($branch, $startPoint = null, array $options = [])
     {

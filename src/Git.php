@@ -10,35 +10,9 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
 
 /**
- * PHPGit - A Git wrapper for PHP5.3+
- * ==================================.
- *
- * [![Latest Unstable Version](https://poser.pugx.org/kzykhys/git/v/unstable.png)](https://packagist.org/packages/kzykhys/git)
- * [![Build Status](https://travis-ci.org/kzykhys/PHPGit.png?branch=master)](https://travis-ci.org/kzykhys/PHPGit)
- * [![Coverage Status](https://coveralls.io/repos/kzykhys/PHPGit/badge.png)](https://coveralls.io/r/kzykhys/PHPGit)
- * [![SensioLabsInsight](https://insight.sensiolabs.com/projects/04f10b57-a113-47ad-8dda-9a6dacbb079f/mini.png)](https://insight.sensiolabs.com/projects/04f10b57-a113-47ad-8dda-9a6dacbb079f)
- *
- * Requirements
- * ------------
- *
- * * PHP5.3
- * * Git
- *
- * Installation
- * ------------
- *
- * Update your composer.json and run `composer update`
- *
- * ``` json
- * {
- *     "require": {
- *         "kzykhys/git": "dev-master"
- *     }
- * }
- * ```
+ * PHPGit - A Git wrapper for PHP5.3+.
  *
  * Basic Usage
- * -----------
  *
  * ``` php
  * <?php
@@ -354,14 +328,13 @@ class Git
      * $git->add('file.txt', ['force' => false, 'ignore-errors' => false);
      * ```
      *
-     * ##### Options
-     *
-     * - **force**          (_boolean_) Allow adding otherwise ignored files
-     * - **ignore-errors**  (_boolean_) Do not abort the operation
-     * - **all**            (_boolean_) This adds, modifies, and removes index entries to match the working tree
+     * Options:
+     * - force          (boolean) Allow adding otherwise ignored files
+     * - ignore-errors  (boolean) Do not abort the operation
+     * - all            (boolean) This adds, modifies, and removes index entries to match the working tree
      *
      * @param string|array|\Traversable $file    Files to add content from
-     * @param array                     $options [optional] An array of options
+     * @param array                     $options An array of options
      */
     public function add($file, array $options = [])
     {
@@ -377,12 +350,11 @@ class Git
      * $git->am('file.patch');
      * ```
      *
-     * ##### Options
-     *
-     * - **directory** (_string_) Prepend this to all file names
+     * Options:
+     * - directory (string) Prepend this to all file names
      *
      * @param string|array|\Traversable $file    Mailbox files or directories or more likely, a formatted patch file
-     * @param array                     $options [optional] An array of options
+     * @param array                     $options An array of options
      */
     public function am($file, array $options = [])
     {
@@ -398,15 +370,14 @@ class Git
      * $git->archive('repo.zip', 'master', null, ['format' => 'zip']);
      * ```
      *
-     * ##### Options
-     *
-     * - **format** (_boolean_) Format of the resulting archive: tar or zip
-     * - **prefix** (_boolean_) Prepend prefix/ to each filename in the archive
+     * Options:
+     * - format (boolean) Format of the resulting archive: tar or zip
+     * - prefix (boolean) Prepend prefix/ to each filename in the archive
      *
      * @param string                    $file    The filename
-     * @param string                    $tree    [optional] The tree or commit to produce an archive for
-     * @param string|array|\Traversable $path    [optional] If one or more paths are specified, only these are included
-     * @param array                     $options [optional] An array of options
+     * @param string                    $tree    The tree or commit to produce an archive for
+     * @param string|array|\Traversable $path    If one or more paths are specified, only these are included
+     * @param array                     $options An array of options
      */
     public function archive($file, $tree = null, $path = null, array $options = [])
     {
@@ -422,7 +393,7 @@ class Git
      * $branches = $git->branch();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ```
      * [
@@ -431,13 +402,12 @@ class Git
      * ]
      * ```
      *
-     * ##### Options
+     * Options:
+     * - all     (boolean)        List both remote-tracking branches and local branches
+     * - remotes (boolean)        List the remote-tracking branches
+     * - merged  (boolean|string) Only list branches whose tips are reachable from the specified commit (HEAD if not specified)
      *
-     * - **all**     (_boolean_)        List both remote-tracking branches and local branches
-     * - **remotes** (_boolean_)        List the remote-tracking branches
-     * - **merged**  (_boolean|string_) Only list branches whose tips are reachable from the specified commit (HEAD if not specified)
-     *
-     * @param array $options [optional] An array of options
+     * @param array $options An array of options
      *
      * @return Branch[]
      */
@@ -455,13 +425,12 @@ class Git
      * $git->checkout('develop');
      * ```
      *
-     * ##### Options
-     *
-     * - **force** (_boolean_) Proceed even if the index or the working tree differs from HEAD
-     * - **merge** (_boolean_) Merges local modification
+     * Options:
+     * - force (boolean) Proceed even if the index or the working tree differs from HEAD
+     * - merge (boolean) Merges local modification
      *
      * @param string $branch  Branch to checkout
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function checkout($branch, array $options = [])
     {
@@ -478,12 +447,11 @@ class Git
      * $git->cherryPick('abc123');
      * ```
      *
-     * ##### Options
-     *
-     * - **x** (_boolean_) When recording the commit, append a line that says "(cherry picked from commit ...)" to the original commit message
+     * Options:
+     * - x (boolean) When recording the commit, append a line that says "(cherry picked from commit ...)" to the original commit message
      *
      * @param string $commit  The commit to pick
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function cherryPick($commit, array $options = [])
     {
@@ -501,18 +469,17 @@ class Git
      * $git->commit('Fixes README.md');
      * ```
      *
-     * ##### Options
-     *
-     * - **all**           (_boolean_) Stage files that have been modified and deleted
-     * - **reuse-message** (_string_)  Take an existing commit object, and reuse the log message and the authorship information (including the timestamp) when creating the commit
-     * - **squash**        (_string_)  Construct a commit message for use with rebase --autosquash
-     * - **author**        (_string_)  Override the commit author
-     * - **date**          (_string_)  Override the author date used in the commit
-     * - **cleanup**       (_string_)  Can be one of verbatim, whitespace, strip, and default
-     * - **amend**         (_boolean_) Used to amend the tip of the current branch
+     * Options:
+     * - all           (boolean) Stage files that have been modified and deleted
+     * - reuse-message (string)  Take an existing commit object, and reuse the log message and the authorship information (including the timestamp) when creating the commit
+     * - squash        (string)  Construct a commit message for use with rebase --autosquash
+     * - author        (string)  Override the commit author
+     * - date          (string)  Override the author date used in the commit
+     * - cleanup       (string)  Can be one of verbatim, whitespace, strip, and default
+     * - amend         (boolean) Used to amend the tip of the current branch
      *
      * @param string $message Use the given <$msg> as the commit message
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function commit($message, array $options = [])
     {
@@ -522,12 +489,11 @@ class Git
     /**
      * Returns all variables set in config file.
      *
-     * ##### Options
+     * Options:
+     * - global (boolean) Read or write configuration options for the current user
+     * - system (boolean) Read or write configuration options for all users on the current machine
      *
-     * - **global** (_boolean_) Read or write configuration options for the current user
-     * - **system** (_boolean_) Read or write configuration options for all users on the current machine
-     *
-     * @param array $options [optional] An array of options
+     * @param array $options An array of options
      *
      * @return array
      */
@@ -547,20 +513,19 @@ class Git
      * echo $git->describe('HEAD', ['tags' => true]);
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ```
      * v1.0.0-1-g7049efc
      * ```
      *
-     * ##### Options
+     * Options:
+     * - all    (boolean) Enables matching any known branch, remote-tracking branch, or lightweight tag
+     * - tags   (boolean) Enables matching a lightweight (non-annotated) tag
+     * - always (boolean) Show uniquely abbreviated commit object as fallback
      *
-     * - **all**    (_boolean_) Enables matching any known branch, remote-tracking branch, or lightweight tag
-     * - **tags**   (_boolean_) Enables matching a lightweight (non-annotated) tag
-     * - **always** (_boolean_) Show uniquely abbreviated commit object as fallback
-     *
-     * @param string $committish [optional] Committish object names to describe
-     * @param array  $options    [optional] An array of options
+     * @param string $committish Committish object names to describe
+     * @param array  $options    An array of options
      *
      * @return string
      */
@@ -578,15 +543,14 @@ class Git
      * $output = $git->diff('A..B');
      * ```
      *
-     * ##### Options
-     *
-     * - **stat**      (_boolean_) Generate a diff stat
-     * - **shortstat** (_boolean_) Output only the last line of the --stat format containing total number of modified files, as well as number of added and deleted lines
-     * - **cached**    (_boolean_) Work on files staged in the index
+     * Options:
+     * - stat      (boolean) Generate a diff stat
+     * - shortstat (boolean) Output only the last line of the --stat format containing total number of modified files, as well as number of added and deleted lines
+     * - cached    (boolean) Work on files staged in the index
      *
      * @param string $commit  Commit or commit range to diff, EG: 'A..B' or 'A' or 'A B", etc
      * @param string $path    Restrict diff to file path
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      *
      * @return string
      */
@@ -605,16 +569,15 @@ class Git
      * $git->fetch('origin');
      * ```
      *
-     * ##### Options
-     *
-     * - **append** (_boolean_) Append ref names and object names of fetched refs to the existing contents of .git/FETCH_HEAD
-     * - **keep**   (_boolean_) Keep downloaded pack
-     * - **prune**  (_boolean_) After fetching, remove any remote-tracking branches which no longer exist on the remote
+     * Options:
+     * - append (boolean) Append ref names and object names of fetched refs to the existing contents of .git/FETCH_HEAD
+     * - keep   (boolean) Keep downloaded pack
+     * - prune  (boolean) After fetching, remove any remote-tracking branches which no longer exist on the remote
      *
      * @param string $repository The "remote" repository that is the source of a fetch or pull operation
      * @param string $refspec    The format of a <refspec> parameter is an optional plus +, followed by the source ref <src>,
      *                           followed by a colon :, followed by the destination ref <dst>
-     * @param array  $options    [optional] An array of options
+     * @param array  $options    An array of options
      */
     public function fetch($repository, $refspec = null, array $options = [])
     {
@@ -630,13 +593,12 @@ class Git
      * $git->init('/path/to/repo2', array('shared' => true, 'bare' => true));
      * ```
      *
-     * ##### Options
-     *
-     * - **shared** (_boolean_) Specify that the git repository is to be shared amongst several users
-     * - **bare**   (_boolean_) Create a bare repository
+     * Options:
+     * - shared (boolean) Specify that the git repository is to be shared amongst several users
+     * - bare   (boolean) Create a bare repository
      *
      * @param string $path    The directory to create an empty repository
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function init($path, array $options = [])
     {
@@ -652,7 +614,7 @@ class Git
      * $logs = $git->log(array('limit' => 10));
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ``` php
      * [
@@ -667,18 +629,17 @@ class Git
      * ]
      * ```
      *
-     * ##### Options
+     * Options:
+     * - limit            (integer) Limits the number of commits to show
+     * - skip             (integer) Skip number commits before starting to show the commit output
+     * - grep             (string) Limit the commits output to ones with log message that matches the specified pattern (regular expression)
+     * - extended-regexp  (bool)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
+     * - no-merges        (bool)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
+     * - reverse          (bool)    Reverse the order of the commits
      *
-     * - **limit**            (_integer_) Limits the number of commits to show
-     * - **skip**             (_integer_) Skip number commits before starting to show the commit output
-     * - **grep**             (_string_) Limit the commits output to ones with log message that matches the specified pattern (regular expression)
-     * - **extended-regexp**  (_bool_)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
-     * - **no-merges**        (_bool_)    Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions
-     * - **reverse**          (_bool_)    Reverse the order of the commits
-     *
-     * @param string $revRange [optional] Show only commits in the specified revision range
-     * @param string $path     [optional] Show only commits that are enough to explain how the files that match the specified paths came to be
-     * @param array  $options  [optional] An array of options
+     * @param string $revRange Show only commits in the specified revision range
+     * @param string $path     Show only commits that are enough to explain how the files that match the specified paths came to be
+     * @param array  $options  An array of options
      *
      * @return Log[]
      */
@@ -697,18 +658,17 @@ class Git
      * $git->merge('1.1', 'Merge message', ['strategy' => 'ours']);
      * ```
      *
-     * ##### Options
-     *
-     * - **no-ff**               (_boolean_) Create a merge commit even when the merge resolves as a fast-forward
-     * - **ff-only**             (_boolean_) Refuse to merge and exit with a non-zero status unless the current HEAD is already up-to-date or the merge can be resolved as a fast-forward
-     * - **rerere-autoupdate**   (_boolean_) Allow the rerere mechanism to update the index with the result of auto-conflict resolution if possible
-     * - **squash**              (_boolean_) Allows you to create a single commit on top of the current branch whose effect is the same as merging another branch
-     * - **strategy**            (_string_)  Use the given merge strategy
-     * - **strategy-option**     (_string_)  Pass merge strategy specific option through to the merge strategy
+     * Options:
+     * - no-ff               (boolean) Create a merge commit even when the merge resolves as a fast-forward
+     * - ff-only             (boolean) Refuse to merge and exit with a non-zero status unless the current HEAD is already up-to-date or the merge can be resolved as a fast-forward
+     * - rerere-autoupdate   (boolean) Allow the rerere mechanism to update the index with the result of auto-conflict resolution if possible
+     * - squash              (boolean) Allows you to create a single commit on top of the current branch whose effect is the same as merging another branch
+     * - strategy            (string)  Use the given merge strategy
+     * - strategy-option     (string)  Pass merge strategy specific option through to the merge strategy
      *
      * @param string|array|\Traversable $commit  Commits to merge into our branch
-     * @param string                    $message [optional] Commit message to be used for the merge commit
-     * @param array                     $options [optional] An array of options
+     * @param string                    $message Commit message to be used for the merge commit
+     * @param array                     $options An array of options
      */
     public function merge($commit, $message = null, array $options = [])
     {
@@ -724,13 +684,12 @@ class Git
      * $git->mv('UPGRADE-1.0.md', 'UPGRADE-1.1.md');
      * ```
      *
-     * ##### Options
-     *
-     * - **force** (_boolean_) Force renaming or moving of a file even if the target exists
+     * Options:
+     * - force (boolean) Force renaming or moving of a file even if the target exists
      *
      * @param string|array|\Iterator $source      The files to move
      * @param string                 $destination The destination
-     * @param array                  $options     [optional] An array of options
+     * @param array                  $options     An array of options
      */
     public function mv($source, $destination, array $options = [])
     {
@@ -764,16 +723,15 @@ class Git
      * $git->push('origin', 'master');
      * ```
      *
-     * ##### Options
-     *
-     * - **all**    (_boolean_) Push all branches
-     * - **mirror** (_boolean_) All refs under refs/ be mirrored to the remote repository
-     * - **tags**   (_boolean_)
-     * - **force**  (_boolean_)
+     * Options:
+     * - all    (boolean) Push all branches
+     * - mirror (boolean) All refs under refs/ be mirrored to the remote repository
+     * - tags   (boolean)
+     * - force  (boolean)
      *
      * @param string $repository The "remote" repository that is destination of a push operation
      * @param string $refspec    Specify what destination ref to update with what source object
-     * @param array  $options    [optional] An array of options
+     * @param array  $options    An array of options
      */
     public function push($repository = null, $refspec = null, array $options = [])
     {
@@ -790,15 +748,14 @@ class Git
      * $git->rebase('origin/master');
      * ```
      *
-     * ##### Options
+     * Options:
+     * - onto          (string)  Starting point at which to create the new commits
+     * - no-verify     (boolean) Bypasses the pre-rebase hook
+     * - force-rebase  (boolean) Force the rebase even if the current branch is a descendant of the commit you are rebasing onto
      *
-     * - **onto**          (_string_)  Starting point at which to create the new commits
-     * - **no-verify**     (_boolean_) Bypasses the pre-rebase hook
-     * - **force-rebase**  (_boolean_) Force the rebase even if the current branch is a descendant of the commit you are rebasing onto
-     *
-     * @param string $upstream [optional] Upstream branch to compare against
-     * @param string $branch   [optional] Working branch; defaults to HEAD
-     * @param array  $options  [optional] An array of options
+     * @param string $upstream Upstream branch to compare against
+     * @param string $branch   Working branch; defaults to HEAD
+     * @param array  $options  An array of options
      */
     public function rebase($upstream = null, $branch = null, array $options = [])
     {
@@ -815,7 +772,7 @@ class Git
      * $remotes = $git->remote();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ``` php
      * [
@@ -835,7 +792,7 @@ class Git
     }
 
     /**
-     * Resets the index entries for all **$paths** to their state at **$commit**.
+     * Resets the index entries for all $paths to their state at $commit.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -860,14 +817,13 @@ class Git
      * $git->revParse();
      * ```
      *
-     * ##### Options
-     *
-     * - **abbrev-ref** (_string_)   A non-ambiguous short name of the objects name (AKA branch name)
-     * - **short**      (_int|bool_) Instead of outputting the full SHA-1 values of object names try to abbreviate
+     * Options:
+     * - abbrev-ref (string)   A non-ambiguous short name of the objects name (AKA branch name)
+     * - short      (int|bool) Instead of outputting the full SHA-1 values of object names try to abbreviate
      *                               them to a shorter unique name. When true, 7 or shorter is used. The minimum length is 4.
      *
      * @param string|array|\Traversable $args    Flags and parameters to be parsed
-     * @param array                     $options [optional] An array of options
+     * @param array                     $options An array of options
      *
      * @return array
      */
@@ -885,14 +841,13 @@ class Git
      * $git->rm('CHANGELOG-1.0-1.1.txt', ['force' => true]);
      * ```
      *
-     * ##### Options
-     *
-     * - **force**     (_boolean_) Override the up-to-date check
-     * - **cached**    (_boolean_) Unstage and remove paths only from the index
-     * - **recursive** (_boolean_) Allow recursive removal when a leading directory name is given
+     * Options:
+     * - force     (boolean) Override the up-to-date check
+     * - cached    (boolean) Unstage and remove paths only from the index
+     * - recursive (boolean) Allow recursive removal when a leading directory name is given
      *
      * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
-     * @param array                     $options [optional] An array of options
+     * @param array                     $options An array of options
      */
     public function rm($file, array $options = [])
     {
@@ -908,7 +863,7 @@ class Git
      * $shortlog = $git->shortlog();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ``` php
      * [
@@ -920,7 +875,7 @@ class Git
      * ]
      * ```
      *
-     * @param string|array|\Traversable $commits [optional] Defaults to HEAD
+     * @param string|array|\Traversable $commits Defaults to HEAD
      *
      * @return array
      */
@@ -938,13 +893,12 @@ class Git
      * echo $git->show('3ddee587e209661c8265d5bfd0df999836f6dfa2');
      * ```
      *
-     * ##### Options
-     *
-     * - **format**        (_string_)  Pretty-print the contents of the commit logs in a given format, where <format> can be one of oneline, short, medium, full, fuller, email, raw and format:<string>
-     * - **abbrev-commit** (_boolean_) Instead of showing the full 40-byte hexadecimal commit object name, show only a partial prefix
+     * Options:
+     * - format        (string)  Pretty-print the contents of the commit logs in a given format, where <format> can be one of oneline, short, medium, full, fuller, email, raw and format:<string>
+     * - abbrev-commit (boolean) Instead of showing the full 40-byte hexadecimal commit object name, show only a partial prefix
      *
      * @param string $object  The names of objects to show
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      *
      * @return string
      */
@@ -976,7 +930,7 @@ class Git
      * $status = $git->status();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ``` php
      * [
@@ -989,11 +943,10 @@ class Git
      * ]
      * ```
      *
-     * ##### Options
+     * Options:
+     * - ignored (boolean) Show ignored files as well
      *
-     * - **ignored** (_boolean_) Show ignored files as well
-     *
-     * @param array $options [optional] An array of options
+     * @param array $options An array of options
      *
      * @return array
      */
@@ -1012,7 +965,7 @@ class Git
      * $tags = $git->tag();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ```
      * ['v1.0.0', 'v1.0.1', 'v1.0.2']
@@ -1035,7 +988,7 @@ class Git
      * $tree = $git->tree('master');
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ``` php
      * [

@@ -16,9 +16,9 @@ class ArchiveCommand extends Command
      * @see \PHPGit\Git::archive()
      *
      * @param string                    $file    The filename
-     * @param string                    $tree    [optional] The tree or commit to produce an archive for
-     * @param string|array|\Traversable $path    [optional] If one or more paths are specified, only these are included
-     * @param array                     $options [optional] An array of options
+     * @param string                    $tree    The tree or commit to produce an archive for
+     * @param string|array|\Traversable $path    If one or more paths are specified, only these are included
+     * @param array                     $options An array of options
      */
     public function __invoke($file, $tree = null, $path = null, array $options = [])
     {

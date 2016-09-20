@@ -16,7 +16,7 @@ class InitCommand extends Command
      * @see \PHPGit\Git::init()
      *
      * @param string $path    The directory to create an empty repository
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function __invoke($path, array $options = [])
     {

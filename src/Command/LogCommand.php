@@ -16,9 +16,9 @@ class LogCommand extends Command
     /**
      * @see \PHPGit\Git::log()
      *
-     * @param string $revRange [optional] Show only commits in the specified revision range
-     * @param string $path     [optional] Show only commits that are enough to explain how the files that match the specified paths came to be
-     * @param array  $options  [optional] An array of options
+     * @param string $revRange Show only commits in the specified revision range
+     * @param string $path     Show only commits that are enough to explain how the files that match the specified paths came to be
+     * @param array  $options  An array of options
      *
      * @return Log[]
      */

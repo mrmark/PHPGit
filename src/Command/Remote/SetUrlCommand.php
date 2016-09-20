@@ -22,14 +22,13 @@ class SetUrlCommand extends Command
      * $git->remote->url('origin', 'https://github.com/text/Text.git');
      * ```
      *
-     * ##### Options
-     *
-     * - **push** (_boolean_) Push URLs are manipulated instead of fetch URLs
+     * Options:
+     * - push (boolean) Push URLs are manipulated instead of fetch URLs
      *
      * @param string $name    The name of remote
      * @param string $newUrl  The new URL
-     * @param string $oldUrl  [optional] The old URL
-     * @param array  $options [optional] An array of options
+     * @param string $oldUrl  The old URL
+     * @param array  $options An array of options
      */
     public function __invoke($name, $newUrl, $oldUrl = null, array $options = [])
     {
@@ -46,14 +45,13 @@ class SetUrlCommand extends Command
      * $git->remote->url->set('origin', 'https://github.com/text/Text.git');
      * ```
      *
-     * ##### Options
-     *
-     * - **push** (_boolean_) Push URLs are manipulated instead of fetch URLs
+     * Options:
+     * - push (boolean) Push URLs are manipulated instead of fetch URLs
      *
      * @param string $name    The name of remote
      * @param string $newUrl  The new URL
-     * @param string $oldUrl  [optional] The old URL
-     * @param array  $options [optional] An array of options
+     * @param string $oldUrl  The old URL
+     * @param array  $options An array of options
      */
     public function set($name, $newUrl, $oldUrl = null, array $options = [])
     {
@@ -85,13 +83,12 @@ class SetUrlCommand extends Command
      * $git->remote->url->add('origin', 'https://github.com/text/Text.git');
      * ```
      *
-     * ##### Options
-     *
-     * - **push** (_boolean_) Push URLs are manipulated instead of fetch URLs
+     * Options:
+     * - push (boolean) Push URLs are manipulated instead of fetch URLs
      *
      * @param string $name    The name of remote
      * @param string $newUrl  The new URL
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function add($name, $newUrl, array $options = [])
     {
@@ -120,13 +117,12 @@ class SetUrlCommand extends Command
      * $git->remote->url->delete('origin', 'https://github.com');
      * ```
      *
-     * ##### Options
-     *
-     * - **push** (_boolean_) Push URLs are manipulated instead of fetch URLs
+     * Options:
+     * - push (boolean) Push URLs are manipulated instead of fetch URLs
      *
      * @param string $name    The remote name
      * @param string $url     The URL to delete
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function delete($name, $url, array $options = [])
     {
@@ -148,7 +144,7 @@ class SetUrlCommand extends Command
     /**
      * {@inheritdoc}
      *
-     * - **push** (_boolean_) Push URLs are manipulated instead of fetch URLs
+     * - push (boolean) Push URLs are manipulated instead of fetch URLs
      */
     public function setDefaultOptions(OptionsResolver $resolver)
     {

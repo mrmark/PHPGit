@@ -36,7 +36,7 @@ class CatCommand extends Command
     }
 
     /**
-     * Returns the object type identified by **$object**.
+     * Returns the object type identified by $object.
      *
      * ``` php
      * $git = new PHPGit\Git();
@@ -60,7 +60,7 @@ class CatCommand extends Command
     }
 
     /**
-     * Returns the object size identified by **$object**.
+     * Returns the object size identified by $object.
      *
      * ``` php
      * $git = new PHPGit\Git();

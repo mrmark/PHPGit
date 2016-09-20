@@ -15,9 +15,9 @@ class RebaseCommand extends Command
     /**
      * @see \PHPGit\Git::rebase()
      *
-     * @param string $upstream [optional] Upstream branch to compare against
-     * @param string $branch   [optional] Working branch; defaults to HEAD
-     * @param array  $options  [optional] An array of options
+     * @param string $upstream Upstream branch to compare against
+     * @param string $branch   Working branch; defaults to HEAD
+     * @param array  $options  An array of options
      */
     public function __invoke($upstream = null, $branch = null, array $options = [])
     {

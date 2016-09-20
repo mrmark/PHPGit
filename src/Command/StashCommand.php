@@ -31,8 +31,8 @@ class StashCommand extends Command
      * $git->stash->save('My stash');
      * ```
      *
-     * @param string $message [optional] The description along with the stashed state
-     * @param array  $options [optional] An array of options
+     * @param string $message The description along with the stashed state
+     * @param array  $options An array of options
      */
     public function save($message = null, array $options = [])
     {
@@ -55,7 +55,7 @@ class StashCommand extends Command
      * $stashes = $git->stash->lists();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ``` php
      * [
@@ -64,7 +64,7 @@ class StashCommand extends Command
      * ]
      * ```
      *
-     * @param array $options [optional] An array of options
+     * @param array $options An array of options
      *
      * @return array
      */
@@ -99,7 +99,7 @@ class StashCommand extends Command
      * echo $git->stash->show('stash@{0}');
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ```
      *  REAMDE.md |    2 +-
@@ -159,7 +159,7 @@ class StashCommand extends Command
      * ```
      *
      * @param string $stash   The stash to pop
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function pop($stash = null, array $options = [])
     {
@@ -187,7 +187,7 @@ class StashCommand extends Command
      * ```
      *
      * @param string $stash   The stash to apply
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function apply($stash = null, array $options = [])
     {
@@ -258,7 +258,7 @@ class StashCommand extends Command
      * $commit = $git->stash->create();
      * ```
      *
-     * ##### Output Example
+     * Output Example:
      *
      * ```
      * 877316ea6f95c43b7ccc2c2a362eeedfa78b597d

@@ -12,7 +12,7 @@ class DiffCommand extends Command
      *
      * @param string $commit  Commit or commit range to diff, EG: 'A..B' or 'A' or 'A B", etc
      * @param string $path    Restrict diff to file path
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      *
      * @return string
      */

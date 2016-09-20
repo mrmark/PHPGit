@@ -22,7 +22,7 @@ class SetHeadCommand extends Command
      * ```
      *
      * @param string $name   The remote name
-     * @param string $branch [optional] The symbolic-ref to set
+     * @param string $branch The symbolic-ref to set
      */
     public function __invoke($name, $branch = null)
     {
@@ -40,7 +40,7 @@ class SetHeadCommand extends Command
      * ```
      *
      * @param string $name   The remote name
-     * @param string $branch [optional] The symbolic-ref to set
+     * @param string $branch The symbolic-ref to set
      */
     public function set($name, $branch)
     {

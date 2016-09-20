@@ -16,7 +16,7 @@ class RmCommand extends Command
      * @see \PHPGit\Git::rm()
      *
      * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
-     * @param array                     $options [optional] An array of options
+     * @param array                     $options An array of options
      */
     public function __invoke($file, array $options = [])
     {
@@ -44,13 +44,12 @@ class RmCommand extends Command
     /**
      * Equivalent to $git->rm($file, ['cached' => true]);.
      *
-     * ##### Options
-     *
-     * - **force**     (_boolean_) Override the up-to-date check
-     * - **recursive** (_boolean_) Allow recursive removal when a leading directory name is given
+     * Options:
+     * - force     (boolean) Override the up-to-date check
+     * - recursive (boolean) Allow recursive removal when a leading directory name is given
      *
      * @param string|array|\Traversable $file    Files to remove. Fileglobs (e.g.  *.c) can be given to remove all matching files
-     * @param array                     $options [optional] An array of options
+     * @param array                     $options An array of options
      */
     public function cached($file, array $options = [])
     {

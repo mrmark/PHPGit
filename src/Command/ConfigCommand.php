@@ -15,7 +15,7 @@ class ConfigCommand extends Command
     /**
      * @see \PHPGit\Git::config()
      *
-     * @param array $options [optional] An array of options
+     * @param array $options An array of options
      *
      * @return array
      */
@@ -49,14 +49,13 @@ class ConfigCommand extends Command
     /**
      * Set an option.
      *
-     * ##### Options
-     *
-     * - **global** (_boolean_) Read or write configuration options for the current user
-     * - **system** (_boolean_) Read or write configuration options for all users on the current machine
+     * Options:
+     * - global (boolean) Read or write configuration options for the current user
+     * - system (boolean) Read or write configuration options for all users on the current machine
      *
      * @param string $name    The name of the option
      * @param string $value   The value to set
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function set($name, $value, array $options = [])
     {
@@ -74,14 +73,13 @@ class ConfigCommand extends Command
     /**
      * Adds a new line to the option without altering any existing values.
      *
-     * ##### Options
-     *
-     * - **global** (_boolean_) Read or write configuration options for the current user
-     * - **system** (_boolean_) Read or write configuration options for all users on the current machine
+     * Options:
+     * - global (boolean) Read or write configuration options for the current user
+     * - system (boolean) Read or write configuration options for all users on the current machine
      *
      * @param string $name    The name of the option
      * @param string $value   The value to add
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function add($name, $value, array $options = [])
     {

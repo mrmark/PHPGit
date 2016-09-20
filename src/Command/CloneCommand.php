@@ -20,14 +20,13 @@ class CloneCommand extends Command
      * $git->clone('https://github.com/kzykhys/PHPGit.git', '/path/to/repo');
      * ```
      *
-     * ##### Options
-     *
-     * - **shared** (_boolean_) Starts out without any object of its own
-     * - **bare**   (_boolean_) Make a bare GIT repository
+     * Options:
+     * - shared (boolean) Starts out without any object of its own
+     * - bare   (boolean) Make a bare GIT repository
      *
      * @param string $repository The repository to clone from
-     * @param string $path       [optional] The name of a new directory to clone into
-     * @param array  $options    [optional] An array of options
+     * @param string $path       The name of a new directory to clone into
+     * @param array  $options    An array of options
      */
     public function __invoke($repository, $path = null, array $options = [])
     {

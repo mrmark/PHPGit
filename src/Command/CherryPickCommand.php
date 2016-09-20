@@ -11,7 +11,7 @@ class CherryPickCommand extends Command
      * @see \PHPGit\Git::cherryPick()
      *
      * @param string $commit  The commit to pick
-     * @param array  $options [optional] An array of options
+     * @param array  $options An array of options
      */
     public function __invoke($commit, array $options = [])
     {
