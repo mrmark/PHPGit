@@ -42,6 +42,8 @@ use Symfony\Component\Process\ProcessBuilder;
  * @license MIT
  *
  * @method clone(string $repository, string $path = null, array $options = []) Clone a repository into a new directory
+ *
+ * @todo Create clone method once we are on PHP7
  */
 class Git
 {
