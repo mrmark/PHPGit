@@ -48,13 +48,13 @@ use Symfony\Component\Process\ProcessBuilder;
 class Git
 {
     /** @var Command\AddCommand */
-    public $add;
+    private $add;
 
     /** @var Command\AmCommand */
-    public $am;
+    private $am;
 
     /** @var Command\ArchiveCommand */
-    public $archive;
+    private $archive;
 
     /** @var Command\BranchCommand */
     public $branch;
@@ -66,13 +66,17 @@ class Git
     public $checkout;
 
     /** @var Command\CherryPickCommand */
-    public $cherryPick;
+    private $cherryPick;
 
-    /** @var Command\CloneCommand */
+    /**
+     * @var Command\CloneCommand
+     *
+     * @todo When clone is moved to method, then change this to private
+     */
     public $clone;
 
     /** @var Command\CommitCommand */
-    public $commit;
+    private $commit;
 
     /** @var Command\ConfigCommand */
     public $config;
@@ -81,28 +85,28 @@ class Git
     public $describe;
 
     /** @var Command\DiffCommand */
-    public $diff;
+    private $diff;
 
     /** @var Command\FetchCommand */
     public $fetch;
 
     /** @var Command\InitCommand */
-    public $init;
+    private $init;
 
     /** @var Command\LogCommand */
-    public $log;
+    private $log;
 
     /** @var Command\MergeCommand */
     public $merge;
 
     /** @var Command\MvCommand */
-    public $mv;
+    private $mv;
 
     /** @var Command\PullCommand */
-    public $pull;
+    private $pull;
 
     /** @var Command\PushCommand */
-    public $push;
+    private $push;
 
     /** @var Command\RebaseCommand */
     public $rebase;
@@ -123,19 +127,19 @@ class Git
     public $shortlog;
 
     /** @var Command\ShowCommand */
-    public $show;
+    private $show;
 
     /** @var Command\StashCommand */
     public $stash;
 
     /** @var Command\StatusCommand */
-    public $status;
+    private $status;
 
     /** @var Command\TagCommand */
     public $tag;
 
     /** @var Command\TreeCommand */
-    public $tree;
+    private $tree;
 
     /** @var string */
     private $bin = 'git';
