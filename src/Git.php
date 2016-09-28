@@ -948,13 +948,14 @@ class Git
      * Options:
      * - ignored (boolean) Show ignored files as well
      *
-     * @param array $options An array of options
+     * @param string|array|\Traversable $pathSpec Restrict status to these paths
+     * @param array                     $options  An array of options
      *
      * @return array
      */
-    public function status(array $options = [])
+    public function status($pathSpec = null, array $options = [])
     {
-        return $this->status->__invoke($options);
+        return $this->status->__invoke($pathSpec, $options);
     }
 
     /**

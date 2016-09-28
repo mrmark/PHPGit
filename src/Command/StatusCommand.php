@@ -57,11 +57,12 @@ class StatusCommand extends Command
     /**
      * @see \PHPGit\Git::status()
      *
-     * @param array $options An array of options
+     * @param string|array|\Traversable $pathSpec Restrict status to these paths
+     * @param array                     $options  An array of options
      *
      * @return array
      */
-    public function __invoke(array $options = [])
+    public function __invoke($pathSpec = null, array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -69,6 +70,17 @@ class StatusCommand extends Command
             ->add('--porcelain')->add('-s')->add('-b')->add('--null');
 
         $this->addFlags($builder, $options);
+
+        if ($pathSpec) {
+            if (!is_array($pathSpec) && !($pathSpec instanceof \Traversable)) {
+                $pathSpec = [$pathSpec];
+            }
+
+            $builder->add('--');
+            foreach ($pathSpec as $value) {
+                $builder->add($value);
+            }
+        }
 
         $process = $builder->getProcess();
         $result  = ['branch' => null, 'changes' => []];

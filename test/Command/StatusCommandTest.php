@@ -35,6 +35,18 @@ class StatusCommandTest extends BaseTestCase
                 ['file' => 'item3.txt', 'index' => StatusCommand::UNTRACKED, 'work_tree' => StatusCommand::UNTRACKED],
             ],
         ], $status);
+
+        $filesystem->dumpFile($this->directory.'/folder/item1.txt', '1-1');
+        $git->add('folder');
+
+        $status = $git->status('folder');
+
+        $this->assertEquals([
+            'branch'  => 'master',
+            'changes' => [
+                ['file' => 'folder/item1.txt', 'index' => StatusCommand::ADDED, 'work_tree' => StatusCommand::UNMODIFIED],
+            ],
+        ], $status);
     }
 
     public function testDetachedHeadStatus()
