@@ -105,7 +105,7 @@ class ResetCommandTest extends BaseTestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testResetInvalidMode()
     {
