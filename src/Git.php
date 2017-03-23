@@ -730,10 +730,11 @@ class Git
      * ```
      *
      * Options:
-     * - all    (boolean) Push all branches
-     * - mirror (boolean) All refs under refs/ be mirrored to the remote repository
-     * - tags   (boolean)
-     * - force  (boolean)
+     * - all          (boolean) Push all branches
+     * - mirror       (boolean) All refs under refs/ be mirrored to the remote repository
+     * - tags         (boolean) Push tags (can't be used with --all or --mirror)
+     * - force        (boolean) Force updates
+     * - set-upstream (boolean) Set upstream for git pull/status
      *
      * @param string $repository The "remote" repository that is destination of a push operation
      * @param string $refspec    Specify what destination ref to update with what source object
