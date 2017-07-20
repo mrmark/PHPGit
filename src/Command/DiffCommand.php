@@ -22,7 +22,7 @@ class DiffCommand extends Command
         $builder = $this->git->getProcessBuilder()
             ->add('diff');
 
-        $this->addFlags($builder, $options);
+        $this->addFlags($builder, $options, ['stat', 'shortstat', 'cached']);
 
         if ($options['diff-filter']) {
             $builder->add('--diff-filter='.$options['diff-filter']);
