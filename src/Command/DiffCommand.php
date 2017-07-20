@@ -11,12 +11,12 @@ class DiffCommand extends Command
      * @see \PHPGit\Git::diff()
      *
      * @param string $commit  Commit or commit range to diff, EG: 'A..B' or 'A' or 'A B", etc
-     * @param string $path    Restrict diff to file path
+     * @param array  $paths   Restrict diff to file paths
      * @param array  $options An array of options
      *
      * @return string
      */
-    public function __invoke($commit = null, $path = null, array $options = [])
+    public function __invoke($commit = null, array $paths = [], array $options = [])
     {
         $options = $this->resolve($options);
         $builder = $this->git->getProcessBuilder()
@@ -24,11 +24,17 @@ class DiffCommand extends Command
 
         $this->addFlags($builder, $options);
 
+        if ($options['diff-filter']) {
+            $builder->add('--diff-filter='.$options['diff-filter']);
+        }
         if ($commit) {
             $builder->add($commit);
         }
-        if ($path) {
-            $builder->add('--')->add($path);
+        if (!empty($paths)) {
+            $builder->add('--');
+            foreach ($paths as $path) {
+                $builder->add($path);
+            }
         }
 
         return $this->git->run($builder->getProcess());
@@ -37,9 +43,10 @@ class DiffCommand extends Command
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'stat'      => false,
-            'shortstat' => false,
-            'cached'    => false,
+            'stat'        => false,
+            'shortstat'   => false,
+            'cached'      => false,
+            'diff-filter' => null,
         ]);
     }
 }

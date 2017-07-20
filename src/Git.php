@@ -43,7 +43,7 @@ use Symfony\Component\Process\ProcessBuilder;
  *
  * @method clone(string $repository, string $path = null, array $options = []) Clone a repository into a new directory
  *
- * @todo Create clone method once we are on PHP7
+ * @todo    Create clone method once we are on PHP7
  */
 class Git
 {
@@ -550,19 +550,20 @@ class Git
      * ```
      *
      * Options:
-     * - stat      (boolean) Generate a diff stat
-     * - shortstat (boolean) Output only the last line of the --stat format containing total number of modified files, as well as number of added and deleted lines
-     * - cached    (boolean) Work on files staged in the index
+     * - stat        (boolean) Generate a diff stat
+     * - shortstat   (boolean) Output only the last line of the --stat format containing total number of modified files, as well as number of added and deleted lines
+     * - cached      (boolean) Work on files staged in the index
+     * - diff-filter (string) Filter the files by modification type
      *
      * @param string $commit  Commit or commit range to diff, EG: 'A..B' or 'A' or 'A B", etc
-     * @param string $path    Restrict diff to file path
+     * @param array  $paths   Restrict diff to file paths
      * @param array  $options An array of options
      *
      * @return string
      */
-    public function diff($commit = null, $path = null, array $options = [])
+    public function diff($commit = null, array $paths = [], array $options = [])
     {
-        return $this->diff->__invoke($commit, $path, $options);
+        return $this->diff->__invoke($commit, $paths, $options);
     }
 
     /**

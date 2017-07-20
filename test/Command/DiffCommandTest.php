@@ -29,7 +29,7 @@ class DiffCommandTest extends BaseTestCase
  1 file changed, 1 insertion(+), 1 deletion(-)
 ';
 
-        $output = $git->diff($hash.'..', 'README.md', ['stat' => true]);
+        $output = $git->diff($hash.'..', ['README.md'], ['stat' => true]);
         $this->assertEquals($expected, $output);
     }
 }
